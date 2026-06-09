@@ -128,7 +128,7 @@ export default async function ItemsCategoryPage({
           <div className={styles.visitCta}>
             <h3 className={styles.visitTitle}>Visit Green Pentagon Cannabis</h3>
             <p className={styles.visitText}>
-              1267 Queen St W, GTA, ON M6K 2J2 · Open 24 Hours
+              1267 Queen St W, GTA, ON M6K 2J2 · Open Daily: 10:00 AM - 12:00 AM
             </p>
             <a
               href="https://greenpentagoncannabis.com/"

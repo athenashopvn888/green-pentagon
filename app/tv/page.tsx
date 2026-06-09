@@ -673,7 +673,7 @@ function AddOnsCard({ items, hiIdx }: { items: Item[]; hiIdx: number }) {
 const TICKER_SLIDES = [
   "🔥 Green Pentagon Cannabis — 1267 Queen St W, GTA",
   "200+ Strains In Stock",
-  "Open 24 Hours",
+  "Open Daily: 10:00 AM - 12:00 AM",
   "ALL SALES ARE FINAL",
   "🎮 Play Games at greenpentagoncannabis.com/games",
 ];

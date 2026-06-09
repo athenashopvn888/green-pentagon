@@ -101,7 +101,7 @@ export default function DeliveryContent() {
         <div className={styles.ctaSection}>
           <p className={styles.ctaText}>
             Can&apos;t wait? Visit us in-store at <strong>1267 Queen St W, GTA</strong> —
-            open <strong>24 hours</strong>. Call <strong>(416) 388-5765</strong>.
+            we are <strong>Open Daily: 10:00 AM - 12:00 AM</strong>. Call <strong>(416) 388-5765</strong>.
           </p>
         </div>
       </div>
