@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Green Pentagon Cannabis",
   },
   description:
-    "Shop 200+ premium cannabis strains at Green Pentagon Cannabis. Exotic, Premium, AAA+, AA & Budget flower from $3/g. GTA's uplifting dispensary at 1267 Queen St W. Open 24 Hours.",
+    "Shop 200+ premium cannabis strains at Green Pentagon Cannabis. Exotic, Premium, AAA+, AA & Budget flower from $3/g. GTA's uplifting dispensary at 1267 Queen St W. Open Daily: 10:00 AM - 12:00 AM.",
   keywords: [
     "cannabis dispensary GTA",
     "weed store GTA",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Green Pentagon Cannabis",
     title: "Green Pentagon Cannabis — Premium GTA Cannabis Dispensary",
     description:
-      "200+ strains from $3/g. Exotic to Budget. GTA's uplifting dispensary at 1267 Queen St W. Open 24 Hours.",
+      "200+ strains from $3/g. Exotic to Budget. GTA's uplifting dispensary at 1267 Queen St W. Open Daily: 10:00 AM - 12:00 AM.",
     images: [
       {
         url: "https://greenpentagoncannabis.com/wp-content/uploads/2026/04/46Oi5.jpg",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Green Pentagon Cannabis — GTA's Uplifting Dispensary",
-    description: "200+ strains from $3/g. Open 24 Hours at 1267 Queen St W, GTA.",
+    description: "200+ strains from $3/g. Open Daily: 10:00 AM - 12:00 AM at 1267 Queen St W, GTA.",
     images: ["https://greenpentagoncannabis.com/wp-content/uploads/2026/04/46Oi5.jpg"],
   },
   robots: {
@@ -75,7 +75,7 @@ const jsonLd = {
   additionalType: "https://schema.org/Store",
   "@id": "https://greenpentagoncannabis.com",
   name: "Green Pentagon Cannabis",
-  description: "Cannabis dispensary at 1267 Queen St W in GTA, ON. Shop exotic, premium, AAA+, AA, and budget flower tiers plus edibles, prerolls, and vapes. Open 24 Hours.",
+  description: "Cannabis dispensary at 1267 Queen St W in GTA, ON. Shop exotic, premium, AAA+, AA, and budget flower tiers plus edibles, prerolls, and vapes. Open Daily: 10:00 AM - 12:00 AM.",
   url: "https://greenpentagoncannabis.com",
   telephone: "+14163885765",
   image: "https://greenpentagoncannabis.com/wp-content/uploads/2026/04/7Clmh.jpg",
@@ -90,17 +90,25 @@ const jsonLd = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 43.6415588,
-    longitude: -79.4312674,
+    latitude: 43.6532,
+    longitude: -79.3832,
   },
   openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "00:00",
-      closes: "23:59",
-    },
-  ],
+  {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "10:00",
+    "closes": "00:00"
+  }
+],
   sameAs: [
     "https://greenpentagoncannabis.com/",
     "https://greenpentagoncannabis.com/",
@@ -128,8 +136,8 @@ export default function RootLayout({
       <head>
         <meta name="geo.region" content="CA-ON" />
         <meta name="geo.placename" content="GTA" />
-        <meta name="geo.position" content="43.6415588;-79.4312674" />
-        <meta name="ICBM" content="43.6415588, -79.4312674" />
+        <meta name="geo.position" content="43.6532;-79.3832" />
+        <meta name="ICBM" content="43.6532, -79.3832" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

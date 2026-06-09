@@ -128,7 +128,7 @@ export default function PostContent() {
 
         <div className={styles.cta}>
           <p>
-            <strong>Green Pentagon Cannabis</strong> — 1267 Queen St W, GTA · Open 24 Hours · (416) 388-5765
+            <strong>Green Pentagon Cannabis</strong> — 1267 Queen St W, GTA · Open Daily: 10:00 AM - 12:00 AM · (416) 388-5765
           </p>
           <Link href="/exotic" className={styles.ctaBtn}>Browse Our Menu</Link>
         </div>
