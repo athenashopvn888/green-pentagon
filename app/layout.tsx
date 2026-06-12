@@ -148,6 +148,28 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Y80BBQJK4"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-2Y80BBQJK4');
+            `
+          }}
+        />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFSEJ9S1XF"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-WFSEJ9S1XF');
+            `
+          }}
+        />
       </head>
       <body>
         {children}
