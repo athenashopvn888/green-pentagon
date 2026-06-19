@@ -24,8 +24,8 @@ export const gbpLocation = {
     "Accessories"
   ],
   menuUrl: "/",
-  directionsUrl: "https://greenpentagoncannabis.com/",
-  mapEmbedUrl: "https://maps.google.com/maps?q=Green%20Pentagon%20Cannabis%201267%20Queen%20St%20W%2C%20Toronto%2C%20ON%20M6K%202J2&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  directionsUrl: "https://www.google.com/maps/search/?api=1&query=1267%20Queen%20St%20W%2C%20Toronto%2C%20ON%20M6K%202J2",
+  mapEmbedUrl: "https://maps.google.com/maps?q=1267%20Queen%20St%20W%2C%20Toronto%2C%20ON%20M6K%202J2&t=&z=15&ie=UTF8&iwloc=&output=embed",
   latitude: "43.6415588",
   longitude: "-79.4312674",
   hours: ["Open Daily: 10:00 AM - 12:00 AM"],
