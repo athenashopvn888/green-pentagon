@@ -130,14 +130,6 @@ export default async function ItemsCategoryPage({
             <p className={styles.visitText}>
               1267 Queen St W, GTA, ON M6K 2J2 · Open Daily: 10:00 AM - 12:00 AM
             </p>
-            <a
-              href="https://greenpentagoncannabis.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.visitBtn}
-            >
-              📍 Get Directions
-            </a>
           </div>
         </div>
       </section>
