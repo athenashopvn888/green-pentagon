@@ -5,11 +5,11 @@ import AgeGate from "./components/AgeGate";
 export const metadata: Metadata = {
   metadataBase: new URL("https://greenpentagoncannabis.com"),
   title: {
-    default: "Green Pentagon Cannabis — Premium Cannabis Dispensary, GTA",
+    default: "Green Pentagon Cannabis | Queen St W Dispensary",
     template: "%s | Green Pentagon Cannabis",
   },
   description:
-    "Shop 200+ premium cannabis strains at Green Pentagon Cannabis. Exotic, Premium, AAA+, AA & Budget flower from $3/g. GTA's uplifting dispensary at 1267 Queen St W. Open Daily: 10:00 AM - 12:00 AM.",
+    "Green Pentagon Cannabis is a cannabis dispensary on Queen St W with adult 19+ store info and category browsing for flower, pre-rolls, vapes, edibles, concentrates, and accessories. Open Daily: 10:00 AM - 12:00 AM.",
   keywords: [
     "cannabis dispensary GTA",
     "weed store GTA",
