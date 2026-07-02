@@ -25,7 +25,7 @@ export const STORE_BLOG_CONFIG = {
   storeCode: "GPC01",
   storeName: "Green Pentagon Cannabis",
   city: "Toronto",
-  domain: "greenpentagoncannabis.com",
+  domain: "www.greenpentagoncannabis.com",
   storePath: "/weed-dispensary-toronto",
 };
 

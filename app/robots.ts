@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://greenpentagoncannabis.com/sitemap.xml",
+    sitemap: "https://www.greenpentagoncannabis.com/sitemap.xml",
   };
 }
