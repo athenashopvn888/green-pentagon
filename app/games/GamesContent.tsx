@@ -7,36 +7,36 @@ const GAMES = [
   {
     id: "flappy-bud",
     name: "Flappy Bud",
-    emoji: "🌿",
+    emoji: "",
     description: "Fly a cannabis leaf through bong pipes. Tap to flap!",
     color: "#34d399",
   },
   {
     id: "snake-munchies",
     name: "Snake Munchies",
-    emoji: "🐍",
+    emoji: "",
     description: "Eat edibles, grow longer. Don't bite yourself!",
     color: "#22d3ee",
   },
   {
     id: "brick-breaker",
     name: "Brick Breaker 420",
-    emoji: "🧱",
+    emoji: "",
     description: "Smash through trichome crystals with your paddle.",
     color: "#a78bfa",
   },
   {
     id: "memory-match",
     name: "Memory Match",
-    emoji: "🃏",
+    emoji: "",
     description: "Match strain names to their images. Test your memory!",
     color: "#f59e0b",
   },
   {
     id: "2048-strains",
     name: "2048 Strains",
-    emoji: "🔢",
-    description: "Merge tiers: Budget → AA → AAA+ → Premium → Exotic!",
+    emoji: "",
+    description: "Merge tiers: Budget AA AAA+ Premium Exotic!",
     color: "#f97316",
   },
 ];
@@ -49,8 +49,13 @@ export default function GamesContent() {
       <section style={{ width: "100%", overflow: "hidden", marginTop: "92px" }}>
         <img
           src="/banners/10_Games.webp"
-          alt="Games Arcade — Flappy Bud, Snake Munchies, Brick Breaker 420"
-          style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+          alt="Games Arcade Flappy Bud, Snake Munchies, Brick Breaker 420"
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+            objectFit: "contain",
+          }}
         />
       </section>
 
@@ -72,7 +77,7 @@ export default function GamesContent() {
             }}
           >
             Kill time while your order&apos;s ready. Beat the high score. No
-            dispensary in GTA has this.
+            dispensary in Toronto has this.
           </p>
         </div>
 
@@ -141,7 +146,7 @@ export default function GamesContent() {
                   letterSpacing: "0.08em",
                 }}
               >
-                Play Now →
+                Play Now
               </div>
             </a>
           ))}

@@ -4,16 +4,16 @@ import Footer from "../components/Footer";
 import styles from "./contact.module.css";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Green Pentagon Cannabis | 1267 Queen St W, GTA",
+  title: "Contact Us Green Pentagon Cannabis | 1267 Queen St W, Toronto",
   description:
-    "Visit Green Pentagon Cannabis at 1267 Queen St W, GTA, ON M6K 2J2. We are open daily from 10:00 AM to 12:00 AM (midnight). Walk-ins welcome.",
+    "Visit Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. We are open daily from 10:00 AM to 12:00 AM (midnight). Walk-ins welcome.",
   alternates: {
     canonical: "https://greenpentagoncannabis.com/contact",
   },
   openGraph: {
-    title: "Contact Green Pentagon Cannabis — GTA Dispensary",
+    title: "Contact Green Pentagon Cannabis Queen West Dispensary",
     description:
-      "1267 Queen St W, GTA. We are open daily from 10:00 AM to 12:00 AM (midnight). Premium cannabis, always fire.",
+      "1267 Queen St W, Toronto. We are open daily from 10:00 AM to 12:00 AM (midnight). Premium cannabis, always fire.",
   },
 };
 
@@ -22,42 +22,76 @@ export default function ContactPage() {
     <main className={styles.main}>
       <Navbar />
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className={styles.hero} style={{ paddingTop: "92px" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-          <img src="/banners/08_Contact_Us.webp" alt="Contact Us" style={{ width: "100%", height: "auto", display: "block", borderRadius: "var(--radius-lg)" }} />
+        <div
+          style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}
+        >
+          <img
+            src="/banners/08_Contact_Us.webp"
+            alt="Contact Us"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              borderRadius: "var(--radius-lg)",
+            }}
+          />
         </div>
       </section>
 
-      {/* ── Info Cards ── */}
+      {/* Info Cards */}
       <section className={styles.infoSection}>
         <div className={styles.container}>
           <div className={styles.infoGrid}>
             {/* Location */}
             <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>📍</div>
+              <div className={styles.infoIcon}></div>
               <h2 className={styles.infoTitle}>Location</h2>
               <p className={styles.infoText}>
                 1267 Queen St W
                 <br />
-                GTA, ON M6K 2J2
+                Toronto, ON M6K 2J2
                 <br />
-                <span className={styles.infoMuted}>1267 Queen St W & Nearby Expressway</span>
+                <span className={styles.infoMuted}>
+                  Queen West and Parkdale
+                </span>
               </p>
             </div>
 
             {/* Hours */}
             <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>🕒</div>
+              <div className={styles.infoIcon}></div>
               <h2 className={styles.infoTitle}>Hours</h2>
               <div className={styles.hoursTable}>
-                <div className={styles.hoursRow}><span>Monday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
-                <div className={styles.hoursRow}><span>Tuesday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
-                <div className={styles.hoursRow}><span>Wednesday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
-                <div className={styles.hoursRow}><span>Thursday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
-                <div className={styles.hoursRow}><span>Friday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
-                <div className={styles.hoursRow}><span>Saturday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
-                <div className={styles.hoursRow}><span>Sunday</span><span className={styles.hoursTime}>10:00 AM - 12:00 AM</span></div>
+                <div className={styles.hoursRow}>
+                  <span>Monday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
+                <div className={styles.hoursRow}>
+                  <span>Tuesday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
+                <div className={styles.hoursRow}>
+                  <span>Wednesday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
+                <div className={styles.hoursRow}>
+                  <span>Thursday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
+                <div className={styles.hoursRow}>
+                  <span>Friday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
+                <div className={styles.hoursRow}>
+                  <span>Saturday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
+                <div className={styles.hoursRow}>
+                  <span>Sunday</span>
+                  <span className={styles.hoursTime}>10:00 AM - 12:00 AM</span>
+                </div>
               </div>
               <div className={styles.openBadge}>
                 <div className={styles.openDot} />
@@ -67,7 +101,7 @@ export default function ContactPage() {
 
             {/* Walk-in */}
             <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>🔥</div>
+              <div className={styles.infoIcon}></div>
               <h2 className={styles.infoTitle}>Walk In</h2>
               <p className={styles.infoText}>
                 No appointment needed.
@@ -78,19 +112,19 @@ export default function ContactPage() {
               </p>
               <div className={styles.featureList}>
                 <div className={styles.featureItem}>
-                  <span className={styles.featureCheck}>✓</span>
+                  <span className={styles.featureCheck}></span>
                   200+ strains in stock
                 </div>
                 <div className={styles.featureItem}>
-                  <span className={styles.featureCheck}>✓</span>
+                  <span className={styles.featureCheck}></span>
                   Lab-tested &amp; safe
                 </div>
                 <div className={styles.featureItem}>
-                  <span className={styles.featureCheck}>✓</span>
+                  <span className={styles.featureCheck}></span>
                   Knowledgeable budtenders
                 </div>
                 <div className={styles.featureItem}>
-                  <span className={styles.featureCheck}>✓</span>
+                  <span className={styles.featureCheck}></span>
                   Debit &amp; cash accepted
                 </div>
               </div>
@@ -98,12 +132,11 @@ export default function ContactPage() {
           </div>
 
           {/* Map */}
-          <div className={styles.mapSection}>
-          </div>
+          <div className={styles.mapSection}></div>
         </div>
       </section>
 
-      {/* ── Footer ── */}
+      {/* Footer */}
       <Footer />
     </main>
   );
