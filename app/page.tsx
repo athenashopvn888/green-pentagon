@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import FlowerCard from "./components/FlowerCard";
 import { allFlowers } from "./lib/products";
 
-/* ── Bento Mosaic Config ── */
+/* Bento Mosaic Config */
 const BENTO_TIERS = [
   {
     name: "EXOTICS",
@@ -46,7 +46,7 @@ const BENTO_TIERS = [
     className: styles.bentoTile,
   },
   {
-    name: "EDIBLES • PREROLLS • MORE",
+    name: "EDIBLES PREROLLS MORE",
     slug: "items/edibles",
     price: "Shop Tiers",
     banner: "/banners/edibles_prerolls_more_banner.webp",
@@ -54,23 +54,63 @@ const BENTO_TIERS = [
   },
 ];
 
-/* ── Explore Categories Config (New Banners) ── */
+/* Explore Categories Config (New Banners) */
 const EXPLORE_CATEGORIES = [
-  { name: "Vape Pens", slug: "items/vapes", banner: "/banners/01_Vape_Pens.webp", icon: "💨" },
-  { name: "Nic Vape", slug: "items/vape-disposables", banner: "/banners/02_Vape_Disposable.webp", icon: "💨" },
-  { name: "Concentrates", slug: "items/concentrates", banner: "/banners/03_Concentrates.webp", icon: "💎" },
-  { name: "Pre-Rolls", slug: "items/prerolls", banner: "/banners/04_Pre_Rolls.webp", icon: "🚬" },
-  { name: "Accessories", slug: "items/add-ons", banner: "/banners/05_Accessories.webp", icon: "➕" },
-  { name: "Cigarettes", slug: "items/cigarettes", banner: "/banners/06_Cigarettes.webp", icon: "🏷️" },
-  { name: "Magic Stuff", slug: "items/magic", banner: "/banners/09_Magic_Stuff.webp", icon: "🍄" },
-  { name: "Games Arcade", slug: "games", banner: "/banners/10_Games.webp", icon: "🎮" },
+  {
+    name: "Vape Pens",
+    slug: "items/vapes",
+    banner: "/banners/01_Vape_Pens.webp",
+    icon: "",
+  },
+  {
+    name: "Nic Vape",
+    slug: "items/vape-disposables",
+    banner: "/banners/02_Vape_Disposable.webp",
+    icon: "",
+  },
+  {
+    name: "Concentrates",
+    slug: "items/concentrates",
+    banner: "/banners/03_Concentrates.webp",
+    icon: "",
+  },
+  {
+    name: "Pre-Rolls",
+    slug: "items/prerolls",
+    banner: "/banners/04_Pre_Rolls.webp",
+    icon: "",
+  },
+  {
+    name: "Accessories",
+    slug: "items/add-ons",
+    banner: "/banners/05_Accessories.webp",
+    icon: "",
+  },
+  {
+    name: "Cigarettes",
+    slug: "items/cigarettes",
+    banner: "/banners/06_Cigarettes.webp",
+    icon: "",
+  },
+  {
+    name: "Magic Stuff",
+    slug: "items/magic",
+    banner: "/banners/09_Magic_Stuff.webp",
+    icon: "",
+  },
+  {
+    name: "Games Arcade",
+    slug: "games",
+    banner: "/banners/10_Games.webp",
+    icon: "",
+  },
 ];
 
-/* ── Local FAQs for Jane St ── */
+/* Local FAQs for Jane St */
 const LOCAL_FAQS = [
   {
     q: "What are the hours for Green Pentagon Cannabis?",
-    a: "Green Pentagon Cannabis at 1267 Queen St W, GTA is open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime — no appointment needed.",
+    a: "Green Pentagon Cannabis at 1267 Queen St W, Toronto is open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime no appointment needed.",
   },
   {
     q: "What cannabis products do you carry?",
@@ -78,7 +118,7 @@ const LOCAL_FAQS = [
   },
   {
     q: "Where is Green Pentagon Cannabis located?",
-    a: "We are located at 1267 Queen St W, GTA, ON M6K 2J2. Visit us in person or call us at (416) 388-5765. Free evening street parking is available.",
+    a: "We are located at 1267 Queen St W, Toronto, ON M6K 2J2. Visit us in person or call us at (416) 388-5765. Free evening street parking is available.",
   },
   {
     q: "What is the cheapest weed at Green Pentagon Cannabis?",
@@ -104,9 +144,14 @@ export default function HomePage() {
   const [reviewsLoading, setReviewsLoading] = useState(true);
   const [welcomeBannerError, setWelcomeBannerError] = useState(false);
   const welcomeBannerSrc: string = "/banners/welcome_banner.webp";
-  const hasWelcomeBanner = welcomeBannerSrc && welcomeBannerSrc !== "/banners/" && !welcomeBannerSrc.includes("HERO_BANNER") && !welcomeBannerSrc.includes("WELCOME_BANNER") && welcomeBannerSrc !== "";
+  const hasWelcomeBanner =
+    welcomeBannerSrc &&
+    welcomeBannerSrc !== "/banners/" &&
+    !welcomeBannerSrc.includes("HERO_BANNER") &&
+    !welcomeBannerSrc.includes("WELCOME_BANNER") &&
+    welcomeBannerSrc !== "";
 
-  /* ── 1. Fetch Client-Side Google Reviews ── */
+  /* 1. Fetch Client-Side Google Reviews */
   useEffect(() => {
     const STORE_KEY = "GPC01";
     const SHEET_ID = "1-KeuyKFKprbU-Vl_qVQiZkEKMX_i5CmdScTToNTdkUY";
@@ -129,9 +174,11 @@ export default function HomePage() {
         });
 
         const skIdx = colMap["StoreKey"] !== undefined ? colMap["StoreKey"] : 0;
-        const rnIdx = colMap["ReviewerName"] !== undefined ? colMap["ReviewerName"] : 1;
+        const rnIdx =
+          colMap["ReviewerName"] !== undefined ? colMap["ReviewerName"] : 1;
         const cmIdx = colMap["Comment"] !== undefined ? colMap["Comment"] : 2;
-        const dtIdx = colMap["CreateTime"] !== undefined ? colMap["CreateTime"] : 3;
+        const dtIdx =
+          colMap["CreateTime"] !== undefined ? colMap["CreateTime"] : 3;
 
         const reviewsPool: Review[] = [];
         let totalVal: number | null = null;
@@ -145,7 +192,10 @@ export default function HomePage() {
 
           const rn = row.c[rnIdx] ? row.c[rnIdx].v || "" : "";
           if (rn === "__STATS__") {
-            const parsedTotal = parseInt(row.c[cmIdx] ? row.c[cmIdx].v : "", 10);
+            const parsedTotal = parseInt(
+              row.c[cmIdx] ? row.c[cmIdx].v : "",
+              10,
+            );
             const parsedAvg = parseFloat(row.c[dtIdx] ? row.c[dtIdx].v : "");
             if (Number.isFinite(parsedTotal) && Number.isFinite(parsedAvg)) {
               totalVal = parsedTotal;
@@ -174,7 +224,7 @@ export default function HomePage() {
       });
   }, []);
 
-  /* ── 2. Build Featured Strains ── */
+  /* 2. Build Featured Strains */
   useEffect(() => {
     const pool = [...allFlowers].filter((f) => f.image);
     // Shuffle pool securely
@@ -200,16 +250,16 @@ export default function HomePage() {
 
   return (
     <main className={styles.main}>
-      {/* ── NAVBAR ── */}
+      {/* NAVBAR */}
       <Navbar />
 
-      {/* ── WELCOME BANNER ── */}
+      {/* WELCOME BANNER */}
       {hasWelcomeBanner && !welcomeBannerError && (
         <section className={styles.welcomeBannerSection}>
           <div className={styles.welcomeBannerContainer}>
             <img
               src={welcomeBannerSrc}
-              alt="Welcome to Green Pentagon Cannabis — Premium GTA Cannabis Dispensary"
+              alt="Welcome to Green Pentagon Cannabis Queen West Cannabis Dispensary"
               className={styles.welcomeBannerImg}
               onError={() => setWelcomeBannerError(true)}
             />
@@ -217,7 +267,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* ── BENTO MOSAIC HERO ── */}
+      {/* BENTO MOSAIC HERO */}
       <section className={styles.hero}>
         <div className={styles.heroBg} />
         <div className={styles.heroOverlay} />
@@ -226,10 +276,22 @@ export default function HomePage() {
         <div className={styles.heroContent}>
           {/* Brand branding */}
           <div className={styles.brandBlock}>
-            <img src="/storeFavicon.webp" alt="Green Pentagon Cannabis Icon" style={{ height: "60px", width: "60px", objectFit: "contain", borderRadius: "8px", marginBottom: "8px" }} />
+            <img
+              src="/storeFavicon.webp"
+              alt="Green Pentagon Cannabis Icon"
+              style={{
+                height: "60px",
+                width: "60px",
+                objectFit: "contain",
+                borderRadius: "8px",
+                marginBottom: "8px",
+              }}
+            />
             <h1 className={styles.brandTitle}>GREEN PENTAGON CANNABIS</h1>
             <p className={styles.brandSub}>Premium Cannabis Dispensary</p>
-            <div className={styles.brandBadge}>Open Daily: 10:00 AM - 12:00 AM</div>
+            <div className={styles.brandBadge}>
+              Open Daily: 10:00 AM - 12:00 AM
+            </div>
           </div>
 
           {/* Bento Grid */}
@@ -255,13 +317,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── EXPLORE CATEGORIES ── */}
+      {/* EXPLORE CATEGORIES */}
       <section className={styles.categoriesSection} id="menu">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Explore Categories</h2>
             <p className={styles.sectionSubtitle}>
-              From custom disposable vapes and concentrates to accessories and cigarettes.
+              From custom disposable vapes and concentrates to accessories and
+              cigarettes.
             </p>
           </div>
 
@@ -279,7 +342,8 @@ export default function HomePage() {
                 <div className={styles.categoryCardOverlay} />
                 <div className={styles.categoryCardContent}>
                   <h3 className={styles.categoryCardName}>
-                    {cat.icon} {cat.name} <span className={styles.categoryCardArrow}>→</span>
+                    {cat.icon} {cat.name}{" "}
+                    <span className={styles.categoryCardArrow}></span>
                   </h3>
                 </div>
               </Link>
@@ -288,13 +352,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURED PRODUCTS ── */}
+      {/* FEATURED PRODUCTS */}
       <section className={styles.featuredSection}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Featured Strains</h2>
             <p className={styles.sectionSubtitle}>
-              Staff picks and top sellers dynamically updated from our real-time stock sheet.
+              Staff picks and top sellers dynamically updated from our real-time
+              stock sheet.
             </p>
           </div>
 
@@ -308,32 +373,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SEO PANEL WRITE-UP ── */}
+      {/* SEO PANEL WRITE-UP */}
       <section className={styles.seoSection}>
         <div className={styles.container}>
           <div className={styles.seoPanel}>
-            <h2 className={styles.seoPanelTitle}>1267 Queen St W & Nearby Expressway's Premier Cannabis Dispensary — Open Daily: 10:00 AM - 12:00 AM</h2>
+            <h2 className={styles.seoPanelTitle}>
+              Queen West and Parkdale's Cannabis Dispensary Open Daily: 10:00 AM
+              - 12:00 AM
+            </h2>
             <p className={styles.seoPanelText}>
-              Welcome to <strong>Green Pentagon Cannabis</strong>, GTA's premier cannabis destination at 1267 Queen St W. We carry an electrifying selection of top-shelf strains — from ultra-rare exotics to solid everyday budget picks.
+              Welcome to <strong>Green Pentagon Cannabis</strong>, Queen West's
+              local cannabis stop at 1267 Queen St W. We carry an electrifying
+              selection of top-shelf strains from ultra-rare exotics to solid
+              everyday budget picks.
             </p>
             <p className={styles.seoPanelText}>
-              We are open Open Daily: 10:00 AM - 12:00 AM — Green Pentagon Cannabis is here to serve you. Our live menu is constantly refreshed with the freshest drops, premium prerolls, artisan edibles, and everything in between. Whether you're winding down or stocking up for the weekend, our knowledgeable staff can help during listed store hours.
+              Green Pentagon Cannabis is open daily from 10:00 AM to 12:00 AM.
+              Our current menu is constantly refreshed with the freshest drops,
+              premium prerolls, artisan edibles, and everything in between.
+              Whether you're winding down or stocking up for the weekend, our
+              knowledgeable staff can help during listed store hours.
             </p>
             <p className={styles.seoPanelText}>
-              Searching for a cannabis dispensary in GTA or the surrounding area? Green Pentagon Cannabis is your go-to destination for premium flower, potent prerolls, and artisan edibles. Our six-tier pricing system means quality cannabis at every budget level — starting from just $3/g.
+              Searching for a cannabis dispensary in Toronto or the surrounding
+              area? Green Pentagon Cannabis is your local stop for premium
+              flower, potent prerolls, and artisan edibles. Our six-tier pricing
+              system means quality cannabis at every budget level starting from
+              just $3/g.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── CLIENT-SIDE GOOGLE REVIEWS SHOWCASE ── */}
+      {/* CLIENT-SIDE GOOGLE REVIEWS SHOWCASE */}
       <section className={styles.reviewsSection}>
         <div className={styles.container}>
           <div className={styles.reviewsHeader}>
             <h2 className={styles.sectionTitle}>Customer Feedback</h2>
             {reviewsStats && (
               <div className={styles.reviewsStarsSummary}>
-                <span className={styles.reviewsStars}>★★★★★</span>
+                <span className={styles.reviewsStars}></span>
                 <span className={styles.reviewsAvg}>
                   {reviewsStats.avg.toFixed(1)}
                 </span>
@@ -346,7 +425,9 @@ export default function HomePage() {
 
           <div className={styles.reviewsGrid}>
             {reviewsLoading ? (
-              <div className={styles.reviewsLoading}>Loading customer feedback...</div>
+              <div className={styles.reviewsLoading}>
+                Loading customer feedback...
+              </div>
             ) : reviews.length === 0 ? (
               <div className={styles.reviewsLoading}>
                 Customer feedback is unavailable right now.
@@ -369,25 +450,29 @@ export default function HomePage() {
                         </span>
                       )}
                     </div>
-                    <span className={styles.rvStars}>★★★★★</span>
+                    <span className={styles.rvStars}></span>
                   </div>
                   <p className={styles.rvText}>
-                    {rv.comment.length > 180 ? `${rv.comment.substring(0, 177)}...` : rv.comment}
+                    {rv.comment.length > 180
+                      ? `${rv.comment.substring(0, 177)}...`
+                      : rv.comment}
                   </p>
                 </div>
               ))
             )}
           </div>
 
-          <div className={styles.reviewCtaRow}>
-          </div>
+          <div className={styles.reviewCtaRow}></div>
         </div>
       </section>
 
-      {/* ── FAQS SECTION ── */}
+      {/* FAQS SECTION */}
       <section className={styles.faqSection}>
         <div className={styles.faqContainer}>
-          <h2 className={styles.sectionTitle} style={{ textAlign: "center", marginBottom: "32px" }}>
+          <h2
+            className={styles.sectionTitle}
+            style={{ textAlign: "center", marginBottom: "32px" }}
+          >
             Frequently Asked Questions
           </h2>
           {LOCAL_FAQS.map((faq, i) => (
@@ -399,47 +484,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── STORE LOCATION GRID ── */}
+      {/* STORE LOCATION GRID */}
       <section className={styles.storeSection} id="contact">
         <div className={styles.container}>
           <div className={styles.storeGrid}>
             <div className={styles.storeCard}>
-              <span className={styles.storeIcon}>📍</span>
+              <span className={styles.storeIcon}></span>
               <h3 className={styles.storeCardTitle}>Location</h3>
               <p className={styles.storeCardText}>
                 1267 Queen St W
                 <br />
-                GTA, ON M6K 2J2
+                Toronto, ON M6K 2J2
                 <br />
               </p>
             </div>
             <div className={styles.storeCard}>
-              <span className={styles.storeIcon}>🕒</span>
+              <span className={styles.storeIcon}></span>
               <h3 className={styles.storeCardTitle}>Hours</h3>
               <p className={styles.storeCardText}>
                 Open 7 Days a Week
                 <br />
-                <span className={styles.storeHighlight}>Open Daily: 10:00 AM - 12:00 AM</span>
+                <span className={styles.storeHighlight}>
+                  Open Daily: 10:00 AM - 12:00 AM
+                </span>
               </p>
             </div>
             <div className={styles.storeCard}>
-              <span className={styles.storeIcon}>🔥</span>
+              <span className={styles.storeIcon}></span>
               <h3 className={styles.storeCardTitle}>Walk In</h3>
               <p className={styles.storeCardText}>
                 No appointment needed
                 <br />
-                <span className={styles.storeHighlight}>1267 Queen St W & Nearby Expressway, GTA</span>
+                <span className={styles.storeHighlight}>
+                  Queen West and Parkdale
+                </span>
               </p>
             </div>
           </div>
 
           {/* Map wrapper */}
-          <div className={styles.mapWrap}>
-          </div>
+          <div className={styles.mapWrap}></div>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
+      {/* FOOTER */}
       <Footer />
     </main>
   );

@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import styles from "./faq.module.css";
 
 export const metadata: Metadata = {
-  title: "FAQ — Green Pentagon Cannabis | GTA Dispensary Questions",
+  title: "FAQ Green Pentagon Cannabis | Queen West Dispensary Questions",
   description:
-    "Frequently asked questions about Green Pentagon Cannabis in GTA. Hours, location, products, pricing, bundle offers, and everything you need to know before visiting.",
+    "Frequently asked questions about Green Pentagon Cannabis in Toronto. Hours, location, products, pricing, bundle offers, and everything you need to know before visiting.",
   alternates: {
     canonical: "https://greenpentagoncannabis.com/faq",
   },
@@ -14,45 +14,111 @@ export const metadata: Metadata = {
 
 const FAQ_CATEGORIES = [
   {
-    title: "📍 Location & Hours",
+    title: " Location & Hours",
     faqs: [
-      { q: "Where is Green Pentagon Cannabis located?", a: "We are located at 1267 Queen St W, GTA, ON M6K 2J2. We're easily accessible by TTC bus routes and close to major highways like the 401." },
-      { q: "What are your hours?", a: "We are open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime — no appointment needed." },
-      { q: "Is there parking nearby?", a: "Yes. Free street parking is available nearby on surrounding streets in the evenings. We're also easily accessible by local transit." },
-      { q: "How far are you from Mississauga?", a: "We're just 5 minutes from the highways and central transit routes. We are centrally located and easy to reach." },
-      { q: "What's the best way to get to Green Pentagon Cannabis?", a: "We're easily accessible by car, bus, or foot. We are easily accessible by car, local transit, or bus routes. Free parking is available on surrounding streets." },
+      {
+        q: "Where is Green Pentagon Cannabis located?",
+        a: "We are located at 1267 Queen St W, Toronto, ON M6K 2J2. We're easily accessible by TTC bus routes and close to major highways like the 401.",
+      },
+      {
+        q: "What are your hours?",
+        a: "We are open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime no appointment needed.",
+      },
+      {
+        q: "Is there parking nearby?",
+        a: "Yes. Free street parking is available nearby on surrounding streets in the evenings. We're also easily accessible by local transit.",
+      },
+      {
+        q: "How far are you from west Toronto?",
+        a: "We're just 5 minutes from the highways and central transit routes. We are centrally located and easy to reach.",
+      },
+      {
+        q: "What's the best way to get to Green Pentagon Cannabis?",
+        a: "We're easily accessible by car, bus, or foot. We are easily accessible by car, local transit, or bus routes. Free parking is available on surrounding streets.",
+      },
     ],
   },
   {
-    title: "🌿 Products & Menu",
+    title: " Products & Menu",
     faqs: [
-      { q: "What products do you carry?", a: "We carry over 200 strains of cannabis flower across 5 quality tiers (Exotic, Premium, AAA+, AA, Budget), plus edibles (gummies, chocolates, baked goods), vape pens, disposable vapes, concentrates (shatter, wax, hash, diamonds, live resin), pre-rolled joints, native cigarettes, and accessories." },
-      { q: "Do you have a live menu?", a: "Yes! Our online menu at greenpentagoncannabis.com updates in real time with current stock, prices, THC levels, and availability. You can check what's in stock before you visit." },
-      { q: "What are your flower tiers?", a: "Exotic ($10-$12/g, THC 35-39%) — ultra-rare top-shelf genetics. Premium ($7-$10/g, THC 32-34%) — connoisseur-grade. AAA+ ($5-$6/g, THC 30-32%) — heavy hitters, our most popular tier. AA ($4/g, THC 27-29%) — quality daily drivers. Budget ($3/g, THC 24-27%) — reliable value flower." },
-      { q: "Do you sell edibles?", a: "Yes! We carry a variety of edibles including gummies, chocolates, baked goods, and more. THC content varies. Check our live menu for current availability." },
-      { q: "Do you sell vapes?", a: "Yes — both disposable vapes and refillable vape pens. We carry both nicotine vapes and THC vapes from top brands." },
-      { q: "Do you sell native cigarettes?", a: "Yes! We carry one of the widest selections of native cigarettes in downtown GTA, including premium and value brands in multiple varieties." },
+      {
+        q: "What products do you carry?",
+        a: "We carry over 200 strains of cannabis flower across 5 quality tiers (Exotic, Premium, AAA+, AA, Budget), plus edibles (gummies, chocolates, baked goods), vape pens, disposable vapes, concentrates (shatter, wax, hash, diamonds, live resin), pre-rolled joints, native cigarettes, and accessories.",
+      },
+      {
+        q: "Do you have a current menu?",
+        a: "Yes! Our online menu at greenpentagoncannabis.com shows current menu details with current stock, prices, THC levels, and availability. You can check what's in stock before you visit.",
+      },
+      {
+        q: "What are your flower tiers?",
+        a: "Exotic ($10-$12/g, THC 35-39%) ultra-rare top-shelf genetics. Premium ($7-$10/g, THC 32-34%) connoisseur-grade. AAA+ ($5-$6/g, THC 30-32%) heavy hitters, our most popular tier. AA ($4/g, THC 27-29%) quality daily drivers. Budget ($3/g, THC 24-27%) reliable value flower.",
+      },
+      {
+        q: "Do you sell edibles?",
+        a: "Yes! We carry a variety of edibles including gummies, chocolates, baked goods, and more. THC content varies. Check our current menu for current availability.",
+      },
+      {
+        q: "Do you sell vapes?",
+        a: "Yes both disposable vapes and refillable vape pens. We carry both nicotine vapes and THC vapes from top brands.",
+      },
+      {
+        q: "Do you sell native cigarettes?",
+        a: "Yes! We carry native cigarette options near Queen West, including premium and value brands in multiple varieties.",
+      },
     ],
   },
   {
-    title: "💰 Pricing & Bundle Offers",
+    title: " Pricing & Bundle Offers",
     faqs: [
-      { q: "What is the cheapest weed you sell?", a: "Our Budget tier starts at $3/g with value ounces from $40. Our AA tier is $4/g. These are the most competitive prices you'll find in GTA." },
-      { q: "What bundle pricing do you offer?", a: "Flower bundle pricing includes a 3g total option — the 3g total is shown clearly before purchase. Our Exotic, Premium, and AAA+ tiers also offer 6g bundle pricing, with 6g total pricing." },
-      { q: "Do you have ounce deals?", a: "Yes! Budget ounces from $40, AA ounces from $90, AAA+ ounces from $100. All with freshness and quality guaranteed." },
-      { q: "How does bundle pricing work?", a: "The 3g bundle pricing applies to every tier automatically. The 6g bundle pricing applies to Exotic, Premium, and AAA+ tiers. These are our standard everyday bundle offers." },
-      { q: "How does the tier pricing work?", a: "Each flower strain is graded into one of five quality tiers. The tier determines the per-gram price. This transparent system means you always know exactly what you're paying — no confusing markups or inconsistent pricing." },
+      {
+        q: "What is the cheapest weed you sell?",
+        a: "Our Budget tier starts at $3/g with value ounces from $40. Our AA tier is $4/g. These are the most competitive prices you'll find in Toronto.",
+      },
+      {
+        q: "What bundle pricing do you offer?",
+        a: "Flower bundle pricing includes a 3g total option the 3g total is shown clearly before purchase. Our Exotic, Premium, and AAA+ tiers also offer 6g bundle pricing, with 6g total pricing.",
+      },
+      {
+        q: "Do you have ounce deals?",
+        a: "Yes! Budget ounces from $40, AA ounces from $90, AAA+ ounces from $100. All with freshness and quality guaranteed.",
+      },
+      {
+        q: "How does bundle pricing work?",
+        a: "The 3g bundle pricing applies to every tier automatically. The 6g bundle pricing applies to Exotic, Premium, and AAA+ tiers. These are our standard everyday bundle offers.",
+      },
+      {
+        q: "How does the tier pricing work?",
+        a: "Each flower strain is graded into one of five quality tiers. The tier determines the per-gram price. This transparent system means you always know exactly what you're paying no confusing markups or inconsistent pricing.",
+      },
     ],
   },
   {
-    title: "🛒 Shopping & Experience",
+    title: " Shopping & Experience",
     faqs: [
-      { q: "Do I need an appointment?", a: "No! Green Pentagon Cannabis is walk-in only. Just show up anytime — we are open daily from 10:00 AM to 12:00 AM (midnight)." },
-      { q: "Can I order online?", a: "Currently, Green Pentagon Cannabis is an in-store shopping experience only. You can browse our live menu online to see what's in stock before visiting." },
-      { q: "Do you offer delivery?", a: "Delivery is coming soon! Visit our delivery page to sign up for email notifications when we launch our delivery service." },
-      { q: "What payment methods do you accept?", a: "We accept cash and debit. No credit cards at this time." },
-      { q: "Can your staff help me choose a strain?", a: "Absolutely! Our knowledgeable budtenders are here to help. Whether you're a first-time buyer or a seasoned connoisseur, we can recommend strains based on your preferences, desired effects, and budget." },
-      { q: "Is there a minimum purchase?", a: "No minimum purchase required. You can buy as little as 1 gram." },
+      {
+        q: "Do I need an appointment?",
+        a: "No! Green Pentagon Cannabis is walk-in only. Just show up anytime we are open daily from 10:00 AM to 12:00 AM (midnight).",
+      },
+      {
+        q: "Can I order online?",
+        a: "Currently, Green Pentagon Cannabis is an in-store shopping experience only. You can browse our current menu online to see what's in stock before visiting.",
+      },
+      {
+        q: "Do you offer delivery?",
+        a: "Delivery is coming soon! Visit our delivery page to sign up for email notifications when we launch our delivery service.",
+      },
+      {
+        q: "What payment methods do you accept?",
+        a: "We accept cash and debit. No credit cards at this time.",
+      },
+      {
+        q: "Can your staff help me choose a strain?",
+        a: "Absolutely! Our knowledgeable budtenders are here to help. Whether you're a first-time buyer or a seasoned connoisseur, we can recommend strains based on your preferences, desired effects, and budget.",
+      },
+      {
+        q: "Is there a minimum purchase?",
+        a: "No minimum purchase required. You can buy as little as 1 gram.",
+      },
     ],
   },
 ];
@@ -70,7 +136,7 @@ export default function FAQPage() {
           "@type": "Answer",
           text: faq.a,
         },
-      }))
+      })),
     ),
   };
 
@@ -84,18 +150,26 @@ export default function FAQPage() {
         <Navbar />
 
         {/* FAQ Banner */}
-        <section style={{ width: "100%", overflow: "hidden", marginTop: "92px" }}>
+        <section
+          style={{ width: "100%", overflow: "hidden", marginTop: "92px" }}
+        >
           <img
             src="/banners/07_FAQ.webp"
-            alt="Green Pentagon Cannabis FAQ — Your Questions Answered"
-            style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+            alt="Green Pentagon Cannabis FAQ Your Questions Answered"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              objectFit: "contain",
+            }}
           />
         </section>
 
         <div className={styles.content}>
           <h1 className={styles.pageTitle}>Frequently Asked Questions</h1>
           <p className={styles.pageSubtitle}>
-            Everything you need to know about Green Pentagon Cannabis — GTA&apos;s premium dispensary at 1267 Queen St W in GTA.
+            Everything you need to know about Green Pentagon Cannabis
+            Toronto&apos;s premium dispensary at 1267 Queen St W in Toronto.
           </p>
 
           {FAQ_CATEGORIES.map((cat) => (
@@ -113,7 +187,8 @@ export default function FAQPage() {
           <div className={styles.ctaSection}>
             <h2 className={styles.ctaTitle}>Still have questions?</h2>
             <p className={styles.ctaText}>
-              Call us at <strong>(416) 388-5765</strong> or visit us at 1267 Queen St W, GTA.
+              Call us at <strong>(416) 388-5765</strong> or visit us at 1267
+              Queen St W, Toronto.
             </p>
           </div>
         </div>

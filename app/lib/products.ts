@@ -33,14 +33,14 @@ export interface ItemProduct {
   promoImage: string | null;
 }
 
-/* ── Data imports (static fallback) ── */
+/* Data imports (static fallback) */
 import flowersJson from "./flowers.json";
 import itemsJson from "./items.json";
 
 export const allFlowers: FlowerProduct[] = flowersJson as FlowerProduct[];
 export const allItems: ItemProduct[] = itemsJson as ItemProduct[];
 
-/* ── Live stock fetch from Apps Script ── */
+/* Live stock fetch from Apps Script */
 const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || "";
 
 interface LiveStockResponse {
@@ -62,7 +62,12 @@ export async function fetchLiveProducts(): Promise<{
   stockDate: string | null;
 }> {
   if (!APPS_SCRIPT_URL) {
-    return { flowers: allFlowers, items: allItems, isLive: false, stockDate: null };
+    return {
+      flowers: allFlowers,
+      items: allItems,
+      isLive: false,
+      stockDate: null,
+    };
   }
 
   try {
@@ -79,17 +84,35 @@ export async function fetchLiveProducts(): Promise<{
     };
   } catch (err) {
     console.warn("[products] Live fetch failed, using static data:", err);
-    return { flowers: allFlowers, items: allItems, isLive: false, stockDate: null };
+    return {
+      flowers: allFlowers,
+      items: allItems,
+      isLive: false,
+      stockDate: null,
+    };
   }
 }
 
 export const TIER_CONFIG: Record<
   string,
   {
-    name: string; slug: string; color: string; icon: string; tagline: string; banner: string;
-    unitPrice: number; /* $/g */
-    deal3g: { label: string; total: string; price: number } | null; /* 3g bundle pricing */
-    deal6g: { label: string; total: string; price: number } | null; /* 6g bundle pricing (top 3 only) */
+    name: string;
+    slug: string;
+    color: string;
+    icon: string;
+    tagline: string;
+    banner: string;
+    unitPrice: number /* $/g */;
+    deal3g: {
+      label: string;
+      total: string;
+      price: number;
+    } | null /* 3g bundle pricing */;
+    deal6g: {
+      label: string;
+      total: string;
+      price: number;
+    } | null /* 6g bundle pricing (top 3 only) */;
   }
 > = {
   EXOTIC: {
@@ -149,108 +172,205 @@ export const TIER_CONFIG: Record<
   },
 };
 
-/* ── Item category config ── */
+/* Item category config */
 export interface CategoryInfo {
-  name: string; slug: string; color: string; icon: string; banner?: string;
-  seoTitle: string; seoIntro: string; seoDescription: string;
+  name: string;
+  slug: string;
+  color: string;
+  icon: string;
+  banner?: string;
+  seoTitle: string;
+  seoIntro: string;
+  seoDescription: string;
   faqs: { q: string; a: string }[];
 }
 
 export const CATEGORY_CONFIG: Record<string, CategoryInfo> = {
   EDIBLES: {
     banner: "/banners/edibles_prerolls_more_banner.webp",
-    name: "Edibles", slug: "edibles", color: "#f97316", icon: "🍬",
-    seoTitle: "Cannabis Edibles GTA — Gummies, Chocolates & Drinks",
-    seoIntro: "Browse the full cannabis edibles menu at Green Pentagon Cannabis on GTA St, GTA. We carry THC gummies, chocolates, drinks, and more from top Canadian brands.",
-    seoDescription: "Looking for cannabis edibles in GTA? Green Pentagon Cannabis stocks a wide range of THC-infused gummies, chocolates, beverages, and baked goods. Our edibles range from micro-dose options for beginners to high-potency products for experienced consumers. All products are lab-tested and sourced from licensed Canadian producers. Visit us at 1267 Queen St W — we are Open Daily: 10:00 AM - 12:00 AM.",
+    name: "Edibles",
+    slug: "edibles",
+    color: "#f97316",
+    icon: "🍬",
+    seoTitle: "Cannabis Edibles Toronto Gummies, Chocolates & Drinks",
+    seoIntro:
+      "Browse the full cannabis edibles menu at Green Pentagon Cannabis on Queen St W in Toronto. Green Pentagon Cannabis carries THC gummies, chocolates, drinks, and more from current menu brands.",
+    seoDescription:
+      "Looking for cannabis edibles in Toronto? Green Pentagon Cannabis stocks a wide range of THC-infused gummies, chocolates, beverages, and baked goods. Our edibles range from micro-dose options for beginners to high-potency products for experienced consumers. Visit us at 1267 Queen St W we are open daily: 10:00 AM - 12:00 AM.",
     faqs: [
-      { q: "What cannabis edibles do you carry?", a: "We stock THC gummies, chocolates, beverages, capsules, and baked goods from top Canadian brands. Potencies range from 10mg to 1000mg+ THC." },
-      { q: "How long do edibles take to kick in?", a: "Cannabis edibles typically take 30-90 minutes to take effect. Start with a low dose (5-10mg) and wait at least 2 hours before consuming more." },
-      { q: "Can I buy edibles at Green Pentagon Cannabis?", a: "Yes! Visit us at 1267 Queen St W, GTA. We're open daily from 10:00 AM to 12:00 AM (midnight) with a full edibles selection in store." },
+      {
+        q: "What cannabis edibles do you carry?",
+        a: "We stock THC gummies, chocolates, beverages, capsules, and baked goods from current menu brands. Potencies range from 10mg to 1000mg+ THC.",
+      },
+      {
+        q: "How long do edibles take to kick in?",
+        a: "Cannabis edibles typically take 30-90 minutes to take effect. Start with a low dose (5-10mg) and wait at least 2 hours before consuming more.",
+      },
+      {
+        q: "Can I buy edibles at Green Pentagon Cannabis?",
+        a: "Yes! Visit us at 1267 Queen St W, Toronto. We're open daily from 10:00 AM to 12:00 AM (midnight) with a full edibles selection in store.",
+      },
     ],
   },
   "VAPE PENS": {
     banner: "/banners/01_Vape_Pens.webp",
-    name: "THC Vape", slug: "vapes", color: "#8b5cf6", icon: "💨",
-    seoTitle: "Vape Pens GTA — THC & Nicotine Cartridges",
-    seoIntro: "Shop THC and nicotine vape pens at Green Pentagon Cannabis, GTA. Cartridges, 510-thread batteries, and premium vape brands — all in stock.",
-    seoDescription: "Green Pentagon Cannabis carries a curated selection of vape pens and cartridges in GTA. From 510-thread THC cartridges to nicotine vape pods, we stock the most popular brands and flavours. Our knowledgeable budtenders can help you choose the right cartridge and battery setup. Visit us at 1267 Queen St W for the best vape selection in ByWard Market.",
+    name: "THC Vape",
+    slug: "vapes",
+    color: "#8b5cf6",
+    icon: "💨",
+    seoTitle: "Vape Pens Toronto THC & Nicotine Cartridges",
+    seoIntro:
+      "Shop THC and nicotine vape pens at Green Pentagon Cannabis, Toronto. Cartridges, 510-thread batteries, and premium vape brands available when listed on the menu.",
+    seoDescription:
+      "Green Pentagon Cannabis carries a curated selection of vape pens and cartridges in Toronto. From 510-thread THC cartridges to nicotine vape pods, we stock the most popular brands and flavours. Our knowledgeable budtenders can help you choose the right cartridge and battery setup. Visit us at 1267 Queen St W for the useful vape selection in Queen West.",
     faqs: [
-      { q: "What vape pens do you sell?", a: "We carry 510-thread THC cartridges, nicotine vape pods, disposable vapes, and compatible batteries from top Canadian brands." },
-      { q: "Do you sell vape batteries?", a: "Yes! We stock 510-thread batteries and pod systems that pair with our cartridge selection." },
+      {
+        q: "What vape pens do you sell?",
+        a: "We carry 510-thread THC cartridges, nicotine vape pods, disposable vapes, and compatible batteries from current menu brands.",
+      },
+      {
+        q: "Do you sell vape batteries?",
+        a: "Yes! We stock 510-thread batteries and pod systems that pair with our cartridge selection.",
+      },
     ],
   },
   "VAPE DISPOSABLE": {
     banner: "/banners/02_Vape_Disposable.webp",
-    name: "Nic Vape", slug: "vape-disposables", color: "#a78bfa", icon: "💨",
-    seoTitle: "Disposable Vapes GTA — THC Disposable Pens",
-    seoIntro: "THC disposable vapes available at Green Pentagon Cannabis, GTA. No charging, no refilling — just open and enjoy.",
-    seoDescription: "Disposable THC vapes are the easiest way to enjoy cannabis on the go. Green Pentagon Cannabis stocks a wide selection of pre-charged, pre-filled disposable vape pens with various strain profiles and potencies. Perfect for beginners and experienced users alike. Visit us at 1267 Queen St W, GTA.",
+    name: "Nic Vape",
+    slug: "vape-disposables",
+    color: "#a78bfa",
+    icon: "💨",
+    seoTitle: "Disposable Vapes Toronto THC Disposable Pens",
+    seoIntro:
+      "THC disposable vapes available at Green Pentagon Cannabis, Toronto. No charging, no refilling just open and enjoy.",
+    seoDescription:
+      "Disposable THC vapes are the easiest way to enjoy cannabis on the go. Green Pentagon Cannabis stocks a wide selection of pre-charged, pre-filled disposable vape pens with various strain profiles and potencies. Perfect for beginners and experienced users alike. Visit us at 1267 Queen St W, Toronto.",
     faqs: [
-      { q: "How long does a disposable vape last?", a: "Most disposable THC vapes contain 0.5g-1g of distillate and last between 100-300 puffs depending on usage." },
-      { q: "Are disposable vapes rechargeable?", a: "Most are designed for single use, but some models include a USB-C charging port to ensure you can use the full cartridge." },
+      {
+        q: "How long does a disposable vape last?",
+        a: "Most disposable THC vapes contain 0.5g-1g of distillate and last between 100-300 puffs depending on usage.",
+      },
+      {
+        q: "Are disposable vapes rechargeable?",
+        a: "Most are designed for single use, but some models include a USB-C charging port to ensure you can use the full cartridge.",
+      },
     ],
   },
   CONCENTRATES: {
     banner: "/banners/03_Concentrates.webp",
-    name: "Concentrates", slug: "concentrates", color: "#f59e0b", icon: "💎",
-    seoTitle: "Cannabis Concentrates GTA — Shatter, Wax, Hash & Live Resin",
-    seoIntro: "Premium cannabis concentrates at Green Pentagon Cannabis, GTA. Shatter, wax, hash, live resin, and diamonds — all in stock.",
-    seoDescription: "Green Pentagon Cannabis offers a premium selection of cannabis concentrates in GTA. From traditional hash and kief to modern extracts like shatter, wax, live resin, and THC diamonds, we carry products for every preference and potency level. Our concentrates are sourced from trusted extractors and tested for purity. Visit us at 1267 Queen St W.",
+    name: "Concentrates",
+    slug: "concentrates",
+    color: "#f59e0b",
+    icon: "💎",
+    seoTitle: "Cannabis Concentrates Toronto Shatter, Wax, Hash & Live Resin",
+    seoIntro:
+      "Cannabis concentrates at Green Pentagon Cannabis, Toronto. Shatter, wax, hash, live resin, and diamonds available when listed on the menu.",
+    seoDescription:
+      "Green Pentagon Cannabis offers a premium selection of cannabis concentrates in Toronto. From traditional hash and kief to modern extracts like shatter, wax, live resin, and THC diamonds, we carry products for every preference and potency level. Our concentrates are sourced from trusted extractors and tested for purity. Visit us at 1267 Queen St W.",
     faqs: [
-      { q: "What types of concentrates do you carry?", a: "We stock shatter, wax, budder, live resin, rosin, hash, kief, and THC diamonds from top Canadian extractors." },
-      { q: "How do I consume concentrates?", a: "Concentrates can be dabbed with a rig, vaped with a concentrate pen, or added to flower in a joint or bowl for extra potency." },
+      {
+        q: "What types of concentrates do you carry?",
+        a: "We stock shatter, wax, budder, live resin, rosin, hash, kief, and THC diamonds from top Canadian extractors.",
+      },
+      {
+        q: "How do I consume concentrates?",
+        a: "Concentrates can be dabbed with a rig, vaped with a concentrate pen, or added to flower in a joint or bowl for extra potency.",
+      },
     ],
   },
   PREROLLS: {
-    banner: "/banners/04_Pre_Rolls.webp", name: "Pre-Rolls", slug: "prerolls", color: "#22c55e", icon: "🚬",
-    seoTitle: "Pre-Rolls GTA — Ready-to-Smoke Cannabis Joints",
-    seoIntro: "Pre-rolled cannabis joints at Green Pentagon Cannabis, GTA. Singles, multi-packs, and infused pre-rolls — ready to light up.",
-    seoDescription: "Skip the rolling and grab a pre-roll from Green Pentagon Cannabis in GTA. We carry singles, multi-packs, and infused pre-rolls from premium flower. Whether you want a quick smoke or a party pack, our pre-roll selection has something for everyone. Visit us at 1267 Queen St W — we are Open Daily: 10:00 AM - 12:00 AM.",
+    banner: "/banners/04_Pre_Rolls.webp",
+    name: "Pre-Rolls",
+    slug: "prerolls",
+    color: "#22c55e",
+    icon: "🚬",
+    seoTitle: "Pre-Rolls Toronto Ready-to-Smoke Cannabis Joints",
+    seoIntro:
+      "Pre-rolled cannabis joints at Green Pentagon Cannabis, Toronto. Singles, multi-packs, and infused pre-rolls ready to light up.",
+    seoDescription:
+      "Skip the rolling and grab a pre-roll from Green Pentagon Cannabis in Toronto. Green Pentagon Cannabis carries singles, multi-packs, and infused pre-rolls from premium flower. Whether you want a quick smoke or a party pack, our pre-roll selection has something for everyone. Visit us at 1267 Queen St W we are open daily: 10:00 AM - 12:00 AM.",
     faqs: [
-      { q: "What pre-rolls do you carry?", a: "We stock singles, 3-packs, and multi-packs in various strains and potencies, including infused pre-rolls with concentrates." },
-      { q: "Are your pre-rolls made with quality flower?", a: "Yes! Our pre-rolls are filled with ground flower from our regular menu tiers — not shake or trim." },
+      {
+        q: "What pre-rolls do you carry?",
+        a: "We stock singles, 3-packs, and multi-packs in various strains and potencies, including infused pre-rolls with concentrates.",
+      },
+      {
+        q: "Are your pre-rolls made with quality flower?",
+        a: "Yes! Our pre-rolls are filled with ground flower from our regular menu tiers not shake or trim.",
+      },
     ],
   },
   "ADD ONS": {
     banner: "/banners/05_Accessories.webp",
-    name: "Accessories", slug: "add-ons", color: "#34d399", icon: "➕",
-    seoTitle: "Cannabis Accessories GTA — Grinders, Papers, Lighters & More",
-    seoIntro: "Essential cannabis accessories at Green Pentagon Cannabis, GTA. Grinders, rolling papers, lighters, trays, and more.",
-    seoDescription: "Green Pentagon Cannabis carries all the accessories you need for the perfect smoke session. From premium grinders and rolling papers to lighters, trays, and storage containers, we have everything in stock. Visit us at 1267 Queen St W, GTA.",
+    name: "Accessories",
+    slug: "add-ons",
+    color: "#34d399",
+    icon: "➕",
+    seoTitle: "Cannabis Accessories Toronto Grinders, Papers, Lighters & More",
+    seoIntro:
+      "Essential cannabis accessories at Green Pentagon Cannabis, Toronto. Grinders, rolling papers, lighters, trays, and more.",
+    seoDescription:
+      "Green Pentagon Cannabis carries all the accessories you need for the perfect smoke session. From premium grinders and rolling papers to lighters, trays, and storage containers, we have everything in stock. Visit us at 1267 Queen St W, Toronto.",
     faqs: [
-      { q: "What accessories do you sell?", a: "We carry grinders, rolling papers, filter tips, lighters, rolling trays, storage jars, and more." },
+      {
+        q: "What accessories do you sell?",
+        a: "We carry grinders, rolling papers, filter tips, lighters, rolling trays, storage jars, and more.",
+      },
     ],
   },
   "MAGIC & OTHERS": {
-    name: "Magic Stuff", slug: "magic", color: "#64748b", icon: "*",
+    name: "Magic Stuff",
+    slug: "magic",
+    color: "#64748b",
+    icon: "*",
     seoTitle: "Magic Stuff - Specialty Items",
-    seoIntro: "Browse current menu for available specialty products. Availability may vary by store.",
-    seoDescription: "Current specialty items are listed when they are carried on the menu. Product availability may vary by store and by day. Check the live menu for current selection.",
+    seoIntro:
+      "Browse current menu for available specialty products. Availability may vary by store.",
+    seoDescription:
+      "Current specialty items are listed when they are carried on the menu. Product availability may vary by store and by day. Check the current menu for current selection.",
     faqs: [
-      { q: "What specialty items are available?", a: "Selection varies by store and by day. Check the current menu for available specialty products." },
-      { q: "Does availability vary by location?", a: "Yes. Specialty item availability may vary by store, so please check the current menu for this location." },
+      {
+        q: "What specialty items are available?",
+        a: "Selection varies by store and by day. Check the current menu for available specialty products.",
+      },
+      {
+        q: "Does availability vary by location?",
+        a: "Yes. Specialty item availability may vary by store, so please check the current menu for this location.",
+      },
     ],
   },
   CIGARETTES: {
     banner: "/banners/06_Cigarettes.webp",
-    name: "Cigarettes", slug: "cigarettes", color: "#78716c", icon: "🏷️",
-    seoTitle: "Native Cigarettes GTA — Discount Tobacco at Green Pentagon Cannabis",
-    seoIntro: "Discount native cigarettes at Green Pentagon Cannabis, GTA. Premium and value brands at the best prices on GTA St.",
-    seoDescription: "Green Pentagon Cannabis is your go-to source for affordable native cigarettes in GTA. We carry a wide selection of premium and value tobacco brands at competitive prices. Located at 1267 Queen St W in the heart of 1267 Queen St W & Nearby Expressway, we're Open Daily: 10:00 AM - 12:00 AM.",
+    name: "Cigarettes",
+    slug: "cigarettes",
+    color: "#78716c",
+    icon: "*",
+    seoTitle:
+      "Native Cigarettes Toronto Discount Tobacco at Green Pentagon Cannabis",
+    seoIntro:
+      "Discount native cigarettes at Green Pentagon Cannabis, Toronto. Cigarette category options at the competitive prices on Queen St W.",
+    seoDescription:
+      "Green Pentagon Cannabis is your go-to source for affordable native cigarettes in Toronto. Green Pentagon Cannabis carries a wide selection of premium and value tobacco brands at competitive prices. Located at 1267 Queen St W in the heart of Queen West and Parkdale, we're Open Daily: 10:00 AM - 12:00 AM.",
     faqs: [
-      { q: "Do you sell cigarettes at Green Pentagon Cannabis?", a: "Yes! We carry a wide selection of native cigarette brands at competitive prices." },
-      { q: "What cigarette brands do you carry?", a: "We stock a variety of premium and value native cigarette brands. Visit us to see our full in-store selection." },
-      { q: "Are your cigarette prices competitive?", a: "Absolutely. We offer some of the best cigarette prices in the 1267 Queen St W & Nearby Expressway area of GTA." },
+      {
+        q: "Do you sell cigarettes at Green Pentagon Cannabis?",
+        a: "Yes! We carry a wide selection of native cigarette brands at competitive prices.",
+      },
+      {
+        q: "What cigarette brands do you carry?",
+        a: "We stock a variety of premium and value native cigarette brands. Visit us to see our full in-store selection.",
+      },
+      {
+        q: "Are your cigarette prices competitive?",
+        a: "Absolutely. We offer some of the best cigarette prices in the Queen West and Parkdale area.",
+      },
     ],
   },
 };
 
-/* ── Helper functions ── */
+/* Helper functions */
 export function getFlowersByTier(tier: string): FlowerProduct[] {
-  return allFlowers.filter(
-    (f) => f.tier.toUpperCase() === tier.toUpperCase()
-  );
+  return allFlowers.filter((f) => f.tier.toUpperCase() === tier.toUpperCase());
 }
 
 export function getFlowerBySlug(slug: string): FlowerProduct | undefined {
@@ -259,39 +379,42 @@ export function getFlowerBySlug(slug: string): FlowerProduct | undefined {
 
 export function getItemsByCategory(category: string): ItemProduct[] {
   return allItems.filter(
-    (i) => i.category.toUpperCase() === category.toUpperCase()
+    (i) => i.category.toUpperCase() === category.toUpperCase(),
   );
 }
 
 export function getTierFromSlug(
-  slug: string
+  slug: string,
 ): { key: string; config: (typeof TIER_CONFIG)[string] } | undefined {
-  const entry = Object.entries(TIER_CONFIG).find(
-    ([, v]) => v.slug === slug
-  );
+  const entry = Object.entries(TIER_CONFIG).find(([, v]) => v.slug === slug);
   if (!entry) return undefined;
   return { key: entry[0], config: entry[1] };
 }
 
 export function getCategoryFromSlug(
-  slug: string
+  slug: string,
 ): { key: string; config: (typeof CATEGORY_CONFIG)[string] } | undefined {
   const entry = Object.entries(CATEGORY_CONFIG).find(
-    ([, v]) => v.slug === slug
+    ([, v]) => v.slug === slug,
   );
   if (!entry) return undefined;
   return { key: entry[0], config: entry[1] };
 }
 
 export function getLowestPrice(flower: FlowerProduct): number | null {
-  const prices = [flower.price3g, flower.price5g, flower.price14g, flower.price28g]
+  const prices = [
+    flower.price3g,
+    flower.price5g,
+    flower.price14g,
+    flower.price28g,
+  ]
     .filter((p): p is PricePoint => p !== null)
     .map((p) => p.sale ?? p.regular);
   return prices.length ? Math.min(...prices) : null;
 }
 
 export function formatPrice(p: PricePoint | null): string {
-  if (!p) return "—";
+  if (!p) return "";
   if (p.sale !== null) return `$${p.sale}`;
   return `$${p.regular}`;
 }

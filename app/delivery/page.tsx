@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import DeliveryContent from "./DeliveryContent";
 
 export const metadata: Metadata = {
-  title: "Delivery Coming Soon — Green Pentagon Cannabis | GTA",
-  description: "Get notified when Green Pentagon Cannabis launches same-day weed delivery across GTA and surrounding areas.",
+  title: "Delivery Coming Soon Green Pentagon Cannabis | Toronto",
+  description:
+    "Get notified when Green Pentagon Cannabis prepares delivery for Queen West, Parkdale, and nearby west Toronto.",
   alternates: {
     canonical: "https://greenpentagoncannabis.com/delivery",
   },

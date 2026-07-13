@@ -671,7 +671,7 @@ function AddOnsCard({ items, hiIdx }: { items: Item[]; hiIdx: number }) {
    VERTICAL TICKER
    ============================================================ */
 const TICKER_SLIDES = [
-  "🔥 Green Pentagon Cannabis — 1267 Queen St W, GTA",
+  "🔥 Green Pentagon Cannabis — 1267 Queen St W, Toronto",
   "200+ Strains In Stock",
   "Open Daily: 10:00 AM - 12:00 AM",
   "ALL SALES ARE FINAL",

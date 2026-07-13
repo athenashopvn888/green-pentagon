@@ -17,7 +17,7 @@ export default function NotFound() {
           textAlign: "center",
         }}
       >
-        <span style={{ fontSize: 64, marginBottom: 16 }}>🔥</span>
+        <span style={{ fontSize: 64, marginBottom: 16 }}></span>
         <h1
           style={{
             fontFamily: "var(--font-display)",
@@ -38,10 +38,17 @@ export default function NotFound() {
             lineHeight: 1.6,
           }}
         >
-          This page doesn&apos;t exist — but our shelves are fully stocked.
-          Browse 200+ strains at GTA&apos;s most fire dispensary.
+          This page doesn&apos;t exist but our shelves are fully stocked. Browse
+          200+ strains at Toronto&apos;s most fire dispensary.
         </p>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           <Link
             href="/"
             style={{

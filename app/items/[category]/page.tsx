@@ -14,12 +14,12 @@ import {
 } from "../../lib/products";
 import styles from "./items.module.css";
 
-/* ── Generate all category pages ── */
+/* Generate all category pages */
 export function generateStaticParams() {
   return Object.values(CATEGORY_CONFIG).map((c) => ({ category: c.slug }));
 }
 
-/* ── SEO ── */
+/* SEO */
 export async function generateMetadata({
   params,
 }: {
@@ -31,8 +31,12 @@ export async function generateMetadata({
   const items = getItemsByCategory(catInfo.key);
 
   return {
-    title: catInfo.config.seoTitle || `${catInfo.config.name} — ${items.length} Products`,
-    description: catInfo.config.seoIntro || `Shop ${items.length} ${catInfo.config.name.toLowerCase()} at Green Pentagon Cannabis.`,
+    title:
+      catInfo.config.seoTitle ||
+      `${catInfo.config.name} ${items.length} Products`,
+    description:
+      catInfo.config.seoIntro ||
+      `Shop ${items.length} ${catInfo.config.name.toLowerCase()} at Green Pentagon Cannabis.`,
     alternates: {
       canonical: `https://greenpentagoncannabis.com/items/${catSlug}`,
     },
@@ -52,8 +56,10 @@ export default async function ItemsCategoryPage({
   let items = getItemsByCategory(catInfo.key);
   if (catInfo.key === "PREROLLS") {
     const accessories = getItemsByCategory("ADD ONS");
-    const existingIds = new Set(items.map(i => i.sku));
-    const uniqueAccessories = accessories.filter(a => !existingIds.has(a.sku));
+    const existingIds = new Set(items.map((i) => i.sku));
+    const uniqueAccessories = accessories.filter(
+      (a) => !existingIds.has(a.sku),
+    );
     items = [...items, ...uniqueAccessories];
   }
   const { config } = catInfo;
@@ -68,20 +74,44 @@ export default async function ItemsCategoryPage({
       <Navbar />
 
       {/* Hero Banner */}
-      <section style={{ width: "100%", overflow: "hidden", marginTop: "92px", marginBottom: "24px" }}>
+      <section
+        style={{
+          width: "100%",
+          overflow: "hidden",
+          marginTop: "92px",
+          marginBottom: "24px",
+        }}
+      >
         {config.banner && bannerExists ? (
           <img
             src={config.banner}
             alt={config.name}
-            style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              objectFit: "contain",
+            }}
           />
         ) : (
-          <div className={styles.heroContent} style={{ background: config.color, padding: "60px 24px", textAlign: "center" }}>
+          <div
+            className={styles.heroContent}
+            style={{
+              background: config.color,
+              padding: "60px 24px",
+              textAlign: "center",
+            }}
+          >
             <span className={styles.heroIcon}>{config.icon}</span>
             <h1 className={styles.heroTitle}>
               <span style={{ color: "#fff" }}>{config.name}</span>
             </h1>
-            <p className={styles.heroSub} style={{ color: "rgba(255,255,255,0.8)" }}>{items.length} products available</p>
+            <p
+              className={styles.heroSub}
+              style={{ color: "rgba(255,255,255,0.8)" }}
+            >
+              {items.length} products available
+            </p>
           </div>
         )}
       </section>
@@ -97,7 +127,7 @@ export default async function ItemsCategoryPage({
             </div>
           ) : (
             <div className={styles.emptyState}>
-              <span className={styles.emptyIcon}>🌱</span>
+              <span className={styles.emptyIcon}></span>
               <h3>Coming Soon</h3>
               <p>We&apos;re stocking this category. Check back soon!</p>
             </div>
@@ -128,7 +158,8 @@ export default async function ItemsCategoryPage({
           <div className={styles.visitCta}>
             <h3 className={styles.visitTitle}>Visit Green Pentagon Cannabis</h3>
             <p className={styles.visitText}>
-              1267 Queen St W, GTA, ON M6K 2J2 · Open Daily: 10:00 AM - 12:00 AM
+              1267 Queen St W, Toronto, ON M6K 2J2 Open Daily: 10:00 AM - 12:00
+              AM
             </p>
           </div>
         </div>
@@ -141,14 +172,21 @@ export default async function ItemsCategoryPage({
 
 function ItemCard({ item, catColor }: { item: ItemProduct; catColor: string }) {
   return (
-    <Link href={`/item/${item.slug}`} className={styles.card} style={{ "--cat-color": catColor } as React.CSSProperties}>
+    <Link
+      href={`/item/${item.slug}`}
+      className={styles.card}
+      style={{ "--cat-color": catColor } as React.CSSProperties}
+    >
       <div className={styles.cardMedia}>
         {item.image ? (
-          <SafeImage src={item.image} alt={item.name} loading="lazy" className={styles.cardImg} />
+          <SafeImage
+            src={item.image}
+            alt={item.name}
+            loading="lazy"
+            className={styles.cardImg}
+          />
         ) : (
-          <div className={styles.cardPlaceholder}>
-            {item.name[0]}
-          </div>
+          <div className={styles.cardPlaceholder}>{item.name[0]}</div>
         )}
         <div className={styles.cardBadges}>
           {item.thc && <span className={styles.badgeThc}>{item.thc}</span>}
@@ -160,7 +198,9 @@ function ItemCard({ item, catColor }: { item: ItemProduct; catColor: string }) {
         <h3 className={styles.cardName}>{item.name}</h3>
         {item.price && (
           <div className={styles.cardPrice}>
-            <span className={styles.priceVal}>{item.price.startsWith('$') ? item.price : `$${item.price}`}</span>
+            <span className={styles.priceVal}>
+              {item.price.startsWith("$") ? item.price : `$${item.price}`}
+            </span>
             <span className={styles.priceUnit}>each</span>
           </div>
         )}
