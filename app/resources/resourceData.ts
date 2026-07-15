@@ -258,7 +258,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Final Check On The Tier Page",
         body:
-          "The guide explains the pricing structure. Product names, availability, and item notes can change, so the tier page or the counter should be the final check.",
+          "The guide explains the pricing structure. Use the current tier page or ask at the counter for listed product names, prices, and item notes.",
       },
     ],
   },
@@ -383,7 +383,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Use The Category Before Heading Out",
         body:
-          "Smoke category availability can shift. Use the cigarette category for the current public list, then confirm in store when one exact brand, flavor, or light/full/menthol style matters.",
+          "Use the current cigarette category for listed brands and styles, then confirm in store when one exact brand, flavor, or light/full/menthol style matters.",
       },
     ],
   },
