@@ -138,7 +138,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Built For The Queen West Stop",
         body:
-          "The resource hub keeps the main SEO paths intact while adding local planning content around Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. Start with the store page for the local anchor, then use the resources to choose the shelf.",
+          "The resource hub gathers local planning information for Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. Start with the store page, then use the resources to choose a menu category.",
         bullets: [
           "Use /weed-dispensary-toronto for the local store page.",
           "Use /resources/menu-guide when choosing between cannabis categories.",
@@ -146,9 +146,9 @@ export const RESOURCE_PAGES: ResourcePage[] = [
         ],
       },
       {
-        heading: "Parkdale And Queen West Search Intent",
+        heading: "Parkdale And Queen West Visit Planning",
         body:
-          "This hub supports shoppers searching for a weed dispensary near Parkdale, Queen West, Lansdowne, Dufferin, Liberty Village, Roncesvalles, or the Queen streetcar corridor without forcing those keywords into stiff paragraphs.",
+          "Use this hub to plan a Green Pentagon Cannabis visit from Parkdale, Queen West, Lansdowne, Dufferin, Liberty Village, Roncesvalles, or the Queen streetcar corridor.",
       },
     ],
   },
@@ -160,7 +160,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       "A local visit guide for Green Pentagon Cannabis at 1267 Queen St W, with Parkdale, Lansdowne, Dufferin, Liberty Village, Roncesvalles, and TTC shopping paths.",
     eyebrow: "Visit Guide",
     intro:
-      "Use this page when the search sounds local: weed dispensary Queen West, cannabis near Parkdale, dispensary near Lansdowne and Dufferin, or a menu stop before moving through Liberty Village, Roncesvalles, or the Queen streetcar corridor.",
+      "Use this page to plan a menu stop from Queen West, Parkdale, Lansdowne, Dufferin, Liberty Village, Roncesvalles, or the Queen streetcar corridor.",
     cards: [
       {
         title: "Plan Your Visit",
@@ -175,22 +175,22 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         title: "Value Guide",
         href: "/resources/value-guide",
-        text: "A fast lane for budget weed, cheap weed, and affordable flower searches.",
+        text: "A direct guide to Budget, AA, and other flower tiers.",
       },
     ],
     sections: [
       {
         heading: "Address Anchor",
         body:
-          "Green Pentagon Cannabis is listed at 1267 Queen St W, Toronto, ON M6K 2J2. Keep that address as the anchor for local SEO and shopper planning, then use the category pages to decide whether the trip is about flower, pre-rolls, edibles, THC vapes, concentrates, accessories, or cigarettes.",
+          "Green Pentagon Cannabis is listed at 1267 Queen St W, Toronto, ON M6K 2J2. Use that address for visit planning, then use the category pages to choose flower, pre-rolls, edibles, vapes, concentrates, accessories, or cigarettes.",
       },
       {
         heading: "Queen Street Movement",
         body:
           "Queen West shoppers often move by neighborhood instead of exact postal code. That is why this guide connects Parkdale, Lansdowne, Dufferin, Liberty Village, Roncesvalles, TTC, and Queen St W language to the same clean store path.",
         bullets: [
-          "Parkdale and Queen West for the core local search.",
-          "Lansdowne and Dufferin for nearby direction-based searches.",
+          "Parkdale and Queen West for nearby visit planning.",
+          "Lansdowne and Dufferin for direction-based planning.",
           "Liberty Village, Roncesvalles, and TTC for nearby shopper movement.",
         ],
       },
@@ -237,7 +237,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       "Compare Green Pentagon Cannabis flower tiers with posted per-gram prices and 6g bundle math for Exotic, Premium, AAA+, AA, and Budget flower.",
     eyebrow: "Flower Tiers",
     intro:
-      "Here is the clean flower math: Exotic is posted at $20/g with 6g for $60, Premium at $15/g with 6g for $45, AAA+ at $10/g with 6g for $30, AA at $4/g, and Budget at $3/g. Use the current tier pages for the live product list.",
+      "Here is the posted flower math: Exotic is shown at $20/g with 6g for $60, Premium at $15/g with 6g for $45, AAA+ at $10/g with 6g for $30, AA at $4/g, and Budget at $3/g. Use the current tier pages for product details.",
     cards: flowerCards,
     sections: [
       {
@@ -297,7 +297,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Budget First, Upgrade If It Makes Sense",
         body:
-          "If the search is cheap weed or budget weed near Queen West, start with Budget and AA. If you want a step up without jumping into premium shelves, check AAA+ and its posted 6g deal.",
+          "For value-focused menu planning near Queen West, start with Budget and AA. To compare another tier, check AAA+ and its posted bundle details.",
       },
       {
         heading: "Use Category Value, Not Random Value",
@@ -450,7 +450,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "What Stayed Protected",
         body:
-          "The existing SEO paths stay alive: /weed-dispensary-toronto, /resources, /resources/menu-guide, /resources/flower-guide, /resources/value-guide, /resources/pre-roll-guide, /resources/native-smokes, and /resources/native-smokes/native-cigarettes-guide.",
+          "Continue through the store and resource guides for menu, flower tiers, value planning, pre-rolls, native smokes, and cigarette details.",
       },
     ],
   },

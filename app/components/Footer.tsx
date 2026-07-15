@@ -75,7 +75,7 @@ export default function Footer() {
               </Link>
               <Link href="/contact">Contact Us</Link>
               <a
-                href="https://greenpentagoncannabis.com/"
+                href="https://www.greenpentagoncannabis.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -88,7 +88,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p>
             {new Date().getFullYear()} Green Pentagon Cannabis. Must be 19+ to
-            enter. Please consume responsibly.
+            enter. Please review posted store and menu information.
           </p>
         </div>
       </div>

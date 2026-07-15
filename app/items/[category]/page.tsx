@@ -38,7 +38,7 @@ export async function generateMetadata({
       catInfo.config.seoIntro ||
       `Shop ${items.length} ${catInfo.config.name.toLowerCase()} at Green Pentagon Cannabis.`,
     alternates: {
-      canonical: `https://greenpentagoncannabis.com/items/${catSlug}`,
+      canonical: `https://www.greenpentagoncannabis.com/items/${catSlug}`,
     },
   };
 }
@@ -110,7 +110,7 @@ export default async function ItemsCategoryPage({
               className={styles.heroSub}
               style={{ color: "rgba(255,255,255,0.8)" }}
             >
-              {items.length} products available
+              Browse current category listings
             </p>
           </div>
         )}

@@ -41,7 +41,7 @@ export async function generateMetadata({
     title: `${flower.name} | ${tierName} ${flower.type === "indica" ? "Indica" : flower.type === "sativa" ? "Sativa" : "Hybrid"} | THC ${flower.thc} | Green Pentagon Cannabis Toronto`,
     description: strainData.metaDescription,
     alternates: {
-      canonical: `https://greenpentagoncannabis.com/flower/${slug}`,
+      canonical: `https://www.greenpentagoncannabis.com/flower/${slug}`,
     },
     openGraph: {
       title: `${flower.name} | Green Pentagon Cannabis`,
@@ -82,9 +82,8 @@ function getJsonLd(flower: FlowerProduct) {
 
   const offers: any = {
     "@type": "Offer",
-    url: `https://greenpentagoncannabis.com/flower/${flower.slug}`,
+    url: `https://www.greenpentagoncannabis.com/flower/${flower.slug}`,
     priceCurrency: "CAD",
-    availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     seller: { "@type": "Organization", name: "Green Pentagon Cannabis" },
     hasMerchantReturnPolicy: {
@@ -106,7 +105,7 @@ function getJsonLd(flower: FlowerProduct) {
       ? [
           flower.image.startsWith("http")
             ? flower.image
-            : `https://greenpentagoncannabis.com${flower.image.startsWith("/") ? "" : "/"}${flower.image}`,
+            : `https://www.greenpentagoncannabis.com${flower.image.startsWith("/") ? "" : "/"}${flower.image}`,
         ]
       : undefined,
     description: strainData.description,
@@ -129,19 +128,19 @@ function getBreadcrumbJsonLd(flower: FlowerProduct) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://greenpentagoncannabis.com",
+        item: "https://www.greenpentagoncannabis.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: tierName,
-        item: `https://greenpentagoncannabis.com/${tierSlug}`,
+        item: `https://www.greenpentagoncannabis.com/${tierSlug}`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: flower.name,
-        item: `https://greenpentagoncannabis.com/flower/${flower.slug}`,
+        item: `https://www.greenpentagoncannabis.com/flower/${flower.slug}`,
       },
     ],
   };
@@ -298,7 +297,7 @@ export default async function FlowerPage({
                 </div>
               </div>
 
-              {/* Effects */}
+              {/* Menu notes */}
               <div className={styles.effectsRow}>
                 {strainData.effects.map((e) => (
                   <span key={e.label} className={styles.effectPill}>
@@ -360,7 +359,7 @@ export default async function FlowerPage({
 
                 {bestValue && (
                   <div className={styles.valueNote}>
-                    Best value: <strong>${bestValue.perG}/g</strong> at{" "}
+                    Lowest unit price: <strong>${bestValue.perG}/g</strong> at{" "}
                     {bestValue.label}
                   </div>
                 )}
@@ -374,7 +373,7 @@ export default async function FlowerPage({
 
               <div className={styles.visitCta}>
                 <p>
-                  Available in-store &middot; Walk-in welcome &middot; No
+                  Check the current menu &middot; Walk-in welcome &middot; No
                   appointment needed
                 </p>
               </div>

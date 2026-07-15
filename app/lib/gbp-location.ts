@@ -1,7 +1,6 @@
-// Auto-generated Google Business Profile Local SEO Location Configuration
 export const gbpLocation = {
   storeName: "Green Pentagon Cannabis",
-  domain: "greenpentagoncannabis.com",
+  domain: "www.greenpentagoncannabis.com",
   city: "Toronto",
   province: "ON",
   country: "CA",
@@ -32,7 +31,7 @@ export const gbpLocation = {
   seoTitle: "Green Pentagon Cannabis | Weed Dispensary in Toronto",
   metaDescription: "Green Pentagon Cannabis is a local weed dispensary in Toronto offering flower, pre-rolls, edibles, vapes, concentrates, CBD, and service for adults 19+.",
   localLandmarks: ["Queen St W", "Lansdowne", "Parkdale"],
-  introVariant: "Green Pentagon Cannabis is a local weed dispensary in Toronto, located at 1267 Queen St W. We serve adults 19+ looking for quality weed, cannabis flower, pre-rolls, edibles, THC vapes, concentrates, shatter, CBD oils, and accessories. Whether you are searching for a weed dispensary near Parkdale / Queen West, a cannabis store in Toronto, or a local weed shop close to Lansdowne, our friendly team is here to help you find the right product.",
+  introVariant: "Green Pentagon Cannabis is a local weed dispensary at 1267 Queen St W in Toronto. Adults 19+ can browse flower tiers and category pages for pre-rolls, edibles, vapes, concentrates, cigarettes, and accessories before visiting.",
   neighborhoodDescription: "Located in the vibrant Parkdale / Queen West district, our cannabis store fits right into this active and historic community, surrounded by local retail shops and convenient transit links.",
   parkingNote: "Street parking is available along Queen Street West",
   transitNote: "Accessible via the 501 Queen streetcar and local TTC bus routes.",

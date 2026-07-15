@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Frequently asked questions about Green Pentagon Cannabis in Toronto. Hours, location, products, pricing, bundle offers, and everything you need to know before visiting.",
   alternates: {
-    canonical: "https://greenpentagoncannabis.com/faq",
+    canonical: "https://www.greenpentagoncannabis.com/faq",
   },
 };
 
@@ -33,7 +33,7 @@ const FAQ_CATEGORIES = [
         a: "We're just 5 minutes from the highways and central transit routes. We are centrally located and easy to reach.",
       },
       {
-        q: "What's the best way to get to Green Pentagon Cannabis?",
+        q: "How can I get to Green Pentagon Cannabis?",
         a: "We're easily accessible by car, bus, or foot. We are easily accessible by car, local transit, or bus routes. Free parking is available on surrounding streets.",
       },
     ],
@@ -43,23 +43,23 @@ const FAQ_CATEGORIES = [
     faqs: [
       {
         q: "What products do you carry?",
-        a: "We carry over 200 strains of cannabis flower across 5 quality tiers (Exotic, Premium, AAA+, AA, Budget), plus edibles (gummies, chocolates, baked goods), vape pens, disposable vapes, concentrates (shatter, wax, hash, diamonds, live resin), pre-rolled joints, native cigarettes, and accessories.",
+        a: "We organize flower into five menu tiers: Exotic, Premium, AAA+, AA, and Budget. Separate pages cover edibles, vapes, concentrates, pre-rolls, cigarettes, and accessories.",
       },
       {
         q: "Do you have a current menu?",
-        a: "Yes! Our online menu at greenpentagoncannabis.com shows current menu details with current stock, prices, THC levels, and availability. You can check what's in stock before you visit.",
+        a: "Yes. Use the online menu to review current product names, categories, weights, and posted prices before visiting.",
       },
       {
         q: "What are your flower tiers?",
-        a: "Exotic ($10-$12/g, THC 35-39%) ultra-rare top-shelf genetics. Premium ($7-$10/g, THC 32-34%) connoisseur-grade. AAA+ ($5-$6/g, THC 30-32%) heavy hitters, our most popular tier. AA ($4/g, THC 27-29%) quality daily drivers. Budget ($3/g, THC 24-27%) reliable value flower.",
+        a: "The menu separates flower into Exotic, Premium, AAA+, AA, and Budget tiers. Open each tier page to compare its current listings and posted prices.",
       },
       {
         q: "Do you sell edibles?",
-        a: "Yes! We carry a variety of edibles including gummies, chocolates, baked goods, and more. THC content varies. Check our current menu for current availability.",
+        a: "The edibles category lists current public menu details for gummies, chocolates, and other formats when listed.",
       },
       {
         q: "Do you sell vapes?",
-        a: "Yes both disposable vapes and refillable vape pens. We carry both nicotine vapes and THC vapes from top brands.",
+        a: "The vape category pages organize disposable and cartridge formats. Review the current menu for product details.",
       },
       {
         q: "Do you sell native cigarettes?",
@@ -72,7 +72,7 @@ const FAQ_CATEGORIES = [
     faqs: [
       {
         q: "What is the cheapest weed you sell?",
-        a: "Our Budget tier starts at $3/g with value ounces from $40. Our AA tier is $4/g. These are the most competitive prices you'll find in Toronto.",
+        a: "Use the Budget and AA tier pages to compare their current posted weights and prices.",
       },
       {
         q: "What bundle pricing do you offer?",
@@ -80,7 +80,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "Do you have ounce deals?",
-        a: "Yes! Budget ounces from $40, AA ounces from $90, AAA+ ounces from $100. All with freshness and quality guaranteed.",
+        a: "Check the relevant flower tier page for current posted ounce options and prices.",
       },
       {
         q: "How does bundle pricing work?",
@@ -88,7 +88,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "How does the tier pricing work?",
-        a: "Each flower strain is graded into one of five quality tiers. The tier determines the per-gram price. This transparent system means you always know exactly what you're paying no confusing markups or inconsistent pricing.",
+        a: "Each flower listing appears in one of five menu tiers. Use the tier page to compare the posted weight and price details.",
       },
     ],
   },
@@ -101,7 +101,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "Can I order online?",
-        a: "Currently, Green Pentagon Cannabis is an in-store shopping experience only. You can browse our current menu online to see what's in stock before visiting.",
+        a: "Currently, Green Pentagon Cannabis is an in-store shopping experience only. You can browse the current menu online before visiting.",
       },
       {
         q: "Do you offer delivery?",
@@ -113,7 +113,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "Can your staff help me choose a strain?",
-        a: "Absolutely! Our knowledgeable budtenders are here to help. Whether you're a first-time buyer or a seasoned connoisseur, we can recommend strains based on your preferences, desired effects, and budget.",
+        a: "Staff can help compare current menu categories, formats, package details, and posted prices.",
       },
       {
         q: "Is there a minimum purchase?",
@@ -169,7 +169,7 @@ export default function FAQPage() {
           <h1 className={styles.pageTitle}>Frequently Asked Questions</h1>
           <p className={styles.pageSubtitle}>
             Everything you need to know about Green Pentagon Cannabis
-            Toronto&apos;s premium dispensary at 1267 Queen St W in Toronto.
+            at 1267 Queen St W in Toronto.
           </p>
 
           {FAQ_CATEGORIES.map((cat) => (

@@ -1,4 +1,3 @@
-// Auto-generated Google Business Profile Local SEO Landing Page Component
 import Link from "next/link";
 import styles from "./GBPLandingPage.module.css";
 import { gbpLocation } from "../lib/gbp-location";
@@ -101,15 +100,15 @@ export function GBPLandingPage() {
 
       {/* Intro Section */}
       <section className={styles.section}>
-        <h2 className={styles.h2}>Your Trusted Local Weed Dispensary</h2>
+        <h2 className={styles.h2}>Local Weed Dispensary Information</h2>
         <p className={styles.introText}>{gbpLocation.introVariant}</p>
       </section>
 
       {/* Product Section */}
       <section className={styles.section}>
-        <h2 className={styles.h2}>Weed and Cannabis Products Available</h2>
+        <h2 className={styles.h2}>Browse Weed and Cannabis Categories</h2>
         <p className={styles.infoText}>
-          At {gbpLocation.storeName}, we offer a curated selection of weed and cannabis products for adults 19+ in {gbpLocation.city}. Enjoy some of Ontario&apos;s finest quality and value in the following categories:
+          Adults 19+ can use these links to browse the public menu categories for {gbpLocation.storeName} in {gbpLocation.city}:
         </p>
         <div className={styles.productGrid}>
           {gbpLocation.products.map((p) => {
@@ -208,7 +207,7 @@ export function GBPLandingPage() {
       <section className={styles.section}>
         <h2 className={styles.h2}>Compare Menu Categories Before You Visit</h2>
         <p className={styles.infoText}>
-          These category links help adults 19+ browse general menu sections before visiting. Product selection can change, so use the live menu for current details rather than assuming availability from this guide.
+          These category links help adults 19+ browse general menu sections before visiting. Product details can change, so confirm the current menu or ask staff when one exact item matters.
         </p>
         <div className={styles.productGrid}>
           {categoryGuideLinks.map((category) => (
@@ -232,7 +231,7 @@ export function GBPLandingPage() {
           <div className={styles.faqItem}>
             <h3 className={styles.faqQuestion}>Can I use this page to compare menu categories?</h3>
             <p className={styles.faqAnswer}>
-              Yes. The category links on this page are intended to help adults 19+ compare general menu sections such as flower, pre-rolls, edibles, vapes, concentrates, and accessories before checking the live menu.
+              Yes. The category links help adults 19+ compare general menu sections such as flower, pre-rolls, edibles, vapes, concentrates, and accessories before checking current details.
             </p>
           </div>
           <div className={styles.faqItem}>
@@ -248,7 +247,7 @@ export function GBPLandingPage() {
           <div className={styles.faqItem}>
             <h3 className={styles.faqQuestion}>What products does {gbpLocation.storeName} carry?</h3>
             <p className={styles.faqAnswer}>
-              We carry a complete line of weed products including premium flower, pre-rolls, THC edibles, concentrates, shatter, THC vape cartridges, CBD oils, and accessories.
+              The menu organizes flower, pre-rolls, edibles, concentrates, vapes, and accessories into separate category pages.
             </p>
           </div>
           <div className={styles.faqItem}>

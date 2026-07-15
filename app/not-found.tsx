@@ -39,7 +39,7 @@ export default function NotFound() {
           }}
         >
           This page doesn&apos;t exist but our shelves are fully stocked. Browse
-          200+ strains at Toronto&apos;s most fire dispensary.
+          Browse Green Pentagon Cannabis menu categories and store information.
         </p>
         <div
           style={{

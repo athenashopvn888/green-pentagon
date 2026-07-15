@@ -135,7 +135,7 @@ function ItemCard({ title, accent, items, hiIdx, preset }: {
 /* -- TICKER -- */
 const TICKER_SLIDES = [
   "🔥 Green Pentagon Cannabis — 1267 Queen St W, Toronto",
-  "200+ Strains In Stock",
+  "FLOWER TIERS - MENU CATEGORIES",
   "Open Daily: 10:00 AM - 12:00 AM",
   "Pre-Rolls · Edibles · Vapes · Concentrates",
   "ALL SALES ARE FINAL",

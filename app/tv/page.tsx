@@ -29,7 +29,7 @@ const TIER_UNIT: Record<string,string> = {
   EXOTIC:"$20/G", PREMIUM:"$15/G", "AAA+":"$10/G", AA:"$4/g", BUDGET:"$3/g"
 };
 const TIER_DEAL: Record<string,string> = {
-  EXOTIC:"Buy 3g Get 3 FREE", PREMIUM:"Buy 3g Get 3 FREE",
+  EXOTIC:"See posted 3g and 6g prices", PREMIUM:"See posted 3g and 6g prices",
   "AAA+":"Buy 3g Get 3 FREE", BUDGET:"$10 / 3g Special"
 };
 
@@ -75,7 +75,7 @@ function VibeCard({ type }: { type: string }) {
   const vibes = VIBE_MAP[t] || VIBE_MAP.hybrid;
   return (
     <div className={styles.vibeSection}>
-      <div className={styles.vibeHead}>EFFECTS</div>
+      <div className={styles.vibeHead}>MENU NOTES</div>
       <div className={styles.vibePills}>
         {vibes.map(([emoji, label]) => (
           <span key={label} className={styles.vibePill}>
@@ -635,7 +635,7 @@ function AddOnsCard({ items, hiIdx }: { items: Item[]; hiIdx: number }) {
           <div className={styles.addonsDetailCard}>
             <div className={styles.addonsDetailName}>{hi?.name||""}</div>
             <div className={styles.addonsDetailPrice}>PRICE {(hi?.price||'').replace(/\[object.*\]/,'')}</div>
-            <div className={styles.effectIcons}>🌿 ✨ 💚</div>
+            <div className={styles.effectIcons}>MENU - TIERS - DETAILS</div>
           </div>
         </div>
 
@@ -672,7 +672,7 @@ function AddOnsCard({ items, hiIdx }: { items: Item[]; hiIdx: number }) {
    ============================================================ */
 const TICKER_SLIDES = [
   "🔥 Green Pentagon Cannabis — 1267 Queen St W, Toronto",
-  "200+ Strains In Stock",
+  "FLOWER TIERS - MENU CATEGORIES",
   "Open Daily: 10:00 AM - 12:00 AM",
   "ALL SALES ARE FINAL",
   "🎮 Play Games at greenpentagoncannabis.com/games",

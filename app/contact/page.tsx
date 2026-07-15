@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description:
     "Visit Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. We are open daily from 10:00 AM to 12:00 AM (midnight). Walk-ins welcome.",
   alternates: {
-    canonical: "https://greenpentagoncannabis.com/contact",
+    canonical: "https://www.greenpentagoncannabis.com/contact",
   },
   openGraph: {
     title: "Contact Green Pentagon Cannabis Queen West Dispensary",
     description:
-      "1267 Queen St W, Toronto. We are open daily from 10:00 AM to 12:00 AM (midnight). Premium cannabis, always fire.",
+      "Contact Green Pentagon Cannabis at 1267 Queen St W, Toronto. We are open daily from 10:00 AM to 12:00 AM (midnight).",
   },
 };
 
@@ -108,16 +108,16 @@ export default function ContactPage() {
                 <br />
                 Just walk in and our staff will
                 <br />
-                help you find the perfect strain.
+                help you compare current menu details.
               </p>
               <div className={styles.featureList}>
                 <div className={styles.featureItem}>
                   <span className={styles.featureCheck}></span>
-                  200+ strains in stock
+                  Flower tiers and menu categories
                 </div>
                 <div className={styles.featureItem}>
                   <span className={styles.featureCheck}></span>
-                  Lab-tested &amp; safe
+                  Current package details
                 </div>
                 <div className={styles.featureItem}>
                   <span className={styles.featureCheck}></span>

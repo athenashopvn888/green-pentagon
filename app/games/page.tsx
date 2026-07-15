@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Play free online cannabis-themed games like Flappy Bud and Snake Munchies while you wait at Green Pentagon Cannabis.",
   alternates: {
-    canonical: "https://greenpentagoncannabis.com/games",
+    canonical: "https://www.greenpentagoncannabis.com/games",
   },
 };
 

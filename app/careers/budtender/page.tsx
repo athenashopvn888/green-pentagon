@@ -6,11 +6,11 @@ import BudtenderApplicationForm from "./BudtenderApplicationForm";
 import styles from "./budtender.module.css";
 
 export const metadata: Metadata = {
-  title: "Budtender Or Manager Application | Green Pentagon Cannabis",
+  title: { absolute: "Budtender Or Manager Application | Green Pentagon Cannabis" },
   description:
     "Apply for budtender or manager opportunities at Green Pentagon Cannabis in Toronto. Submit availability, retail experience, motivation, determination, and customer-service answers.",
   alternates: {
-    canonical: "https://greenpentagoncannabis.com/careers/budtender",
+    canonical: "https://www.greenpentagoncannabis.com/careers/budtender",
   },
 };
 

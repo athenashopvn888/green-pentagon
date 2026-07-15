@@ -114,7 +114,7 @@ const LOCAL_FAQS = [
   },
   {
     q: "What cannabis products do you carry?",
-    a: "We carry five tiers of premium flower: Exotic ($10-$12/g), Premium ($7-$10/g), AAA+ ($5-$6/g), AA ($4/g), and Budget ($3/g), plus a wide variety of edibles, prerolls, vapes, and concentrates.",
+    a: "We organize flower into Exotic, Premium, AAA+, AA, and Budget menu tiers, with separate category pages for edibles, pre-rolls, vapes, concentrates, accessories, and cigarettes.",
   },
   {
     q: "Where is Green Pentagon Cannabis located?",
@@ -122,7 +122,7 @@ const LOCAL_FAQS = [
   },
   {
     q: "What is the cheapest weed at Green Pentagon Cannabis?",
-    a: "Our budget flower starts at just $3/g. We also offer AA daily drivers from $4/g and AAA+ heavy hitters from $5-$6/g. View our budget menu for our latest deals.",
+    a: "Use the Budget, AA, and AAA+ tier pages to compare their current posted weights and prices.",
   },
 ];
 
@@ -369,8 +369,7 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Featured Strains</h2>
             <p className={styles.sectionSubtitle}>
-              Staff picks and top sellers dynamically updated from our real-time
-              stock sheet.
+              Featured menu listings from the current product source.
             </p>
           </div>
 
@@ -395,22 +394,20 @@ export default function HomePage() {
             <p className={styles.seoPanelText}>
               Welcome to <strong>Green Pentagon Cannabis</strong>, Queen West's
               local cannabis stop at 1267 Queen St W. We carry an electrifying
-              selection of top-shelf strains from ultra-rare exotics to solid
-              everyday budget picks.
+              menu with separate flower tiers and category pages for other
+              product formats.
             </p>
             <p className={styles.seoPanelText}>
               Green Pentagon Cannabis is open daily from 10:00 AM to 12:00 AM.
-              Our current menu is constantly refreshed with the freshest drops,
-              premium prerolls, artisan edibles, and everything in between.
-              Whether you're winding down or stocking up for the weekend, our
-              knowledgeable staff can help during listed store hours.
+              Use the current menu to compare flower, pre-rolls, edibles, vapes,
+              concentrates, accessories, and cigarettes. Staff can clarify
+              menu details during listed store hours.
             </p>
             <p className={styles.seoPanelText}>
               Searching for a cannabis dispensary in Toronto or the surrounding
-              area? Green Pentagon Cannabis is your local stop for premium
-              flower, potent prerolls, and artisan edibles. Our six-tier pricing
-              system means quality cannabis at every budget level starting from
-              just $3/g.
+              area? Green Pentagon Cannabis provides store details and category
+              navigation for adults planning a Queen West visit. Compare the
+              posted menu information before choosing a product lane.
             </p>
           </div>
         </div>
