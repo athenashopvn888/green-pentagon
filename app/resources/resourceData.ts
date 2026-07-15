@@ -66,9 +66,9 @@ const menuCards: ResourceCard[] = [
     text: "Open the cigarette shelf for current brand and price listings.",
   },
   {
-    title: "GBP Store Page",
+    title: "Store Visit Page",
     href: "/weed-dispensary-toronto",
-    text: "Use the protected local page for the Queen St W address and store details.",
+    text: "Use the visit guide for the Queen St W address and store details.",
   },
 ];
 
@@ -140,7 +140,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
         body:
           "The resource hub keeps the main SEO paths intact while adding local planning content around Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. Start with the store page for the local anchor, then use the resources to choose the shelf.",
         bullets: [
-          "Use /weed-dispensary-toronto for the GBP-connected local landing page.",
+          "Use /weed-dispensary-toronto for the local store page.",
           "Use /resources/menu-guide when choosing between cannabis categories.",
           "Use /resources/native-smokes when cigarette brands, Backwoods, or grabba are part of the visit.",
         ],
@@ -163,14 +163,14 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       "Use this page when the search sounds local: weed dispensary Queen West, cannabis near Parkdale, dispensary near Lansdowne and Dufferin, or a menu stop before moving through Liberty Village, Roncesvalles, or the Queen streetcar corridor.",
     cards: [
       {
-        title: "Local Landing Page",
+        title: "Plan Your Visit",
         href: "/weed-dispensary-toronto",
-        text: "The GBP-connected page with address, hours, and visit context.",
+        text: "The store-connected page with address, hours, and visit context.",
       },
       {
         title: "Menu Guide",
         href: "/resources/menu-guide",
-        text: "Choose the right product lane before opening deep menu pages.",
+        text: "Choose the right product category before opening deep menu pages.",
       },
       {
         title: "Value Guide",
@@ -209,7 +209,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       "A Queen West menu guide for Green Pentagon Cannabis shoppers comparing flower tiers, pre-rolls, edibles, THC vapes, concentrates, accessories, and cigarettes.",
     eyebrow: "Menu Guide",
     intro:
-      "The Green Pentagon menu works best when shoppers choose a lane before comparing products. Flower has shelf tiers. Pre-rolls have format decisions. Cigarettes have brand and price details. Edibles, vapes, concentrates, and accessories each need their own pass.",
+      "The Green Pentagon menu works best when shoppers choose a lane before comparing products. Flower has shelf tiers. Pre-rolls have format decisions. Cigarettes have brand and price details. Edibles, vapes, concentrates, and accessories are easier to compare one category at a time.",
     cards: menuCards,
     sections: [
       {
@@ -225,7 +225,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Protect The Local Page",
         body:
-          "The GBP landing page stays as the main local SEO anchor. The resource pages support it by grouping shopper questions around menu paths, Parkdale context, Queen West intent, and useful category links.",
+          "The visit guide stays as the main local store guide. The resource pages help by grouping shopper questions around menu choices, Parkdale context, Queen West intent, and useful category links.",
       },
     ],
   },
@@ -267,7 +267,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
     title: "Green Pentagon Value Weed Guide",
     seoTitle: "Green Pentagon Value Weed Guide | Cheap Weed Near Parkdale",
     description:
-      "A value shopping guide for Green Pentagon Cannabis near Parkdale and Queen West, covering Budget, AA, AAA+, 6g deals, and affordable weed menu paths.",
+      "A value shopping guide for Green Pentagon Cannabis near Parkdale and Queen West, covering Budget, AA, AAA+, 6g deals, and affordable weed menu choices.",
     eyebrow: "Value Guide",
     intro:
       "For value shopping near Parkdale and Queen West, start with the shelves that were built for it: Budget, AA, and sometimes AAA+ when the 6g bundle makes sense.",
@@ -302,7 +302,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Use Category Value, Not Random Value",
         body:
-          "Value means different things in flower, pre-rolls, edibles, vapes, concentrates, and cigarettes. Keep the comparison inside the right category so the visit stays clean.",
+          "Compare each format on its own: flower, pre-rolls, edibles, vapes, concentrates, and cigarettes all shop a little differently.",
       },
     ],
   },
@@ -433,19 +433,19 @@ export const RESOURCE_PAGES: ResourcePage[] = [
   },
   {
     slug: "resource-centre-launch",
-    title: "Green Pentagon Resource Centre Update",
-    seoTitle: "Green Pentagon Resource Centre Update | Queen West Menu Guides",
+    title: "Green Pentagon Resource Guide Update",
+    seoTitle: "Green Pentagon Resource Guide Update | Queen West Menu Guides",
     description:
-      "Green Pentagon Cannabis resource centre update with Queen West and Parkdale visit planning, menu guide pages, flower tier pricing, value shopping, and Native smokes prices.",
+      "Green Pentagon Cannabis resource guide update with Queen West and Parkdale visit planning, menu guide pages, flower tier pricing, value shopping, and Native smokes prices.",
     eyebrow: "Resource Update",
     intro:
-      "The resource centre has been rebuilt around Green Pentagon Cannabis shoppers: Queen West visit planning, category-first browsing, flower tier math, value shopping, pre-roll shortcuts, and cigarette price notes.",
+      "The resource section is organized around Green Pentagon Cannabis shoppers: Queen West visit planning, category-by-category browsing, flower tier math, value shopping, pre-roll shortcuts, and cigarette price notes.",
     cards: hubCards,
     sections: [
       {
         heading: "What Changed",
         body:
-          "The resources now sound like Green Pentagon Cannabis in Parkdale and Queen West, not a copied store template. Each page supports a specific shopper task and points back to the right category or GBP landing page.",
+          "The resources are written for Green Pentagon Cannabis in Parkdale and Queen West, Each page helps with a specific shopping task and points back to the matching menu category or visit guide.",
       },
       {
         heading: "What Stayed Protected",

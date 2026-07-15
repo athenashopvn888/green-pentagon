@@ -1,4 +1,4 @@
-// Geo-targeted SEO landing pages for Green Pentagon Cannabis.
+// Geo-targeted SEO store pages for Green Pentagon Cannabis.
 
 export interface SeoPageData {
   slug: string;
