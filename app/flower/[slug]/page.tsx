@@ -12,7 +12,11 @@ import {
 import { getStrainData } from "../../lib/strainData";
 import RelatedScroll from "./RelatedScroll";
 import Magnifier from "../../components/Magnifier";
+import SaleBanner from "../../components/SaleBanner";
+import { applyGpcSaleCampaign } from "../../lib/gpcSaleCampaign";
 import styles from "./flower.module.css";
+
+export const dynamic = "force-dynamic";
 
 /* -- Pre-generate all flower pages -- */
 export function generateStaticParams() {
@@ -156,8 +160,9 @@ export default async function FlowerPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const flower = allFlowers.find((f) => f.slug === slug);
-  if (!flower) notFound();
+  const rawFlower = allFlowers.find((f) => f.slug === slug);
+  if (!rawFlower) notFound();
+  const flower = applyGpcSaleCampaign(rawFlower);
 
   const tierConfig = TIER_CONFIG[flower.tier];
   const tierColor = tierConfig?.color || "#94a3b8";
@@ -226,6 +231,8 @@ export default async function FlowerPage({
         <Navbar />
 
         <div className={styles.content}>
+          <SaleBanner />
+
           {/* Breadcrumb */}
           <nav className={styles.breadcrumb}>
             <Link href="/">Home</Link>

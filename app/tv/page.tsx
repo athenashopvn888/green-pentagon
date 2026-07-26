@@ -2,6 +2,11 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "./tv.module.css";
+import {
+  GPC_SALE_END_LABEL,
+  GPC_SALE_LINES,
+  isGpcSaleCampaignActive,
+} from "../lib/gpcSaleCampaign";
 
 /* -- Types -- */
 interface PricePoint { regular: number; sale: number | null; }
@@ -708,6 +713,7 @@ function VerticalTicker() {
    MAIN TV PAGE
    ============================================================ */
 export default function TVMenuPage() {
+  const [saleActive, setSaleActive] = useState(false);
   const [bgUrl, setBgUrl] = useState("");
   useEffect(() => {
     fetch("https://athena-cannabis-images.vercel.app/backgrounds/list.json")
@@ -727,6 +733,13 @@ export default function TVMenuPage() {
   const [lastUpdate, setLastUpdate] = useState("");
   const [particles, setParticles] = useState<Array<{size:number;left:string;color:string;shadow:string;dur:string;delay:string}>>([]);
   const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const update = () => setSaleActive(isGpcSaleCampaignActive());
+    update();
+    const timer = window.setInterval(update, 60_000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   const TIERS = ["EXOTIC","PREMIUM","AAA+","AA","BUDGET"];
 
@@ -852,8 +865,17 @@ export default function TVMenuPage() {
         ))}
       </div>
       <div className={styles.wrap} ref={wrapRef}>
-
-        
+        {saleActive && (
+          <section className={styles.saleBanner} aria-label="Limited time flower sales">
+            <strong className={styles.saleTitle}>LIMITED TIME SALES!!</strong>
+            <div className={styles.saleDeals}>
+              {GPC_SALE_LINES.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </div>
+            <strong className={styles.saleEnd}>ENDS {GPC_SALE_END_LABEL}</strong>
+          </section>
+        )}
 
         {/* GRID */}
         <div className={styles.stage}>
