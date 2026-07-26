@@ -7,6 +7,7 @@ import {
   hasExistingSaleMarker,
   isGpcSaleCampaignActive,
 } from "../app/lib/gpcSaleCampaign.ts";
+import { TOP_TIER_BUNDLE_LABELS } from "../app/tv/bundleLabels.ts";
 import type { FlowerProduct, PricePoint } from "../app/lib/products.ts";
 
 const activeDate = new Date("2026-08-15T16:00:00Z");
@@ -209,6 +210,44 @@ test("sale UI uses semantic struck-through regular-price markup and styles", () 
   assert.match(cardStyles, /\.priceOld[\s\S]*text-decoration:\s*line-through/);
   assert.match(detailStyles, /\.priceOld[\s\S]*text-decoration:\s*line-through/);
   assert.match(tvStyles, /\.oldPrice[\s\S]*text-decoration:\s*line-through/);
+});
+
+test("TV top-tier rows state both bundle mechanics beside every price", () => {
+  const tvPage = readFileSync(
+    new URL("../app/tv/page.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.deepEqual(TOP_TIER_BUNDLE_LABELS, {
+    price3g: "2G = 3G",
+    price5g: "3G = 6G",
+  });
+  assert.match(tvPage, /TOP_TIER_BUNDLE_LABELS\.price3g/);
+  assert.match(tvPage, /TOP_TIER_BUNDLE_LABELS\.price5g/);
+  assert.doesNotMatch(tvPage, /f\.isSale\s*\?\s*"3G="/);
+  assert.doesNotMatch(tvPage, /f\.isSale\s*\?\s*"6G="/);
+  assert.match(
+    tvPage,
+    /pp\.sale !== null && pp\.sale !== pp\.regular/,
+  );
+  assert.match(tvPage, /<del className=\{styles\.oldPrice\}>/);
+  assert.match(tvPage, /return <b className=\{color \|\| ''\}>\$\{pp\.regular\}<\/b>/);
+});
+
+test("TV sale alert uses red black and gold without rainbow animation", () => {
+  const tvStyles = readFileSync(
+    new URL("../app/tv/tv.module.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(tvStyles, /\.saleBanner[\s\S]*#facc15/);
+  assert.match(tvStyles, /\.saleBanner[\s\S]*rgba\(0,\s*0,\s*0/);
+  assert.match(tvStyles, /@keyframes saleAlertSweep/);
+  assert.match(
+    tvStyles,
+    /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.saleBanner::after[\s\S]*animation:\s*none/,
+  );
+  assert.doesNotMatch(tvStyles, /saleHue|#00e5ff|#ab47bc/);
 });
 
 test("campaign returns regular data after its end date", () => {
