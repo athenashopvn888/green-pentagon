@@ -62,6 +62,9 @@
 
 /* ── TITLE BAR ── */
 .saleBanner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: calc(100% - 180px);
   min-height: 150px;
   margin: 0 90px;
@@ -71,15 +74,63 @@
   display: flex;
   align-items: center;
   gap: 34px;
-  border: 5px solid #facc15;
+  border: 6px solid #facc15;
   border-radius: 24px;
   color: #fff;
-  background: linear-gradient(115deg, #7f1d1d, #dc2626 48%, #9f1239);
-  box-shadow: 0 14px 42px rgba(127, 29, 29, 0.48);
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.96), rgba(127, 29, 29, 0.98) 32%, #dc2626 64%, rgba(0, 0, 0, 0.96)),
+    repeating-linear-gradient(135deg, transparent 0 22px, rgba(250, 204, 21, 0.12) 22px 34px);
+  box-shadow:
+    0 0 0 5px #111,
+    0 14px 42px rgba(127, 29, 29, 0.58),
+    inset 0 0 0 2px rgba(254, 240, 138, 0.45);
   text-transform: uppercase;
 }
 
+.saleBanner::before,
+.saleBanner::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.saleBanner::before {
+  z-index: 0;
+  inset: 0;
+  opacity: 0.34;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 34px,
+    rgba(250, 204, 21, 0.5) 34px 48px,
+    transparent 48px 82px
+  );
+}
+
+.saleBanner::after {
+  z-index: 0;
+  top: -90%;
+  bottom: -90%;
+  left: -30%;
+  width: 18%;
+  transform: skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(254, 240, 138, 0.72),
+    transparent
+  );
+  animation: saleAlertSweep 4.8s ease-in-out infinite;
+}
+
+@keyframes saleAlertSweep {
+  0%, 62% { left: -30%; opacity: 0; }
+  68% { opacity: 1; }
+  90%, 100% { left: 112%; opacity: 0; }
+}
+
 .saleTitle {
+  position: relative;
+  z-index: 1;
   font-size: 50px;
   line-height: 0.95;
   letter-spacing: -1px;
@@ -88,6 +139,8 @@
 }
 
 .saleDeals {
+  position: relative;
+  z-index: 1;
   flex: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -109,6 +162,8 @@
 }
 
 .saleEnd {
+  position: relative;
+  z-index: 1;
   max-width: 210px;
   color: #fef08a;
   font-size: 25px;
@@ -830,19 +885,11 @@
 .salePrice {
   font-weight: 900;
 }
-/* Rainbow shimmer on sale price */
+/* High-contrast sale price treatment; intentionally no rainbow cycling. */
 .rowSale .salePrice {
-  background: linear-gradient(90deg,#ff2d2d,#ffd200,#00e5ff,#ab47bc,#ff2d2d);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
-  animation: saleHue 1.6s linear infinite;
-}
-@keyframes saleHue {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
+  color: #b91c1c !important;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
 }
 
 /* ── Deal price layout (2 stacked rows) ── */
@@ -862,11 +909,20 @@
   line-height: 1.2;
 }
 .pLab {
-  font-size: 22px;
+  min-width: 112px;
+  font-size: 20px;
   font-weight: 900;
   color: rgba(26,26,46,.55);
   letter-spacing: .4px;
   text-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saleBanner::after {
+    left: 64%;
+    opacity: 0.28;
+    animation: none;
+  }
 }
 
 /* ── ADDONS (narrow right rail) ── */
@@ -1038,7 +1094,7 @@
 .pricePink { color:#db2777; }
 
 /* ── Tier-specific column grids ── */
-.tTop3 { grid-template-columns: 1fr 90px 220px; }
+.tTop3 { grid-template-columns: 1fr 90px 250px; }
 .tAA { grid-template-columns: 2fr 0.6fr 1.6fr; }
 .tBudget { grid-template-columns: 2fr 0.6fr 1.6fr; }
 
