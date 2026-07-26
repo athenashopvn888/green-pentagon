@@ -33,7 +33,7 @@ const applicantFaqs = [
   },
   {
     q: "Can this same form setup work for other stores later?",
-    a: "Yes. Each response is tagged with StoreKey, StoreName, and Role so future stores can use the same shared response sheet without mixing applications together.",
+    a: "This application is for Green Pentagon Cannabis. Please use the application page for the store where you want to work.",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function BudtenderCareersPage() {
               <span className={styles.eyebrow}>Apply Now</span>
               <h2>Tell Us About You</h2>
               <p>
-                This form sends your response to the shared Athena Store Applications sheet under GPC01. Future stores can use the same response setup with their own store key.
+                This form sends your response securely to the Green Pentagon Cannabis hiring team.
               </p>
               <p className={styles.onlineOnlyInline}>
                 Online applications only. Please do not call the store about hiring.

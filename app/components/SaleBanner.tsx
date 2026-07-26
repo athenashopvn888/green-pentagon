@@ -24,7 +24,9 @@ export default function SaleBanner() {
     <section className={styles.banner} aria-label="Limited time flower sales">
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.content}>
-        <p className={styles.eyebrow}>GPC01 · ENDS {GPC_SALE_END_LABEL}</p>
+        <p className={styles.eyebrow}>
+          GREEN PENTAGON CANNABIS · ENDS {GPC_SALE_END_LABEL}
+        </p>
         <h2 className={styles.title}>LIMITED TIME SALES!!</h2>
         <div className={styles.deals}>
           {GPC_SALE_LINES.map((line) => (

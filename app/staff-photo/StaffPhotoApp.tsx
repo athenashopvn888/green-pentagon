@@ -160,7 +160,7 @@ export default function StaffPhotoApp({ previewMode = null }: { previewMode?: "l
     <main className={styles.shell}>
       <section className={styles.loginCard} aria-labelledby="login-title">
         <div className={styles.brandMark}>GP</div>
-        <p className={styles.eyebrow}>GPC01 · Staff only</p>
+        <p className={styles.eyebrow}>Green Pentagon Cannabis · Staff only</p>
         <h1 id="login-title">Today’s store task</h1>
         <p className={styles.intro}>Enter the Green Pentagon staff PIN.</p>
         <form onSubmit={login} className={styles.loginForm}>
@@ -178,7 +178,7 @@ export default function StaffPhotoApp({ previewMode = null }: { previewMode?: "l
   return (
     <main className={styles.shell}>
       <header className={styles.header}>
-        <div><p className={styles.eyebrow}>GPC01 · Staff</p><h1>Today’s store task</h1><p>{status?.dayKey}</p></div>
+        <div><p className={styles.eyebrow}>Green Pentagon Cannabis · Staff</p><h1>Today’s store task</h1><p>{status?.dayKey}</p></div>
         <button className={styles.textButton} onClick={() => { if (isPreview) { setAuthenticated(false); setStatus(null); } else { void apiJson("/api/staff-photo/auth", { method: "DELETE" }).then(() => { setAuthenticated(false); setStatus(null); }); } }}>Sign out</button>
       </header>
 

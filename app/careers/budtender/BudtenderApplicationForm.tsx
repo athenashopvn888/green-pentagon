@@ -185,7 +185,6 @@ export default function BudtenderApplicationForm() {
 
   return (
     <form className={styles.applicationForm} onSubmit={handleSubmit} noValidate>
-      <input type="hidden" name="StoreKey" value="GPC01" />
       <input type="hidden" name="StoreName" value="Green Pentagon Cannabis" />
       <input type="hidden" name="SourcePage" value="/careers/budtender" />
 
