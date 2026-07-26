@@ -5,6 +5,7 @@ import path from "path";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FlowerCard from "../components/FlowerCard";
+import SaleBanner from "../components/SaleBanner";
 import {
   getFlowersByTier,
   getTierFromSlug,
@@ -12,6 +13,9 @@ import {
 } from "../lib/products";
 import { TIER_SEO } from "../lib/tierSeoContent";
 import styles from "./tier.module.css";
+import { applyGpcSaleCampaign } from "../lib/gpcSaleCampaign";
+
+export const dynamic = "force-dynamic";
 
 /* -- Generate all tier pages at build -- */
 export function generateStaticParams() {
@@ -57,8 +61,8 @@ export default async function TierPage({
   const { config } = tierInfo;
   const seo = TIER_SEO[tierInfo.key];
 
-  const saleFlowers = flowers.filter((f) => f.isSale);
-  const regularFlowers = flowers.filter((f) => !f.isSale);
+  const saleFlowers = flowers.filter((f) => applyGpcSaleCampaign(f).isSale);
+  const regularFlowers = flowers.filter((f) => !applyGpcSaleCampaign(f).isSale);
   const hotFlowers = flowers.filter((f) => f.isHot);
 
   // Check if banner file exists in the public folder
@@ -80,6 +84,8 @@ export default async function TierPage({
           />
         </section>
       )}
+
+      <SaleBanner />
 
       {/* ── Hero Content BELOW banner ── */}
       <section

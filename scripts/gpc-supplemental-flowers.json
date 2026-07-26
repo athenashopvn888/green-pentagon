@@ -1,0 +1,182 @@
+{
+  "catalog": [
+    {
+      "sku": "115",
+      "name": "BLACK JACK SHREDS",
+      "slug": "black-jack-shreds",
+      "tier": "BUDGET",
+      "type": "indica",
+      "isHot": false,
+      "isSale": false,
+      "thc": "24%",
+      "price3g": null,
+      "price5g": null,
+      "price14g": null,
+      "price28g": {
+        "regular": 40,
+        "sale": null
+      },
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/119-Pink-Hindu-shake.jpg",
+      "promoImage": null
+    },
+    {
+      "sku": "343",
+      "name": "PINK HOLY GRAIL",
+      "slug": "pink-holy-grail",
+      "tier": "AAA+",
+      "type": "indica",
+      "isHot": false,
+      "isSale": false,
+      "thc": "31%",
+      "price3g": {
+        "regular": 20,
+        "sale": null
+      },
+      "price5g": {
+        "regular": 30,
+        "sale": null
+      },
+      "price14g": {
+        "regular": 70,
+        "sale": null
+      },
+      "price28g": null,
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/343_PINK_HOLY_GRAIL.webp",
+      "promoImage": null
+    },
+    {
+      "sku": "344",
+      "name": "WHITE TRUFFLE",
+      "slug": "white-truffle",
+      "tier": "AAA+",
+      "type": "indica",
+      "isHot": false,
+      "isSale": false,
+      "thc": "31%",
+      "price3g": {
+        "regular": 20,
+        "sale": null
+      },
+      "price5g": {
+        "regular": 30,
+        "sale": null
+      },
+      "price14g": {
+        "regular": 70,
+        "sale": null
+      },
+      "price28g": null,
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/344_WHITE_TRUFFLE.webp",
+      "promoImage": null
+    },
+    {
+      "sku": "345",
+      "name": "BLACK MAMBA",
+      "slug": "black-mamba",
+      "tier": "AAA+",
+      "type": "indica",
+      "isHot": false,
+      "isSale": false,
+      "thc": "31%",
+      "price3g": {
+        "regular": 20,
+        "sale": null
+      },
+      "price5g": {
+        "regular": 30,
+        "sale": null
+      },
+      "price14g": {
+        "regular": 70,
+        "sale": null
+      },
+      "price28g": null,
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/345_BLACK_MAMBA.webp",
+      "promoImage": null
+    },
+    {
+      "sku": "346",
+      "name": "FORBIDDEN FRUITS",
+      "slug": "forbidden-fruits-346",
+      "tier": "AAA+",
+      "type": "indica",
+      "isHot": false,
+      "isSale": false,
+      "thc": "31%",
+      "price3g": {
+        "regular": 20,
+        "sale": null
+      },
+      "price5g": {
+        "regular": 30,
+        "sale": null
+      },
+      "price14g": {
+        "regular": 70,
+        "sale": null
+      },
+      "price28g": null,
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/346_FORBIDDEN_FRUITS.webp",
+      "promoImage": null
+    },
+    {
+      "sku": "471",
+      "name": "POISON IVY",
+      "slug": "poison-ivy",
+      "tier": "PREMIUM",
+      "type": "sativa",
+      "isHot": false,
+      "isSale": false,
+      "thc": "32%",
+      "price3g": {
+        "regular": 30,
+        "sale": null
+      },
+      "price5g": null,
+      "price14g": {
+        "regular": 95,
+        "sale": null
+      },
+      "price28g": null,
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/99152-471-POISON-IVY.webp",
+      "promoImage": null
+    },
+    {
+      "sku": "533",
+      "name": "PINK ALIEN",
+      "slug": "pink-alien",
+      "tier": "EXOTIC",
+      "type": "indica",
+      "isHot": false,
+      "isSale": false,
+      "thc": "36%",
+      "price3g": {
+        "regular": 40,
+        "sale": null
+      },
+      "price5g": null,
+      "price14g": null,
+      "price28g": null,
+      "image": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/533-Pink-Alien.jpg",
+      "promoImage": "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/ChatGPT-Image-Jan-7-2026-03_04_10-AM.png"
+    }
+  ],
+  "missingPriceOverrides": {
+    "471": {
+      "price5g": {
+        "regular": 45,
+        "sale": null
+      }
+    },
+    "533": {
+      "price5g": {
+        "regular": 60,
+        "sale": null
+      }
+    }
+  },
+  "intendedTierBySku": {
+    "392": "AAA+",
+    "396": "AAA+"
+  }
+}

@@ -12,6 +12,7 @@ const path = require('path');
 const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || '';
 const FLOWERS_PATH = path.join(__dirname, '..', 'app', 'lib', 'flowers.json');
 const ITEMS_PATH = path.join(__dirname, '..', 'app', 'lib', 'items.json');
+const SUPPLEMENTAL_PATH = path.join(__dirname, 'gpc-supplemental-flowers.json');
 
 async function main() {
   if (!APPS_SCRIPT_URL) {
@@ -22,18 +23,36 @@ async function main() {
   console.log('[prebuild] Fetching live stock from Apps Script...');
 
   try {
+    const { reconcileGpcFlowers } = await import('./gpc-stock-repair.mjs');
+    const supplemental = JSON.parse(
+      fs.readFileSync(SUPPLEMENTAL_PATH, 'utf-8'),
+    );
     const url = `${APPS_SCRIPT_URL}?store=GPC01`;
-    const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
+    const stockUrl = `${APPS_SCRIPT_URL}?store=GPC01&stock=1`;
+    const [res, stockRes] = await Promise.all([
+      fetch(url, { signal: AbortSignal.timeout(30000) }),
+      fetch(stockUrl, { signal: AbortSignal.timeout(30000) }),
+    ]);
 
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }
+    if (!stockRes.ok) {
+      throw new Error(`Stock HTTP ${stockRes.status}: ${stockRes.statusText}`);
+    }
 
     const data = await res.json();
+    const stockData = await stockRes.json();
 
     if (!data.flowers || !data.items) {
       throw new Error('Invalid response: missing flowers or items');
     }
+
+    data.flowers = reconcileGpcFlowers(
+      data.flowers,
+      stockData,
+      supplemental,
+    );
 
     // ── Post-process flowers: derive sale flags + clean names ──
     const SALE_RE = /\bSALE\b/i;
@@ -98,7 +117,7 @@ async function main() {
     data.items.forEach(i => { cats[i.category] = (cats[i.category] || 0) + 1; });
     Object.entries(cats).sort().forEach(([c, n]) => console.log(`  ${c}: ${n}`));
 
-    console.log(`[prebuild] Stock date: ${data.stockDate || 'unknown'}`);
+    console.log(`[prebuild] Stock date: ${stockData.date || data.stockDate || 'unknown'}`);
     console.log('[prebuild] Done!');
 
   } catch (err) {

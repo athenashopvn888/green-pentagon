@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FlowerCard from "./components/FlowerCard";
+import SaleBanner from "./components/SaleBanner";
 import { allFlowers } from "./lib/products";
 
 /* Bento Mosaic Config */
@@ -266,6 +267,8 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      <SaleBanner />
 
       {/* BENTO MOSAIC HERO */}
       <section className={styles.hiringCallout} aria-label="Hiring at Green Pentagon Cannabis" style={{ "--hire-accent": "#34d399", "--hire-accent-soft": "rgba(52, 211, 153, 0.14)", "--hire-accent-border": "rgba(52, 211, 153, 0.32)" } as CSSProperties}>

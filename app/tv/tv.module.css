@@ -61,6 +61,61 @@
 }
 
 /* ── TITLE BAR ── */
+.saleBanner {
+  width: calc(100% - 180px);
+  min-height: 150px;
+  margin: 0 90px;
+  padding: 18px 34px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  border: 5px solid #facc15;
+  border-radius: 24px;
+  color: #fff;
+  background: linear-gradient(115deg, #7f1d1d, #dc2626 48%, #9f1239);
+  box-shadow: 0 14px 42px rgba(127, 29, 29, 0.48);
+  text-transform: uppercase;
+}
+
+.saleTitle {
+  font-size: 50px;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 0 #7f1d1d;
+  white-space: nowrap;
+}
+
+.saleDeals {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.saleDeals span {
+  display: grid;
+  min-height: 82px;
+  place-items: center;
+  padding: 8px 12px;
+  border: 2px solid #fef08a;
+  border-radius: 14px;
+  color: #450a0a;
+  background: linear-gradient(#fef9c3, #facc15);
+  font-size: 27px;
+  font-weight: 1000;
+  text-align: center;
+}
+
+.saleEnd {
+  max-width: 210px;
+  color: #fef08a;
+  font-size: 25px;
+  line-height: 1.1;
+  text-align: center;
+}
+
 .titleBar {
   height: 110px;
   border-radius: 18px;

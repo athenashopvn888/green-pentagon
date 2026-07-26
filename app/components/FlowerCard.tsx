@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { FlowerProduct, PricePoint } from "../lib/products";
 import { TIER_CONFIG } from "../lib/products";
+import { applyGpcSaleCampaign } from "../lib/gpcSaleCampaign";
 import styles from "./FlowerCard.module.css";
 
 interface WeightOption {
@@ -33,34 +34,53 @@ export default function FlowerCard({
   flower: FlowerProduct;
   tierKey: string;
 }) {
+  const [pricedFlower, setPricedFlower] = useState(flower);
+
+  useEffect(() => {
+    const update = () => setPricedFlower(applyGpcSaleCampaign(flower));
+    update();
+    const timer = window.setInterval(update, 60_000);
+    return () => window.clearInterval(timer);
+  }, [flower]);
+
   const tierCfg = TIER_CONFIG[tierKey];
   const isPromoTier = !!tierCfg?.deal6g; // Exotic, Premium, AAA+
 
   const weights: WeightOption[] = [];
-  if (flower.price3g) {
+  if (pricedFlower.price3g) {
     weights.push({
       key: "3g",
       label: "3g",
       grams: 3,
-      price: flower.price3g,
+      price: pricedFlower.price3g,
       promo: isPromoTier ? "3g bundle" : tierCfg?.deal3g?.label,
     });
   }
-  if (flower.price5g) {
+  if (pricedFlower.price5g) {
     const grams = isPromoTier ? 6 : 5;
     weights.push({
       key: "5g",
       label: `${grams}g`,
       grams,
-      price: flower.price5g,
+      price: pricedFlower.price5g,
       promo: isPromoTier ? "6g bundle" : undefined,
     });
   }
-  if (flower.price14g) {
-    weights.push({ key: "14g", label: "14g", grams: 14, price: flower.price14g });
+  if (pricedFlower.price14g) {
+    weights.push({
+      key: "14g",
+      label: "14g",
+      grams: 14,
+      price: pricedFlower.price14g,
+    });
   }
-  if (flower.price28g) {
-    weights.push({ key: "28g", label: "28g", grams: 28, price: flower.price28g });
+  if (pricedFlower.price28g) {
+    weights.push({
+      key: "28g",
+      label: "28g",
+      grams: 28,
+      price: pricedFlower.price28g,
+    });
   }
 
   const [selected, setSelected] = useState(0);
@@ -97,7 +117,7 @@ export default function FlowerCard({
           <span className={styles.thcBadge}>THC {flower.thc}</span>
 
           {/* Sale tag */}
-          {flower.isSale && (
+          {pricedFlower.isSale && (
             <span className={styles.saleTag}>SALE</span>
           )}
         </div>
@@ -118,7 +138,7 @@ export default function FlowerCard({
           {active.price && active.price.sale !== null ? (
             <div className={styles.priceGroup}>
               <span className={styles.priceMain}>${active.price.sale}</span>
-              <span className={styles.priceOld}>${active.price.regular}</span>
+              <del className={styles.priceOld}>${active.price.regular}</del>
             </div>
           ) : (
             <span className={styles.priceMain}>${active.price?.regular}</span>
