@@ -52,7 +52,7 @@ function PriceCell({ pp, color }: { pp: PricePoint|null; color?: string }) {
   if (pp.sale !== null && pp.sale !== pp.regular) {
     return (
       <span>
-        <span className={styles.oldPrice}>${pp.regular}</span>
+        <del className={styles.oldPrice}>${pp.regular}</del>
         <b className={`${styles.salePrice} ${color || ''}`}>${pp.sale}</b>
       </span>
     );

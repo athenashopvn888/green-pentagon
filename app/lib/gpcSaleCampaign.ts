@@ -76,9 +76,24 @@ function discountedPrice(point: PricePoint, discount: number): PricePoint {
   const campaignSale = Math.max(0, point.regular - discount);
   return {
     ...point,
-    sale:
-      point.sale === null ? campaignSale : Math.min(point.sale, campaignSale),
+    sale: campaignSale,
   };
+}
+
+export function hasExistingSaleMarker(flower: FlowerProduct): boolean {
+  const pricePoints = [
+    flower.price3g,
+    flower.price5g,
+    flower.price14g,
+    flower.price28g,
+  ];
+
+  return (
+    flower.isSale ||
+    /\bSALE\b/i.test(String(flower.name || "")) ||
+    /\bSALE\b/i.test(String(flower.type || "")) ||
+    pricePoints.some((point) => point?.sale !== null && point?.sale !== undefined)
+  );
 }
 
 export function applyGpcSaleCampaign(
@@ -86,6 +101,7 @@ export function applyGpcSaleCampaign(
   now = new Date(),
 ): FlowerProduct {
   if (!isGpcSaleCampaignActive(now)) return flower;
+  if (hasExistingSaleMarker(flower)) return flower;
 
   const sku = Number.parseInt(String(flower.sku).trim(), 10);
   if (!Number.isInteger(sku)) return flower;

@@ -348,9 +348,9 @@ export default async function FlowerPage({
                           {p && p.sale !== null ? (
                             <div className={styles.priceSale}>
                               <span className={styles.priceNew}>${p.sale}</span>
-                              <span className={styles.priceOld}>
+                              <del className={styles.priceOld}>
                                 ${p.regular}
-                              </span>
+                              </del>
                             </div>
                           ) : (
                             <span className={styles.priceRegular}>

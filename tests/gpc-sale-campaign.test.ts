@@ -1,8 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   applyGpcSaleCampaign,
   getTorontoDateKey,
+  hasExistingSaleMarker,
   isGpcSaleCampaignActive,
 } from "../app/lib/gpcSaleCampaign.ts";
 import type { FlowerProduct, PricePoint } from "../app/lib/products.ts";
@@ -88,27 +90,43 @@ test("tier match prevents AAA+ campaign from leaking to Budget duplicates", () =
   assert.equal(duplicate.price5g?.sale, null);
 });
 
-test("existing lower sale is preserved and unavailable weights stay unavailable", () => {
-  const aaaExistingSale = applyGpcSaleCampaign(
-    flower("392", "AAA+", {
-      price3g: price(20, 10),
-      price5g: price(30, 20),
-    }),
-    activeDate,
-  );
-  assert.equal(aaaExistingSale.price3g?.sale, 10);
-  assert.equal(aaaExistingSale.price5g?.sale, 20);
+test("existing-sale products are wholly excluded even when their sale is higher", () => {
+  const markedByFlag = flower("392", "AAA+", {
+    isSale: true,
+    price3g: price(20),
+    price5g: price(30),
+  });
+  assert.equal(applyGpcSaleCampaign(markedByFlag, activeDate), markedByFlag);
 
-  const existingSale = applyGpcSaleCampaign(
-    flower("480", "PREMIUM", {
-      price3g: price(30, 15),
-      price5g: price(45, 30),
-    }),
-    activeDate,
-  );
-  assert.equal(existingSale.price3g?.sale, 15);
-  assert.equal(existingSale.price5g?.sale, 30);
+  const markedByPrice = flower("480", "PREMIUM", {
+    price3g: price(30, 25),
+    price5g: price(45, 40),
+  });
+  assert.equal(applyGpcSaleCampaign(markedByPrice, activeDate), markedByPrice);
+  assert.equal(markedByPrice.price3g?.sale, 25);
+  assert.equal(markedByPrice.price5g?.sale, 40);
 
+  const markedByName = flower("550", "EXOTIC", {
+    name: "PINK STARKILLER ON SALE",
+  });
+  assert.equal(applyGpcSaleCampaign(markedByName, activeDate), markedByName);
+
+  const markedByType = flower("561", "EXOTIC", {
+    type: "SH SALE" as FlowerProduct["type"],
+  });
+  assert.equal(applyGpcSaleCampaign(markedByType, activeDate), markedByType);
+
+  for (const marked of [
+    markedByFlag,
+    markedByPrice,
+    markedByName,
+    markedByType,
+  ]) {
+    assert.equal(hasExistingSaleMarker(marked), true);
+  }
+});
+
+test("regular products keep unavailable weights unavailable", () => {
   const missingWeight = applyGpcSaleCampaign(
     flower("533", "EXOTIC", { price5g: null }),
     activeDate,
@@ -122,6 +140,62 @@ test("existing lower sale is preserved and unavailable weights stay unavailable"
   );
   assert.equal(noEligibleWeight.price5g, null);
   assert.equal(noEligibleWeight.isSale, false);
+});
+
+test("current deeper-sale examples remain completely unchanged", () => {
+  const aaaExistingSale = flower("392", "AAA+", {
+    isSale: true,
+    price3g: price(20, 10),
+    price5g: price(30, 20),
+  });
+  assert.equal(
+    applyGpcSaleCampaign(aaaExistingSale, activeDate),
+    aaaExistingSale,
+  );
+
+  const exoticExistingSale = flower("550", "EXOTIC", {
+    isSale: true,
+    price3g: price(40, 30),
+    price5g: price(60, 45),
+  });
+  assert.equal(
+    applyGpcSaleCampaign(exoticExistingSale, activeDate),
+    exoticExistingSale,
+  );
+});
+
+test("sale UI uses semantic struck-through regular-price markup and styles", () => {
+  const flowerCard = readFileSync(
+    new URL("../app/components/FlowerCard.tsx", import.meta.url),
+    "utf8",
+  );
+  const flowerDetail = readFileSync(
+    new URL("../app/flower/[slug]/page.tsx", import.meta.url),
+    "utf8",
+  );
+  const tvPage = readFileSync(
+    new URL("../app/tv/page.tsx", import.meta.url),
+    "utf8",
+  );
+  const cardStyles = readFileSync(
+    new URL("../app/components/FlowerCard.module.css", import.meta.url),
+    "utf8",
+  );
+  const detailStyles = readFileSync(
+    new URL("../app/flower/[slug]/flower.module.css", import.meta.url),
+    "utf8",
+  );
+  const tvStyles = readFileSync(
+    new URL("../app/tv/tv.module.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(flowerCard, /<del className=\{styles\.priceOld\}>/);
+  assert.match(flowerDetail, /<del className=\{styles\.priceOld\}>/);
+  assert.match(tvPage, /<del className=\{styles\.oldPrice\}>/);
+  assert.match(cardStyles, /\.priceOld[\s\S]*text-decoration:\s*line-through/);
+  assert.match(detailStyles, /\.priceOld[\s\S]*text-decoration:\s*line-through/);
+  assert.match(tvStyles, /\.oldPrice[\s\S]*text-decoration:\s*line-through/);
 });
 
 test("campaign returns regular data after its end date", () => {

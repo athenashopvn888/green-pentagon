@@ -138,7 +138,7 @@ export default function FlowerCard({
           {active.price && active.price.sale !== null ? (
             <div className={styles.priceGroup}>
               <span className={styles.priceMain}>${active.price.sale}</span>
-              <span className={styles.priceOld}>${active.price.regular}</span>
+              <del className={styles.priceOld}>${active.price.regular}</del>
             </div>
           ) : (
             <span className={styles.priceMain}>${active.price?.regular}</span>
