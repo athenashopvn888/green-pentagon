@@ -52,7 +52,7 @@ test("missing local price metadata is filled and unavailable weights are masked"
   assert.equal(result[0].price14g, null);
 });
 
-test("392 and 396 are de-duplicated into intended AAA+ records", () => {
+test("392 and 396 retain only Budget records with sale values unchanged", () => {
   const duplicate = (sku, tier) => ({
     sku,
     name: `SKU ${sku}`,
@@ -83,12 +83,19 @@ test("392 and 396 are de-duplicated into intended AAA+ records", () => {
   );
 
   assert.deepEqual(
-    result.map((flower) => [flower.sku, flower.tier]),
+    result.map((flower) => [
+      flower.sku,
+      flower.tier,
+      flower.price3g.sale,
+      flower.price5g.sale,
+    ]),
     [
-      ["392", "AAA+"],
-      ["396", "AAA+"],
+      ["392", "BUDGET", 10, 20],
+      ["396", "BUDGET", 10, 20],
     ],
   );
+  assert.equal(result.filter((flower) => flower.sku === "392").length, 1);
+  assert.equal(result.filter((flower) => flower.sku === "396").length, 1);
 });
 
 test("full-feed sale values survive supplemental reconciliation unchanged", () => {
