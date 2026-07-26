@@ -10,6 +10,7 @@
     "lint": "eslint",
     "test:gpc-feed": "node --test tests/gpc-stock-repair.test.mjs",
     "test:gpc-sale": "node --experimental-strip-types --test tests/gpc-sale-campaign.test.ts",
+    "test:tv2-promo": "node --experimental-strip-types --test tests/tv2-daytime-promo.test.ts",
     "test:staff-photo": "node --experimental-strip-types --experimental-specifier-resolution=node --test tests/staff-photo.test.ts"
   },
   "dependencies": {

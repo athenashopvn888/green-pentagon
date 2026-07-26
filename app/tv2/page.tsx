@@ -1,6 +1,10 @@
 "use client";
 import { useState, useEffect, useCallback, useRef } from "react";
 import styles from "./tv2.module.css";
+import {
+  getTv2DaytimePromo,
+  isTv2Daytime,
+} from "./daytimePromos";
 
 /* -- TYPES -- */
 interface Item {
@@ -17,8 +21,6 @@ const CARD_CONFIG = [
   { id:"CIGARETTES",      title:"🚬 CIGARETTES",         accent:"#78350f", filter:(it:Item)=>it.category==="CIGARETTES", preset:"" },
   { id:"MAGIC",           title:"🍄 MAGIC & OTHERS",     accent:"#9333ea", filter:(it:Item)=>it.category==="MAGIC & OTHERS", preset:"🍫 START SMALL · WAIT 45 MIN · THEN MORE" },
 ];
-
-function isDaytime() { const h = new Date().getHours(); return h >= 10 && h < 17; }
 
 /* -- HELPERS -- */
 const fmtPrice = (v?:string) => { const s=String(v||"").trim(); if(!s)return""; return /^\$/.test(s)?s:"$"+s; };
@@ -188,8 +190,8 @@ export default function TV2Page() {
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setDaytime(isDaytime());
-    const iv = setInterval(() => setDaytime(isDaytime()), 60_000);
+    setDaytime(isTv2Daytime());
+    const iv = setInterval(() => setDaytime(isTv2Daytime()), 60_000);
     return () => clearInterval(iv);
   }, []);
 
@@ -245,18 +247,34 @@ export default function TV2Page() {
           <div className={styles.grid}>
             {CARD_CONFIG.map(card => {
               const filtered = items.filter(card.filter);
+              const promo = getTv2DaytimePromo(card.id, daytime);
 
-              if (card.id === "CIGARETTES" && daytime) {
+              if (promo) {
                 return (
-                  <div key={card.id} className={styles.card} style={{"--accent":card.accent} as React.CSSProperties}>
+                  <div
+                    key={card.id}
+                    className={styles.card}
+                    data-promo-card={card.id}
+                    style={{"--accent":card.accent} as React.CSSProperties}
+                  >
                     <div className={styles.cardHeader}>PROMO</div>
                     <div className={styles.promoMain}>
                       <div className={styles.promoViewport}>
                         <img
                           className={`${styles.promoImg} ${styles.promoActive}`}
-                          src="/banners/cig-poster-1.png"
-                          alt="Cigarettes Promo"
+                          src={promo.src}
+                          alt={promo.alt}
                           referrerPolicy="no-referrer"
+                          onError={(event) => {
+                            const target = event.currentTarget;
+                            if (
+                              promo.fallbackSrc &&
+                              target.dataset.fallbackApplied !== "true"
+                            ) {
+                              target.dataset.fallbackApplied = "true";
+                              target.src = promo.fallbackSrc;
+                            }
+                          }}
                         />
                       </div>
                     </div>
