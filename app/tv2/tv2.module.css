@@ -336,7 +336,7 @@
   white-space: nowrap;
   text-align: right;
 }
-/* ── PROMO CARD (daytime cigarette poster) ── */
+/* ── PROMO CARD (daytime cigarette and VAPES posters) ── */
 .promoMain {
   flex: 1 1 auto;
   padding: 12px;
@@ -366,6 +366,10 @@
 }
 .promoImg.promoActive {
   opacity: 1;
+}
+
+[data-promo-card="VAPES"] .promoImg {
+  object-position: center top;
 }
 
 /* ── TICKER (vertical scroll, section by section) ── */
