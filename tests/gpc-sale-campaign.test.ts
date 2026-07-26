@@ -90,6 +90,19 @@ test("tier match prevents AAA+ campaign from leaking to Budget duplicates", () =
   assert.equal(duplicate.price5g?.sale, null);
 });
 
+test("existing-sale Budget records for 392 and 396 remain exactly unchanged", () => {
+  for (const sku of ["392", "396"]) {
+    const duplicate = flower(sku, "BUDGET", {
+      isSale: true,
+      price3g: price(20, 10),
+      price5g: price(30, 20),
+    });
+    assert.equal(applyGpcSaleCampaign(duplicate, activeDate), duplicate);
+    assert.equal(duplicate.price3g?.sale, 10);
+    assert.equal(duplicate.price5g?.sale, 20);
+  }
+});
+
 test("existing-sale products are wholly excluded even when their sale is higher", () => {
   const markedByFlag = flower("392", "AAA+", {
     isSale: true,
