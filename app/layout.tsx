@@ -81,7 +81,7 @@ const jsonLd = {
   description:
     "Cannabis dispensary at 1267 Queen St W in Toronto, ON. Shop exotic, premium, AAA+, AA, and budget flower tiers plus edibles, prerolls, and vapes. Open Daily: 10:00 AM - 12:00 AM.",
   url: "https://www.greenpentagoncannabis.com",
-  telephone: "+14163885765",
+  telephone: "+14372903657",
   image:
     "https://www.greenpentagoncannabis.com/wp-content/uploads/2026/04/7Clmh.jpg",
   priceRange: "$3 - $12/g",

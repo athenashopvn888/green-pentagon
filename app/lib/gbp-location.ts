@@ -8,8 +8,8 @@ export const gbpLocation = {
   address: "1267 Queen St W, Toronto, ON M6K 2J2",
   streetAddress: "1267 Queen St W",
   postalCode: "M6K 2J2",
-  phone: "(416) 388-5765",
-  phoneIntl: "+14163885765",
+  phone: "+1 (437) 290-3657",
+  phoneIntl: "+14372903657",
   neighborhood: "Parkdale / Queen West",
   nearbyAreas: ["Queen St W", "Lansdowne", "Parkdale", "Dufferin", "Liberty Village", "Roncesvalles", "TTC"],
   products: [

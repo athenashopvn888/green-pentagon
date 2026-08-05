@@ -116,7 +116,7 @@ export default function DeliveryContent() {
             Can&apos;t wait? Visit us in-store at{" "}
             <strong>1267 Queen St W, Toronto</strong>
             we are <strong>Open Daily: 10:00 AM - 12:00 AM</strong>. Call{" "}
-            <strong>(416) 388-5765</strong>.
+            <strong>+1 (437) 290-3657</strong>.
           </p>
         </div>
       </div>

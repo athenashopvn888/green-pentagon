@@ -120,7 +120,7 @@ const LOCAL_FAQS = [
   },
   {
     q: "Where is Green Pentagon Cannabis located?",
-    a: "We are located at 1267 Queen St W, Toronto, ON M6K 2J2. Visit us in person or call us at (416) 388-5765. Free evening street parking is available.",
+    a: "We are located at 1267 Queen St W, Toronto, ON M6K 2J2. Visit us in person or call us at +1 (437) 290-3657. Free evening street parking is available.",
   },
   {
     q: "What is the cheapest weed at Green Pentagon Cannabis?",
