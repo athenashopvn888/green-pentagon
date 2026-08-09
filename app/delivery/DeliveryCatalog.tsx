@@ -14,6 +14,7 @@ type TierFilter = "ALL" | Tier;
 const bundledProducts = menu.products as Product[];
 const tierFilters: TierFilter[] = ["ALL", "Exotics", "CRAFTS", "BC Premium", "Budget", "SHREDS"];
 const tierDisplayOrder: Tier[] = ["Exotics", "CRAFTS", "BC Premium", "Budget", "SHREDS"];
+const formatPrice = (value: number) => Number.isInteger(value) ? String(value) : value.toFixed(2);
 const store = {
   id: "GP",
   shortName: "GP",
@@ -71,7 +72,7 @@ function ProductPricing({ product }: { product: Product }) {
           const quantity = Number(offer.quantity);
           const total = Number(offer.totalPrice);
           const each = Number(offer.perUnitPrice) || total / quantity;
-          return <div className="decision-tile bundle-decision" key={`${offer.kind}-${quantity}-${index}`}><span>{quantity} × 28g DEAL</span><div className="bundle-numbers"><strong>${each} <small>each</small></strong><b>${total} <small>total</small></b></div></div>;
+          return <div className="decision-tile bundle-decision" key={`${offer.kind}-${quantity}-${index}`}><span>{quantity} × 28g DEAL</span><div className="bundle-numbers"><strong>${formatPrice(each)} <small>each</small></strong><b>${formatPrice(total)} <small>total</small></b></div></div>;
         })}
         {regular28 && <div className="decision-tile standard-28"><span>STANDARD 28g</span><strong>${regular28.price}</strong><small>Regular price</small></div>}
       </div>}

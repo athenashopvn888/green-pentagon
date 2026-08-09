@@ -29,6 +29,7 @@ for (const product of menu.products) {
 
 assert(catalog.includes("api/catalog?store=") && catalog.includes('id: "GP"'));
 assert(catalog.includes("explicitLoyalty") && catalog.includes("eligible && regular28 ? regular28.price - 30"));
+assert(catalog.includes("formatPrice(each)") && catalog.includes("formatPrice(total)"));
 assert(catalog.includes("Delivery text/SMS:") && catalog.includes("sms:"));
 assert(chat.includes('STORE_ID = "GP"') && chat.includes('"NEW_CUSTOMER"') && chat.includes('"RETURNING_CUSTOMER"'));
 assert(chat.includes("preparePhoto") && chat.includes("id-review") && chat.includes("Text delivery"));
