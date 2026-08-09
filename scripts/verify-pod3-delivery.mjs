@@ -14,6 +14,7 @@ const css = await read("app/delivery/delivery-experience.css");
 const home = await read("app/page.tsx");
 const navbar = await read("app/components/Navbar.tsx");
 const footer = await read("app/components/Footer.tsx");
+const nextConfig = await read("next.config.ts");
 const combined = [catalog, chat, page, content, drawer, css, home, navbar, footer, JSON.stringify(menu)].join("\n");
 
 assert.deepEqual(menu.store, { id: "GP", code: "GP01", name: "Green Pentagon Cannabis", pod: "POD03" });
@@ -44,5 +45,7 @@ assert(css.includes("grid-template-columns:repeat(2,minmax(0,1fr))") || css.incl
 assert(navbar.includes("STORE MENU") && navbar.includes("DELIVERY MENU"));
 assert(home.includes("STORE MENU") && home.includes("DELIVERY MENU"));
 assert(footer.includes('<Link href="/delivery">Delivery Menu</Link>') && !footer.includes("Delivery (Coming Soon)"));
+assert(nextConfig.includes('hostname: "milestone-1-demo.vercel.app"'));
+assert(nextConfig.includes('pathname: "/api/catalog-image"'));
 
 console.log(JSON.stringify({ storeId: "GP", podId: "POD03", products: 63, descriptions: 58, images: 63, root }, null, 2));
