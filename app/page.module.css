@@ -1017,3 +1017,40 @@
     width: 100%;
   }
 }
+.homeMenuActions {
+  display: grid;
+  width: min(100%, 380px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.homeMenuCta {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(251, 191, 36, .85);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  background: rgba(15, 23, 42, .76);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.homeDeliveryCta {
+  border-color: #fff;
+  background: #c5161d;
+  box-shadow: 0 10px 24px rgba(197, 22, 29, .35);
+}
+
+.homeMenuCta:focus-visible { outline: 3px solid #facc15; outline-offset: 3px; }
+
+@media (max-width: 420px) {
+  .homeMenuActions { gap: 7px; }
+  .homeMenuCta { min-height: 52px; padding-inline: 7px; font-size: 10px; }
+}
