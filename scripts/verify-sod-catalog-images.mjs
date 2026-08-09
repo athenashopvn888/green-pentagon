@@ -9,8 +9,9 @@ assert.equal(catalogResponse.status, 200, "SOD catalog must return 200");
 const catalog = await catalogResponse.json();
 assert.equal(catalog.products?.length, 63, "SOD catalog must return 63 products");
 
-const imageUrls = catalog.products.flatMap((product) => product.images || []);
-assert.equal(imageUrls.length, 63, "SOD catalog must return one image per product");
+assert(catalog.products.every((product) => product.images?.length > 0), "Every SOD product must have a primary image");
+const imageUrls = catalog.products.map((product) => product.images[0]);
+assert.equal(imageUrls.length, 63, "SOD catalog must return a primary image for all 63 products");
 assert(imageUrls.every((url) => {
   const parsed = new URL(url);
   return parsed.protocol === "https:" && parsed.hostname === "milestone-1-demo.vercel.app" && parsed.pathname === "/api/catalog-image";
