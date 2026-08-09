@@ -1574,6 +1574,8 @@ body.product-open .product-drawer {
 .sod-chat-start { display:grid; align-content:start; gap:12px; overflow:auto; padding:16px; }
 .sod-chat-start p,.sod-id-upload p { margin:0; color:#475c50; font-size:13px; line-height:1.45; }
 .sod-chat-start label { display:grid; gap:5px; font-size:12px; font-weight:800; }
+.sod-chat-start .sod-sms-consent { grid-template-columns:20px minmax(0,1fr); align-items:start; gap:9px; border:1px solid #aebdb5; border-radius:9px; padding:10px; background:#f7fbf8; color:#233d31; font-size:12px; font-weight:600; line-height:1.4; }
+.sod-chat-start .sod-sms-consent input { width:18px; height:18px; min-height:0; margin:0; padding:0; accent-color:#146b48; }
 .sod-chat-start input,.sod-chat-start textarea,.sod-chat-composer textarea { width:100%; border:1px solid #aebdb5; border-radius:9px; padding:10px; background:#fff; color:#17221d; font:inherit; }
 .sod-chat-start button,.sod-id-upload button,.sod-chat-composer button { min-height:42px; border:0; border-radius:9px; background:#146b48; color:#fff; font-weight:850; }
 .sod-chat-start button:disabled,.sod-id-upload button:disabled,.sod-chat-composer button:disabled { opacity:.55; }
