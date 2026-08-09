@@ -39,31 +39,32 @@ function flower(
   };
 }
 
-test("campaign observes inclusive Toronto dates and stops at midnight", () => {
+test("cancelled campaign remains inactive throughout its former date range", () => {
   assert.equal(getTorontoDateKey(new Date("2026-07-26T03:59:59Z")), "2026-07-25");
   assert.equal(isGpcSaleCampaignActive(new Date("2026-07-26T03:59:59Z")), false);
-  assert.equal(isGpcSaleCampaignActive(new Date("2026-07-26T04:00:00Z")), true);
-  assert.equal(isGpcSaleCampaignActive(new Date("2026-09-27T03:59:59Z")), true);
+  assert.equal(isGpcSaleCampaignActive(new Date("2026-07-26T04:00:00Z")), false);
+  assert.equal(isGpcSaleCampaignActive(new Date("2026-08-15T16:00:00Z")), false);
+  assert.equal(isGpcSaleCampaignActive(new Date("2026-09-27T03:59:59Z")), false);
   assert.equal(isGpcSaleCampaignActive(new Date("2026-09-27T04:00:00Z")), false);
 });
 
-test("AA range discounts only available 5g and honors boundaries", () => {
+test("AA range keeps regular prices without the cancelled discount", () => {
   const first = applyGpcSaleCampaign(flower("200", "AA"), activeDate);
   const last = applyGpcSaleCampaign(flower("299", "AA"), activeDate);
   assert.equal(first.price3g?.sale, null);
-  assert.equal(first.price5g?.sale, 25);
-  assert.equal(last.price5g?.sale, 25);
+  assert.equal(first.price5g?.sale, null);
+  assert.equal(last.price5g?.sale, null);
   assert.equal(applyGpcSaleCampaign(flower("199", "AA"), activeDate).price5g?.sale, null);
   assert.equal(applyGpcSaleCampaign(flower("300", "AA"), activeDate).price5g?.sale, null);
 });
 
-test("AAA+, Premium, and Exotic ranges discount 3g and displayed 6g", () => {
+test("AAA+, Premium, and Exotic ranges keep regular prices", () => {
   const aaa = applyGpcSaleCampaign(flower("300", "AAA+"), activeDate);
   const premium = applyGpcSaleCampaign(flower("499", "PREMIUM"), activeDate);
   const exotic = applyGpcSaleCampaign(flower("500", "EXOTIC"), activeDate);
-  assert.deepEqual([aaa.price3g?.sale, aaa.price5g?.sale], [15, 25]);
-  assert.deepEqual([premium.price3g?.sale, premium.price5g?.sale], [10, 20]);
-  assert.deepEqual([exotic.price3g?.sale, exotic.price5g?.sale], [10, 20]);
+  assert.deepEqual([aaa.price3g?.sale, aaa.price5g?.sale], [null, null]);
+  assert.deepEqual([premium.price3g?.sale, premium.price5g?.sale], [null, null]);
+  assert.deepEqual([exotic.price3g?.sale, exotic.price5g?.sale], [null, null]);
 });
 
 test("excluded SKUs do not receive campaign pricing", () => {
@@ -145,7 +146,7 @@ test("regular products keep unavailable weights unavailable", () => {
     flower("533", "EXOTIC", { price5g: null }),
     activeDate,
   );
-  assert.equal(missingWeight.price3g?.sale, 10);
+  assert.equal(missingWeight.price3g?.sale, null);
   assert.equal(missingWeight.price5g, null);
 
   const noEligibleWeight = applyGpcSaleCampaign(

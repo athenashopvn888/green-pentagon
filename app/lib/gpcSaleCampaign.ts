@@ -3,6 +3,7 @@ import type { FlowerProduct, PricePoint } from "./products";
 export const GPC_SALE_START_DATE = "2026-07-26";
 export const GPC_SALE_END_DATE = "2026-09-26";
 export const GPC_SALE_END_LABEL = "September 26, 2026";
+export const GPC_SALE_CANCELLED = true;
 
 export const GPC_SALE_LINES = [
   "AA 5g $5 OFF",
@@ -68,6 +69,7 @@ export function getTorontoDateKey(now = new Date()): string {
 }
 
 export function isGpcSaleCampaignActive(now = new Date()): boolean {
+  if (GPC_SALE_CANCELLED) return false;
   const dateKey = getTorontoDateKey(now);
   return dateKey >= GPC_SALE_START_DATE && dateKey <= GPC_SALE_END_DATE;
 }
