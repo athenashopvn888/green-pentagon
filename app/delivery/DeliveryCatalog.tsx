@@ -158,7 +158,7 @@ export default function Catalog() {
               {filtered.map((product) => {
                 const productTier = tier(product);
                 return <article className="product-card qlc-horizontal-card" key={product.publicProductId}>
-                  <button className="product-image-button" type="button" onClick={() => setSelectedProduct(product)} aria-label={`View details for ${product.name}`}>{product.images[0] ? <Image src={product.images[0]} alt={`${product.name} on the ${store.name} delivery menu`} fill sizes="(max-width: 640px) 50vw, 104px" /> : <span>No image</span>}</button>
+                  <button className="product-image-button" type="button" onClick={() => setSelectedProduct(product)} aria-label={`View details for ${product.name}`}>{product.images[0] ? <Image src={product.images[0]} alt={`${product.name} on the ${store.name} delivery menu`} fill sizes="(max-width: 640px) 50vw, 104px" unoptimized /> : <span>No image</span>}</button>
                   <div className="product-body"><div className="product-badges">{productTier && <span className="badge">{productTier}</span>}<span className="badge secondary">{strain(product)}</span></div><h2 className="product-title"><button type="button" onClick={() => setSelectedProduct(product)}>{product.name}</button></h2><p className="product-meta">{product.category}</p><ProductPricing product={product} /><button className="view-details-button" type="button" onClick={() => setSelectedProduct(product)}>View details</button></div>
                 </article>;
               })}
