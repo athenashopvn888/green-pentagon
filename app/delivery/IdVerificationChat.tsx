@@ -5,6 +5,7 @@ import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 const API_BASE = (process.env.NEXT_PUBLIC_SOD_WEB_CHAT_API_BASE || "https://milestone-1-demo.vercel.app").replace(/\/$/, "");
 const STORE_ID = "GP";
 const STORE_SHORT_NAME = "GP";
+const STORE_NAME = "Green Pentagon";
 const DELIVERY_PHONE = "+14375237049";
 const SESSION_KEY = `sod-web-chat:${STORE_ID}`;
 const MAX_BYTES = 3 * 1024 * 1024;
@@ -100,6 +101,7 @@ export default function IdVerificationChat() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [intent, setIntent] = useState<CustomerIntent | "">("");
+  const [smsConsent, setSmsConsent] = useState(false);
   const [firstMessage, setFirstMessage] = useState("");
   const [message, setMessage] = useState("");
   const [notice, setNotice] = useState("");
@@ -200,7 +202,7 @@ export default function IdVerificationChat() {
       const data = await payload(await fetch(`${API_BASE}/api/web-chat/session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ storeId: STORE_ID, customerName: intent === "NEW_CUSTOMER" ? name : "", phone, intent, message: firstMessage }),
+        body: JSON.stringify({ storeId: STORE_ID, customerName: intent === "NEW_CUSTOMER" ? name : "", phone, intent, message: firstMessage, smsConsent }),
       }));
       localStorage.setItem(SESSION_KEY, data.token);
       setToken(data.token);
@@ -302,8 +304,9 @@ export default function IdVerificationChat() {
           {intent === "NEW_CUSTOMER" && <><div className="sod-chat-welcome"><h2>Welcome!</h2><p>Have a valid government-issued photo ID and a Canadian mobile number ready. Your mobile number will be used as your account number.</p><p>Use a mobile number that can receive verification texts.</p></div>
           <label>Full name<input required minLength={2} maxLength={80} value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" /></label></>}
           {intent && <><label>Canadian mobile number<input required inputMode="tel" value={phone} onChange={(event) => setPhone(event.target.value)} autoComplete="tel" placeholder="647 555 0123" aria-describedby={intent === "NEW_CUSTOMER" ? "sod-phone-help" : undefined} />{intent === "NEW_CUSTOMER" && <small id="sod-phone-help">Must be able to receive verification texts. This becomes your account number.</small>}</label>
+          <label className="sod-sms-consent"><input required type="checkbox" checked={smsConsent} onChange={(event) => setSmsConsent(event.target.checked)} /><span>I agree to receive one text from {STORE_NAME} to confirm this mobile number for my Web Chat. Reply YES to confirm. Message and data rates may apply.</span></label>
           <label>Order details (optional)<textarea maxLength={1000} value={firstMessage} onChange={(event) => setFirstMessage(event.target.value)} placeholder="What would you like to order today?" /></label>
-          <button type="submit" disabled={busy}>{busy ? "Starting…" : "Start order chat"}</button></>}
+          <button type="submit" disabled={busy || !smsConsent}>{busy ? "Starting…" : "Start order chat"}</button></>}
         </form>) : <>
           <div className="sod-chat-scroll">
             <div className="sod-chat-transcript" aria-live="polite">

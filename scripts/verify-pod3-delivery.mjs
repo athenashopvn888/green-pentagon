@@ -33,6 +33,7 @@ assert(catalog.includes("explicitLoyalty") && catalog.includes("eligible && regu
 assert(catalog.includes("formatPrice(each)") && catalog.includes("formatPrice(total)"));
 assert(catalog.includes("Delivery text/SMS:") && catalog.includes("sms:"));
 assert(chat.includes('STORE_ID = "GP"') && chat.includes('"NEW_CUSTOMER"') && chat.includes('"RETURNING_CUSTOMER"'));
+assert(chat.includes("smsConsent") && chat.includes("Reply YES to confirm") && chat.includes('required type="checkbox"'));
 assert(chat.includes("preparePhoto") && chat.includes("id-review") && chat.includes("Text delivery"));
 const forbiddenPlaceholder = "__SOD_" + "DELIVERY_PHONE__";
 assert(!combined.includes(forbiddenPlaceholder), "A private delivery-number placeholder remains");
