@@ -100,12 +100,6 @@ const EXPLORE_CATEGORIES = [
     banner: "/banners/09_Magic_Stuff.webp",
     icon: "",
   },
-  {
-    name: "Games Arcade",
-    slug: "games",
-    banner: "/banners/10_Games.webp",
-    icon: "",
-  },
 ];
 
 /* Local FAQs for Jane St */
