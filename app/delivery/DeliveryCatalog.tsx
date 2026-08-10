@@ -29,7 +29,6 @@ const store = {
   shortName: "GP",
   name: "Green Pentagon Cannabis",
   displayName: "Green Pentagon",
-  deliveryPhone: "+14375237049",
 } as const;
 
 function strain(product: Product) {
@@ -128,7 +127,7 @@ export default function Catalog() {
         </div>
       </header>
 
-      <section className="qlc-terms-ribbon" aria-labelledby="delivery-terms"><div><p>{store.shortName} DELIVERY DETAILS</p><h2 id="delivery-terms"><span>$60 PRODUCT MINIMUM</span><span>$10 DELIVERY FEE</span><span>DELIVERY HOURS 10:00 a.m.–10:00 p.m.</span></h2><p className="delivery-sms-number">Delivery text/SMS: <a href={`sms:${store.deliveryPhone}`}>{store.deliveryPhone}</a></p></div><a href="#how-to-order">Read the ordering steps</a></section>
+      <section className="qlc-terms-ribbon" aria-labelledby="delivery-terms"><div><p>{store.shortName} DELIVERY DETAILS</p><h2 id="delivery-terms"><span>$60 PRODUCT MINIMUM</span><span>$10 DELIVERY FEE</span><span>DELIVERY HOURS 10:00 a.m.–10:00 p.m.</span></h2></div><a href="#how-to-order">Read the ordering steps</a></section>
 
       <main className="delivery-page" id="top">
         <section className="store-hero qlc-editorial-hero delivery-brand-hero">

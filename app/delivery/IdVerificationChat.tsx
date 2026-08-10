@@ -5,8 +5,6 @@ import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 const API_BASE = (process.env.NEXT_PUBLIC_SOD_WEB_CHAT_API_BASE || "https://milestone-1-demo.vercel.app").replace(/\/$/, "");
 const STORE_ID = "GP";
 const STORE_SHORT_NAME = "GP";
-const STORE_NAME = "Green Pentagon";
-const DELIVERY_PHONE = "+14375237049";
 const SESSION_KEY = `sod-web-chat:${STORE_ID}`;
 const MAX_BYTES = 3 * 1024 * 1024;
 
@@ -122,6 +120,12 @@ export default function IdVerificationChat() {
     return () => document.body.classList.remove("sod-chat-open");
   }, [open]);
 
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("liveOrder") !== "1") return;
+    const timer = window.setTimeout(() => setOpen(true), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   useEffect(() => () => {
     if (previewRef.current) URL.revokeObjectURL(previewRef.current);
   }, []);
@@ -202,7 +206,7 @@ export default function IdVerificationChat() {
       const data = await payload(await fetch(`${API_BASE}/api/web-chat/session`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ storeId: STORE_ID, customerName: intent === "NEW_CUSTOMER" ? name : "", phone, intent, message: firstMessage, smsConsent }),
+        body: JSON.stringify({ storeId: STORE_ID, customerName: intent === "NEW_CUSTOMER" ? name : "", phone, intent, message: firstMessage, workflowVersion: "READY_V1", smsConsent }),
       }));
       localStorage.setItem(SESSION_KEY, data.token);
       setToken(data.token);
@@ -288,7 +292,7 @@ export default function IdVerificationChat() {
         {open ? "Close chat" : "LIVE ORDER"}
       </button>
       {open && <section className="sod-chat-panel" role="dialog" aria-modal="true" aria-label={`${STORE_SHORT_NAME} Web Chat`}>
-        <header><div><strong>{STORE_SHORT_NAME} Web Chat</strong><small>Start your delivery order with a dispatcher · <a href={`sms:${DELIVERY_PHONE}`}>Text delivery</a></small></div><button type="button" onClick={() => setOpen(false)} aria-label="Minimize chat">×</button></header>
+        <header><div><strong>{STORE_SHORT_NAME} Web Chat</strong><small>Start your delivery order with a dispatcher</small></div><button type="button" onClick={() => setOpen(false)} aria-label="Minimize chat">×</button></header>
         <div className={`sod-availability-banner ${paused ? "paused" : "unavailable"}`} role="status" hidden={!statusMessage}>
           <strong>{paused ? "New delivery chats are paused" : "Delivery status unavailable"}</strong>
           <span>{statusMessage}{resumeLabel}{token ? " Your existing chat remains open." : ""}</span>
@@ -304,7 +308,7 @@ export default function IdVerificationChat() {
           {intent === "NEW_CUSTOMER" && <><div className="sod-chat-welcome"><h2>Welcome!</h2><p>Have a valid government-issued photo ID and a Canadian mobile number ready. Your mobile number will be used as your account number.</p><p>Use a mobile number that can receive verification texts.</p></div>
           <label>Full name<input required minLength={2} maxLength={80} value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" /></label></>}
           {intent && <><label>Canadian mobile number<input required inputMode="tel" value={phone} onChange={(event) => setPhone(event.target.value)} autoComplete="tel" placeholder="647 555 0123" aria-describedby={intent === "NEW_CUSTOMER" ? "sod-phone-help" : undefined} />{intent === "NEW_CUSTOMER" && <small id="sod-phone-help">Must be able to receive verification texts. This becomes your account number.</small>}</label>
-          <label className="sod-sms-consent"><input required type="checkbox" checked={smsConsent} onChange={(event) => setSmsConsent(event.target.checked)} /><span>I agree to receive one text from {STORE_NAME} to confirm this mobile number for my Web Chat. Reply YES to confirm. Message and data rates may apply.</span></label>
+          <label className="sod-sms-consent"><input required type="checkbox" checked={smsConsent} onChange={(event) => setSmsConsent(event.target.checked)} /><span>I agree to receive one READY delivery-link text for this order. Message and data rates may apply.</span></label>
           <label>Order details (optional)<textarea maxLength={1000} value={firstMessage} onChange={(event) => setFirstMessage(event.target.value)} placeholder="What would you like to order today?" /></label>
           <button type="submit" disabled={busy || !smsConsent}>{busy ? "Starting…" : "Start order chat"}</button></>}
         </form>) : <>
