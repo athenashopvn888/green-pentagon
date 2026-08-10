@@ -30,16 +30,16 @@ for (const product of menu.products) {
 
 assert(catalog.includes("api/catalog?store=") && catalog.includes('id: "GP"'));
 assert(catalog.includes("explicitLoyalty") && catalog.includes("eligible && regular28 ? regular28.price - 30"));
-assert(catalog.includes("formatPrice(each)") && catalog.includes("formatPrice(total)"));
-assert(catalog.includes("Delivery text/SMS:") && catalog.includes("sms:"));
+assert(catalog.includes("formatCurrency(each)") && catalog.includes("formatCurrency(total)"));
+assert(!/Delivery text\/SMS:|href=["'{`]sms:|deliveryPhone/i.test(catalog));
 assert(chat.includes('STORE_ID = "GP"') && chat.includes('"NEW_CUSTOMER"') && chat.includes('"RETURNING_CUSTOMER"'));
-assert(chat.includes("smsConsent") && chat.includes("Reply YES to confirm") && chat.includes('required type="checkbox"'));
-assert(chat.includes("preparePhoto") && chat.includes("id-review") && chat.includes("Text delivery"));
+assert(chat.includes("smsConsent") && chat.includes("workflowVersion: \"READY_V1\"") && chat.includes("one READY delivery-link text") && chat.includes('required type="checkbox"'));
+assert(chat.includes("preparePhoto") && chat.includes("id-review"));
+assert.match(chat, /new URLSearchParams\(window\.location\.search\)\.get\("liveOrder"\) !== "1"/);
+assert.match(chat, /window\.setTimeout\(\(\) => setOpen\(true\), 0\)/);
+assert(!/href=["'{`]sms:|DELIVERY_PHONE|Reply YES|YES confirmation|Text delivery/i.test(chat));
 const forbiddenPlaceholder = "__SOD_" + "DELIVERY_PHONE__";
 assert(!combined.includes(forbiddenPlaceholder), "A private delivery-number placeholder remains");
-const phoneValues = [...catalog.matchAll(/deliveryPhone:\s*"(\+1\d{10})"/g), ...chat.matchAll(/DELIVERY_PHONE = "(\+1\d{10})"/g)].map((match) => match[1]);
-assert.equal(phoneValues.length, 2);
-assert.equal(new Set(phoneValues).size, 1);
 assert(page.includes("Cannabis Delivery Menu") && !page.includes("Coming Soon"));
 assert(drawer.includes('role="dialog"') && drawer.includes('aria-modal="true"'));
 assert(css.includes("grid-template-columns:repeat(2,minmax(0,1fr))") || css.includes("grid-template-columns: repeat(2, minmax(0, 1fr))"));
