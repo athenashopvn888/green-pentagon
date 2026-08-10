@@ -133,7 +133,7 @@ export default function Catalog() {
       <main className="delivery-page" id="top">
         <section className="store-hero qlc-editorial-hero delivery-brand-hero">
           <Image src="/storeFavicon.webp" alt={`${store.name} logo`} width={240} height={240} priority />
-          <div className="store-hero-copy"><p>POD 3 DELIVERY</p><h1>{store.name}</h1><span>Browse the current Farmers Link delivery menu, then connect with the live dispatcher.</span></div>
+          <div className="store-hero-copy"><p>POD 3 DELIVERY</p><h1>{store.name}</h1><span>Browse the current delivery menu, then connect with the live dispatcher.</span></div>
         </section>
 
         <section className="member-loyalty" aria-labelledby="member-loyalty-title">
