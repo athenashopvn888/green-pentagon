@@ -1,3 +1,13 @@
+const NATIVE_HERO_DISCLOSURE = "Brand preview only. Selection varies by store; check the current cigarette menu before visiting.";
+const NATIVE_HERO_PRODUCTS = [
+  { name: "BB Lights", image: "/products/1001-BB-LIGHTS-CARTONS.webp" },
+  { name: "BB Full", image: "/products/1003-BB-FULL-CARTON.webp" },
+  { name: "Canadian Lights", image: "/products/1005-CANADIAN-LIGHTS.webp" },
+  { name: "Canadian Full", image: "/products/1006-CANADIAN-FULL.webp" },
+  { name: "Canadian Classics Silver", image: "/products/1015-CANADIAN-CLASSICS-SILVER.webp" },
+  { name: "Canadian Menthol", image: "/products/1013-CANADIAN-MENTHOL.webp" },
+] as const;
+
 export interface SeoPageData {
   slug: string;
   title: string;
@@ -5,6 +15,12 @@ export interface SeoPageData {
   h1: string;
   icon: string;
   heroTagline: string;
+  heroPreview?: {
+    eyebrow: string;
+    intro: string;
+    products: typeof NATIVE_HERO_PRODUCTS;
+    disclosure: typeof NATIVE_HERO_DISCLOSURE;
+  };
   banner?: string;
   sections: { heading: string; body: string }[];
   faqs: { q: string; a: string }[];
@@ -49,6 +65,12 @@ export const SEO_PAGES: SeoPageData[] = [
     h1: "Native Cigarettes Near Queen West",
     icon: "*",
     heroTagline: "Cigarette category and visit information",
+    heroPreview: {
+      eyebrow: "Green Pentagon Cannabis · 1267 Queen St W, Queen West",
+      intro: "Cigarette category and visit information",
+      products: NATIVE_HERO_PRODUCTS,
+      disclosure: NATIVE_HERO_DISCLOSURE,
+    },
     sections: [
       { heading: "Browse The Cigarette Category", body: "Use the cigarette menu page to review the current public list before visiting Green Pentagon Cannabis." },
       { heading: "Confirm Brand Details", body: "Ask staff when a particular brand, package style, or price matters for your visit." },
