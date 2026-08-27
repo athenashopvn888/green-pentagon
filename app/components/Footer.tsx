@@ -67,6 +67,9 @@ export default function Footer() {
               <Link href="/info/native-cigarettes-queen-west">
                 Native Cigarettes
               </Link>
+              <Link href="/info/nicotine-vapes-queen-west">
+                Nicotine Vapes Queen West
+              </Link>
               <Link href="/info/weed-store-near-queen-west">
                 Queen West Weed Store
               </Link>

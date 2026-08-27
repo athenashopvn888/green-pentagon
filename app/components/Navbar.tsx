@@ -26,9 +26,12 @@ const ALL_LINKS = [
   { href: "/resources", label: "Resources" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ hideThcVape = false }: { hideThcVape?: boolean }) {
   const pathname = usePathname();
-  const storeMenuLinks = ALL_LINKS.filter((link) => link.href.startsWith("/items/") || ["/exotic", "/premium", "/aaa", "/aa", "/budget"].includes(link.href));
+  const visibleLinks = hideThcVape
+    ? ALL_LINKS.filter((link) => link.href !== "/items/vape-disposables")
+    : ALL_LINKS;
+  const storeMenuLinks = visibleLinks.filter((link) => link.href.startsWith("/items/") || ["/exotic", "/premium", "/aaa", "/aa", "/budget"].includes(link.href));
   const isStoreMenuActive = storeMenuLinks.some((link) => pathname === link.href);
   const isDeliveryActive = pathname === "/delivery";
   const scrollBarRef = useRef<HTMLDivElement>(null);
@@ -82,7 +85,7 @@ export default function Navbar() {
       <div className={styles.scrollShell}>
         <div ref={scrollBarRef} id="store-menu-scrollbar" className={styles.scrollBar}>
           <div className={styles.scrollInner}>
-          {ALL_LINKS.map((link) => {
+          {visibleLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
