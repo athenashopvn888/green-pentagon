@@ -8,6 +8,30 @@ const NATIVE_HERO_PRODUCTS = [
   { name: "Canadian Menthol", image: "/products/1013-CANADIAN-MENTHOL.webp" },
 ] as const;
 
+export const NICOTINE_VAPES_QUEEN_WEST_PRODUCTS = [
+  {
+    slug: "geek-max-5-20k30k-puffs-many-flavors",
+    name: "GEEK MAX – 5% | 20K–30K PUFFS | MANY FLAVORS",
+    image: "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/GEEKMAX500x500HQ.webp",
+  },
+  {
+    slug: "ovns-10000-5-10k-puffs",
+    name: "OVNS 10000 – 5% | 10K PUFFS",
+    image: "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/1081OVNS10000.jpg",
+  },
+  {
+    slug: "ovns-disposable-5-8ml-many-flavors",
+    name: "OVNS DISPOSABLE – 5% | 8ML | MANY FLAVORS",
+    image: "https://pub-eb3e1fe18a43477eabc885cfb791d97c.r2.dev/products/OVNS500x500HQ.webp",
+  },
+] as const;
+
+interface HeroPreviewProduct {
+  slug?: string;
+  name: string;
+  image: string;
+}
+
 export interface SeoPageData {
   slug: string;
   title: string;
@@ -18,10 +42,18 @@ export interface SeoPageData {
   heroPreview?: {
     eyebrow: string;
     intro: string;
-    products: typeof NATIVE_HERO_PRODUCTS;
-    disclosure: typeof NATIVE_HERO_DISCLOSURE;
+    products: readonly HeroPreviewProduct[];
+    disclosure: string;
+    menuHref?: string;
+    primaryLabel?: string;
+    secondaryLabel?: string;
+    stageLabel?: string;
+    warning?: string;
   };
   banner?: string;
+  showTierGrid?: boolean;
+  showVisitSection?: boolean;
+  relatedLink?: { href: string; label: string; intro: string };
   sections: { heading: string; body: string }[];
   faqs: { q: string; a: string }[];
 }
@@ -32,6 +64,64 @@ const visitFaqs = [
 ];
 
 export const SEO_PAGES: SeoPageData[] = [
+  {
+    slug: "nicotine-vapes-queen-west",
+    title: "Nicotine Vapes Queen West | Green Pentagon Cannabis",
+    metaDescription: "Adults 19+: review three live-checked nicotine vape product pages from Green Pentagon Cannabis near Queen West and Parkdale. Nicotine is addictive.",
+    h1: "Nicotine Vapes Near Queen West",
+    icon: "",
+    heroTagline: "",
+    heroPreview: {
+      eyebrow: "GREEN PENTAGON CANNABIS • QUEEN STREET WEST • QUEEN WEST / PARKDALE • ADULTS 19+",
+      intro: "This Green Pentagon Cannabis guide highlights three live-checked nicotine vape product pages for adults near Queen West and Parkdale in Toronto. Use the nicotine vape category for product information. These cards are a limited evidence set, not a complete selection. Nicotine is addictive.",
+      products: NICOTINE_VAPES_QUEEN_WEST_PRODUCTS,
+      disclosure: "Three live-checked product pages only. The cards are not a complete selection or a claim about current stock, price, or availability.",
+      menuHref: "/items/vapes",
+      primaryLabel: "Browse Nicotine Vapes",
+      secondaryLabel: "Review the Nicotine Vape Category",
+      stageLabel: "Three live-checked Green Pentagon Cannabis nicotine vape product pages",
+      warning: "Adults 19+. Nicotine is addictive.",
+    },
+    sections: [
+      {
+        heading: "Three Live-Checked Nicotine Vape Pages",
+        body: "The verified Green Pentagon Cannabis set includes one Geek Max page and two OVNS pages. Use each card for its supported name and image, then use the nicotine vape category for product information. These three cards do not describe a complete selection.",
+      },
+      {
+        heading: "Read Each Product Name Carefully",
+        body: "The verified names include puff-count and format details that belong only to their respective product pages. Keep those details attached to the correct card and do not extend them to another product by assumption.",
+      },
+      {
+        heading: "Queen West and Parkdale Context",
+        body: "This Green Pentagon Cannabis guide uses the store's verified Queen Street West, Queen West, Parkdale and Toronto context. It does not make a claim about current stock, price, availability, hours or service area.",
+      },
+      {
+        heading: "Keep Nicotine and Cannabis Vapes Separate",
+        body: "This page is limited to live-checked nicotine products from the VAPE PENS category. THC and cannabis vape products are excluded from this guide.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Where should I review Green Pentagon Cannabis nicotine vape information?",
+        a: "Use the nicotine vape category. The three featured cards are live-checked product pages, but they are not a complete selection or a claim about stock, price or availability.",
+      },
+      {
+        q: "Do the three cards represent every nicotine vape product?",
+        a: "No. They are three live-checked product pages with supported names and images. They should not be read as a complete selection.",
+      },
+      {
+        q: "Does this Green Pentagon Cannabis guide include THC vapes?",
+        a: "No. This adult-only page is limited to the verified nicotine vape cards. THC and cannabis vape products are excluded.",
+      },
+    ],
+    showTierGrid: false,
+    showVisitSection: false,
+    relatedLink: {
+      href: "/info/native-cigarettes-queen-west",
+      label: "Read the Green Pentagon Cannabis Native Cigarettes guide",
+      intro: "For the separate cigarette category, use the exact Queen West guide:",
+    },
+  },
   {
     slug: "queen-west-weed-dispensary",
     title: "Queen West Weed Dispensary | Green Pentagon Cannabis",
