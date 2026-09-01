@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FlowerCard from "./components/FlowerCard";
+import { WeedDiscoveryModule } from "./components/WeedDiscoveryModule";
 import SaleBanner from "./components/SaleBanner";
 import { allFlowers } from "./lib/products";
 import Papa from "papaparse";
@@ -347,6 +348,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <WeedDiscoveryModule />
 
       {/* FEATURED PRODUCTS */}
       <section className={styles.featuredSection}>
