@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:weed-seo": "node --test tests/weed-seo-pilot.test.mjs",
     "verify:delivery": "node scripts/verify-pod3-delivery.mjs",
     "test:gpc-feed": "node --test tests/gpc-stock-repair.test.mjs",
     "test:gpc-sale": "node --experimental-strip-types --test tests/gpc-sale-campaign.test.ts",
