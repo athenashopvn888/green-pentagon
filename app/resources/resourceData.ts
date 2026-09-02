@@ -19,6 +19,7 @@ export interface ResourcePage {
   intro: string;
   cards: ResourceCard[];
   sections: ResourceSection[];
+  faqs?: { question: string; answer: string }[];
 }
 
 const hubCards: ResourceCard[] = [
@@ -33,9 +34,9 @@ const hubCards: ResourceCard[] = [
     text: "A street-level path for flower, pre-rolls, edibles, vapes, concentrates, accessories, and cigarettes.",
   },
   {
-    title: "Flower Tier Guide",
-    href: "/resources/flower-guide",
-    text: "Compare Exotic, Premium, AAA+, AA, and Budget with the 3g and 6g tier math.",
+    title: "Weed & Flower Guide",
+    href: "/resources/weed-flower-guide",
+    text: "Compare Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed.",
   },
   {
     title: "Value Guide",
@@ -51,9 +52,9 @@ const hubCards: ResourceCard[] = [
 
 const menuCards: ResourceCard[] = [
   {
-    title: "Flower Tiers",
-    href: "/resources/flower-guide",
-    text: "Use tier pricing and bundle math before choosing a flower shelf.",
+    title: "Weed Flower Collections",
+    href: "/resources/weed-flower-guide",
+    text: "Explore all five Green Pentagon Cannabis Weed flower collections.",
   },
   {
     title: "Pre-Roll Guide",
@@ -74,29 +75,34 @@ const menuCards: ResourceCard[] = [
 
 const flowerCards: ResourceCard[] = [
   {
-    title: "Exotic Flower",
-    href: "/exotic",
-    text: "$20/g, 3g for $40, or 6g for $60 where the menu tier deal is listed.",
+    title: "Explore Green Pentagon Cannabis Weed in Toronto",
+    href: "/weed-dispensary-toronto/",
+    text: "Begin with the broader Green Pentagon Cannabis Weed selection.",
   },
   {
-    title: "Premium Flower",
-    href: "/premium",
-    text: "$15/g, 3g for $30, or 6g for $45 where the menu tier deal is listed.",
+    title: "Exotic Weed",
+    href: "/exotic-weed",
+    text: "Explore Green Pentagon Cannabis's Exotic Weed flower collection.",
   },
   {
-    title: "AAA+ Flower",
-    href: "/aaa",
-    text: "$10/g, 3g for $20, or 6g for $30 where the menu tier deal is listed.",
+    title: "Premium Weed",
+    href: "/premium-weed",
+    text: "Browse the Premium Weed flower collection from Green Pentagon Cannabis.",
   },
   {
-    title: "AA Flower",
-    href: "/aa",
-    text: "$4/g for a clean value shelf.",
+    title: "AAA+ Weed",
+    href: "/aaa-weed",
+    text: "Explore Green Pentagon Cannabis's AAA+ Weed flower collection.",
   },
   {
-    title: "Budget Flower",
-    href: "/budget",
-    text: "$3/g for the lowest posted flower tier lane.",
+    title: "AA Weed",
+    href: "/aa-weed",
+    text: "Browse the AA Weed flower collection.",
+  },
+  {
+    title: "Budget Weed",
+    href: "/budget-weed",
+    text: "Explore Green Pentagon Cannabis's Budget Weed flower collection.",
   },
 ];
 
@@ -175,7 +181,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         title: "Value Guide",
         href: "/resources/value-guide",
-        text: "A direct guide to Budget, AA, and other flower tiers.",
+        text: "A direct guide to Budget Weed, AA Weed and other flower collections.",
       },
     ],
     sections: [
@@ -230,35 +236,49 @@ export const RESOURCE_PAGES: ResourcePage[] = [
     ],
   },
   {
-    slug: "flower-guide",
-    title: "Green Pentagon Flower Tier and 6g Price Guide",
-    seoTitle: "Green Pentagon Flower Tier Guide | 6g Bundle Prices and Budget Weed",
+    slug: "weed-flower-guide",
+    title: "Green Pentagon Cannabis Weed & Flower Guide",
+    seoTitle: "Weed & Cannabis Flower Guide Toronto | Green Pentagon Cannabis",
     description:
-      "Compare Green Pentagon Cannabis flower tiers with posted per-gram prices and 6g bundle math for Exotic, Premium, AAA+, AA, and Budget flower.",
-    eyebrow: "Flower Tiers",
+      "Explore Green Pentagon Cannabis flower collections including Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed in one concise Toronto guide.",
+    eyebrow: "Green Pentagon Cannabis · Weed & Flower",
     intro:
-      "Here is the posted flower math: Exotic is shown at $20/g with 6g for $60, Premium at $15/g with 6g for $45, AAA+ at $10/g with 6g for $30, AA at $4/g, and Budget at $3/g. Use the current tier pages for product details.",
+      "Green Pentagon Cannabis brings five Weed flower collections together for shoppers who want to compare different parts of the selection: Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed. Explore whichever collections interest you, or begin with the broader Toronto Weed selection before narrowing your browsing.",
     cards: flowerCards,
     sections: [
       {
-        heading: "Read The 6g Deal Before Judging The Shelf",
+        heading: "Explore Five Weed Flower Collections",
         body:
-          "The top three tiers have bundle math that can matter more than the straight per-gram label. Exotic can show 6g for $60, Premium can show 6g for $45, and AAA+ can show 6g for $30.",
+          "The five collections give shoppers different parts of the Green Pentagon Cannabis Flower selection to explore. Start with whichever collection interests you and compare others when useful.",
         bullets: [
-          "Exotic: $20/g, 3g for $40, 6g for $60.",
-          "Premium: $15/g, 3g for $30, 6g for $45.",
-          "AAA+: $10/g, 3g for $20, 6g for $30.",
+          "Explore Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed.",
+          "Use the information presented within each collection as you browse.",
+          "For broader browsing, explore Green Pentagon Cannabis Weed in Toronto.",
         ],
       },
       {
-        heading: "AA And Budget For Straight Value",
+        heading: "Weed, Cannabis and Flower at Green Pentagon Cannabis",
         body:
-          "AA at $4/g and Budget at $3/g are the simplest value paths. They make sense for shoppers looking for cheap weed or affordable weed near Parkdale or Queen West without needing the higher shelf first.",
+          "Weed, cannabis, bud and flower are familiar terms shoppers use while browsing dispensary selections. Green Pentagon Cannabis uses those terms naturally while keeping its five flower collections distinct.",
       },
       {
-        heading: "Final Check On The Tier Page",
+        heading: "Compare the Flower Collections That Interest You",
         body:
-          "The guide explains the pricing structure. Use the current tier page or ask at the counter for listed product names, prices, and item notes.",
+          "Explore Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed individually and compare the information presented within each collection as you browse.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What Weed flower collections can I explore at Green Pentagon Cannabis?",
+        answer: "Green Pentagon Cannabis organizes flower browsing across Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed.",
+      },
+      {
+        question: "Where can I start if I am not looking for one specific flower collection?",
+        answer: "Start with Green Pentagon Cannabis's broader Toronto Weed selection, then explore a flower collection when one interests you.",
+      },
+      {
+        question: "Can I compare more than one Weed flower collection?",
+        answer: "Yes. You can browse the five collections individually and compare the information presented with each one.",
       },
     ],
   },
@@ -267,37 +287,37 @@ export const RESOURCE_PAGES: ResourcePage[] = [
     title: "Green Pentagon Value Weed Guide",
     seoTitle: "Green Pentagon Value Weed Guide | Cheap Weed Near Parkdale",
     description:
-      "A value shopping guide for Green Pentagon Cannabis near Parkdale and Queen West, covering Budget, AA, AAA+, 6g deals, and affordable weed menu choices.",
+      "A value shopping guide for Green Pentagon Cannabis near Parkdale and Queen West, covering Budget Weed, AA Weed, AAA+ Weed, 6g deals and affordable weed menu choices.",
     eyebrow: "Value Guide",
     intro:
-      "For value shopping near Parkdale and Queen West, start with the shelves that were built for it: Budget, AA, and sometimes AAA+ when the 6g bundle makes sense.",
+      "For value shopping near Parkdale and Queen West, start with the shelves that were built for it: Budget Weed, AA Weed and sometimes AAA+ Weed when the 6g bundle makes sense.",
     cards: [
       {
-        title: "Budget Flower",
-        href: "/budget",
+        title: "Budget Weed",
+        href: "/budget-weed",
         text: "$3/g for the lowest posted flower lane.",
       },
       {
-        title: "AA Flower",
-        href: "/aa",
+        title: "AA Weed",
+        href: "/aa-weed",
         text: "$4/g for a simple low-spend lane.",
       },
       {
-        title: "AAA+ Flower",
-        href: "/aaa",
+        title: "AAA+ Weed",
+        href: "/aaa-weed",
         text: "$10/g, 3g for $20, or 6g for $30 where listed.",
       },
       {
-        title: "Flower Tier Guide",
-        href: "/resources/flower-guide",
+        title: "Weed & Flower Guide",
+        href: "/resources/weed-flower-guide",
         text: "Use this when bundle math matters.",
       },
     ],
     sections: [
       {
-        heading: "Budget First, Upgrade If It Makes Sense",
+        heading: "Budget Weed First, Compare If It Makes Sense",
         body:
-          "For value-focused menu planning near Queen West, start with Budget and AA. To compare another tier, check AAA+ and its posted bundle details.",
+          "For value-focused menu planning near Queen West, start with Budget Weed and AA Weed. To compare another collection, check AAA+ Weed and its posted bundle details.",
       },
       {
         heading: "Use Category Value, Not Random Value",

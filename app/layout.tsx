@@ -80,7 +80,7 @@ const jsonLd = {
   "@id": "https://www.greenpentagoncannabis.com",
   name: "Green Pentagon Cannabis",
   description:
-    "Cannabis dispensary at 1267 Queen St W in Toronto, ON. Shop exotic, premium, AAA+, AA, and budget flower tiers plus edibles, prerolls, and vapes. Open Daily: 10:00 AM - 12:00 AM.",
+    "Cannabis dispensary at 1267 Queen St W in Toronto, ON. Explore Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed flower collections plus edibles, prerolls and vapes. Open Daily: 10:00 AM - 12:00 AM.",
   url: "https://www.greenpentagoncannabis.com",
   telephone: "+14372903657",
   image:

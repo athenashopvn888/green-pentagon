@@ -47,6 +47,17 @@ export default function ResourceView({ page }: ResourceViewProps) {
             )}
           </article>
         ))}
+        {page.faqs && (
+          <article className={styles.section}>
+            <h2>Green Pentagon Cannabis Weed & Flower Questions</h2>
+            {page.faqs.map((faq) => (
+              <div key={faq.question}>
+                <h3>{faq.question}</h3>
+                <p>{faq.answer}</p>
+              </div>
+            ))}
+          </article>
+        )}
       </section>
       <Footer />
     </main>

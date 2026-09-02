@@ -24,9 +24,9 @@ export const weedOwner = {
   findTitle: "Find Your Weed at Green Pentagon",
   discoveryLinks: [
   {
-    "label": "Flower Guide",
+    "label": "Weed & Flower Guide",
     "description": "Learn more about cannabis flower before deciding what you want to explore.",
-    "href": "/resources/flower-guide"
+    "href": "/resources/weed-flower-guide"
   },
   {
     "label": "Value Guide",
@@ -61,9 +61,9 @@ export const weedOwner = {
     "href": "/resources/menu-guide"
   },
   {
-    "label": "Flower Guide",
+    "label": "Weed & Flower Guide",
     "description": "Learn more about flower.",
-    "href": "/resources/flower-guide"
+    "href": "/resources/weed-flower-guide"
   },
   {
     "label": "Value Guide",
@@ -95,7 +95,7 @@ export const weedOwner = {
   },
   {
     "question": "Where can I learn more about flower?",
-    "answer": "The Green Pentagon Flower Guide provides additional flower information."
+    "answer": "The Green Pentagon Weed & Flower Guide brings the five flower collections together."
   },
   {
     "question": "How can I ask about a particular product?",
@@ -110,8 +110,7 @@ export const weedOwner = {
     title: "Exploring Weed in Toronto?",
     text: "Green Pentagon Cannabis at 1267 Queen St W gives adults 19+ a focused place to explore Weed and Cannabis terminology, flower information and shopping guides.",
     primaryLabel: "Explore Green Pentagon Weed & Cannabis",
-    secondaryLabel: "Explore the Flower Guide",
-    secondaryHref: "/resources/flower-guide",
+    secondaryLabel: "Explore the Weed & Flower Guide",
+    secondaryHref: "/resources/weed-flower-guide",
   },
 };
-

@@ -14,36 +14,36 @@ import Papa from "papaparse";
 /* Bento Mosaic Config */
 const BENTO_TIERS = [
   {
-    name: "EXOTICS",
-    slug: "exotic",
+    name: "EXOTIC WEED",
+    slug: "exotic-weed",
     price: "$10-$12/g",
     banner: "/banners/exotics_banner.webp",
     className: styles.bentoExotic,
   },
   {
-    name: "PREMIUM",
-    slug: "premium",
+    name: "PREMIUM WEED",
+    slug: "premium-weed",
     price: "$7-$10/g",
     banner: "/banners/premium_banner.webp",
     className: styles.bentoPremium,
   },
   {
-    name: "AAA+",
-    slug: "aaa",
+    name: "AAA+ WEED",
+    slug: "aaa-weed",
     price: "$5-$6/g",
     banner: "/banners/aaa_plus_banner.webp",
     className: styles.bentoTile,
   },
   {
-    name: "AA",
-    slug: "aa",
+    name: "AA WEED",
+    slug: "aa-weed",
     price: "$4/g",
     banner: "/banners/aa_banner.webp",
     className: styles.bentoTile,
   },
   {
-    name: "BUDGET",
-    slug: "budget",
+    name: "BUDGET WEED",
+    slug: "budget-weed",
     price: "$3/g",
     banner: "/banners/budget_banner.webp",
     className: styles.bentoTile,
@@ -111,7 +111,7 @@ const LOCAL_FAQS = [
   },
   {
     q: "What cannabis products do you carry?",
-    a: "We organize flower into Exotic, Premium, AAA+, AA, and Budget menu tiers, with separate category pages for edibles, pre-rolls, vapes, concentrates, accessories, and cigarettes.",
+    a: "We organize flower into Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed collections, with separate categories for edibles, pre-rolls, vapes, concentrates, accessories and cigarettes.",
   },
   {
     q: "Where is Green Pentagon Cannabis located?",
@@ -119,7 +119,7 @@ const LOCAL_FAQS = [
   },
   {
     q: "What is the cheapest weed at Green Pentagon Cannabis?",
-    a: "Use the Budget, AA, and AAA+ tier pages to compare their current posted weights and prices.",
+    a: "Use the Budget Weed, AA Weed and AAA+ Weed collections to compare the product information presented while browsing.",
   },
 ];
 
@@ -286,7 +286,7 @@ export default function HomePage() {
               Open Daily: 10:00 AM - 12:00 AM
             </div>
             <div className={styles.homeMenuActions} aria-label="Choose a Green Pentagon menu">
-              <Link href="/exotic" className={styles.homeMenuCta}>STORE MENU</Link>
+              <Link href="/exotic-weed" className={styles.homeMenuCta}>STORE MENU</Link>
               <Link href="/delivery" className={`${styles.homeMenuCta} ${styles.homeDeliveryCta}`}>DELIVERY MENU</Link>
             </div>
           </div>

@@ -143,7 +143,7 @@ export const SEO_PAGES: SeoPageData[] = [
     icon: "$",
     heroTagline: "Compare posted flower tiers and menu prices",
     sections: [
-      { heading: "Compare The Flower Tiers", body: "The Exotic, Premium, AAA+, AA, and Budget pages organize flower into separate menu lanes with posted weights and prices." },
+      { heading: "Compare The Weed Flower Collections", body: "Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed organize flower into separate menu collections." },
       { heading: "Confirm Current Details", body: "Product names and menu details can change. Use the current tier page or ask staff when one exact item matters." },
     ],
     faqs: visitFaqs,

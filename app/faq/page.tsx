@@ -43,7 +43,7 @@ const FAQ_CATEGORIES = [
     faqs: [
       {
         q: "What products do you carry?",
-        a: "We organize flower into five menu tiers: Exotic, Premium, AAA+, AA, and Budget. Separate pages cover edibles, vapes, concentrates, pre-rolls, cigarettes, and accessories.",
+        a: "We organize flower into five collections: Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed. Separate categories cover edibles, vapes, concentrates, pre-rolls, cigarettes and accessories.",
       },
       {
         q: "Do you have a current menu?",
@@ -51,7 +51,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "What are your flower tiers?",
-        a: "The menu separates flower into Exotic, Premium, AAA+, AA, and Budget tiers. Open each tier page to compare its current listings and posted prices.",
+        a: "The menu separates flower into Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed collections. Explore each collection to compare the product information presented while browsing.",
       },
       {
         q: "Do you sell edibles?",
@@ -72,11 +72,11 @@ const FAQ_CATEGORIES = [
     faqs: [
       {
         q: "What is the cheapest weed you sell?",
-        a: "Use the Budget and AA tier pages to compare their current posted weights and prices.",
+        a: "Use the Budget Weed and AA Weed collections to compare the product information presented while browsing.",
       },
       {
         q: "What bundle pricing do you offer?",
-        a: "Flower bundle pricing includes a 3g total option the 3g total is shown clearly before purchase. Our Exotic, Premium, and AAA+ tiers also offer 6g bundle pricing, with 6g total pricing.",
+        a: "Flower bundle pricing includes a 3g total option the 3g total is shown clearly before purchase. Our Exotic Weed, Premium Weed and AAA+ Weed collections also offer 6g bundle pricing, with 6g total pricing.",
       },
       {
         q: "Do you have ounce deals?",
@@ -84,7 +84,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "How does bundle pricing work?",
-        a: "The 3g bundle pricing applies to every tier automatically. The 6g bundle pricing applies to Exotic, Premium, and AAA+ tiers. These are our standard everyday bundle offers.",
+        a: "The 3g bundle pricing applies to every tier automatically. The 6g bundle pricing applies to Exotic Weed, Premium Weed and AAA+ Weed. These are our standard everyday bundle offers.",
       },
       {
         q: "How does the tier pricing work?",
