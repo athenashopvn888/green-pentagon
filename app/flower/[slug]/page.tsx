@@ -122,7 +122,7 @@ function getJsonLd(flower: FlowerProduct) {
 /* -- Breadcrumb JSON-LD -- */
 function getBreadcrumbJsonLd(flower: FlowerProduct) {
   const tierConfig = TIER_CONFIG[flower.tier];
-  const tierSlug = tierConfig?.slug || "exotic";
+  const tierSlug = tierConfig?.slug || "exotic-weed";
   const tierName = tierConfig?.name || flower.tier;
   return {
     "@context": "https://schema.org",
