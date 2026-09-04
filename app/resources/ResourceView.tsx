@@ -37,7 +37,9 @@ export default function ResourceView({ page }: ResourceViewProps) {
         {page.sections.map((section) => (
           <article key={section.heading} className={styles.section}>
             <h2>{section.heading}</h2>
-            <p>{section.body}</p>
+            {(Array.isArray(section.body) ? section.body : [section.body]).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
             {section.bullets && (
               <ul>
                 {section.bullets.map((item) => (
@@ -45,17 +47,24 @@ export default function ResourceView({ page }: ResourceViewProps) {
                 ))}
               </ul>
             )}
+            {section.link && (
+              <Link href={section.link.href} className={styles.sectionLink}>
+                {section.link.title}
+              </Link>
+            )}
           </article>
         ))}
         {page.faqs && (
           <article className={styles.section}>
-            <h2>Green Pentagon Cannabis Weed & Flower Questions</h2>
-            {page.faqs.map((faq) => (
-              <div key={faq.question}>
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
-              </div>
-            ))}
+            <h2>{page.faqHeading || "Green Pentagon Cannabis Weed & Flower Questions"}</h2>
+            <div className={styles.faqList}>
+              {page.faqs.map((faq) => (
+                <section key={faq.question}>
+                  <h3>{faq.question}</h3>
+                  <p>{faq.answer}</p>
+                </section>
+              ))}
+            </div>
           </article>
         )}
       </section>
