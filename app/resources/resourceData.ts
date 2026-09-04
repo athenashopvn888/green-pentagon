@@ -6,8 +6,9 @@ export interface ResourceCard {
 
 export interface ResourceSection {
   heading: string;
-  body: string;
+  body: string | string[];
   bullets?: string[];
+  link?: ResourceCard;
 }
 
 export interface ResourcePage {
@@ -20,6 +21,7 @@ export interface ResourcePage {
   cards: ResourceCard[];
   sections: ResourceSection[];
   faqs?: { question: string; answer: string }[];
+  faqHeading?: string;
 }
 
 const hubCards: ResourceCard[] = [
@@ -183,6 +185,11 @@ export const RESOURCE_PAGES: ResourcePage[] = [
         href: "/resources/value-guide",
         text: "A direct guide to Budget Weed, AA Weed and other flower collections.",
       },
+      {
+        title: "Cannabis Dispensary and Weed Dispensary Guide",
+        href: "/resources/cannabis-dispensary-vs-weed-dispensary",
+        text: "Learn how common dispensary wording connects to local searches in Toronto.",
+      },
     ],
     sections: [
       {
@@ -232,6 +239,55 @@ export const RESOURCE_PAGES: ResourcePage[] = [
         heading: "Protect The Local Page",
         body:
           "The visit guide stays as the main local store guide. The resource pages help by grouping shopper questions around menu choices, Parkdale context, Queen West intent, and useful category links.",
+      },
+    ],
+  },
+  {
+    slug: "cannabis-dispensary-vs-weed-dispensary",
+    title: "Cannabis Dispensary vs. Weed Dispensary in Local Search",
+    seoTitle: "Cannabis vs Weed Dispensary Guide | Green Pentagon Cannabis",
+    description:
+      "What is the difference between a cannabis dispensary and weed dispensary? Green Pentagon Cannabis explains the language behind local dispensary searches in Toronto.",
+    eyebrow: "Green Pentagon Cannabis · Toronto",
+    intro:
+      "Local cannabis searches are full of vocabulary changes. Some customers use the formal word cannabis, some use the everyday word weed, and others simply search for a dispensary. Those differences matter for search language, but they do not automatically describe different kinds of businesses.",
+    cards: [],
+    sections: [
+      {
+        heading: "Formal Language vs. Everyday Language",
+        body: [
+          "“Cannabis” is the language most often used in formal business and regulatory contexts. “Weed” is common everyday language. “Dispensary” tells the searcher what kind of place they are trying to find.",
+          "That is why a customer can move between cannabis, weed, store and dispensary wording without necessarily changing the underlying objective.",
+        ],
+      },
+      {
+        heading: "From Search Phrase to Real Store Information",
+        body:
+          "Green Pentagon Cannabis serves adults 19+ in Toronto. This guide explains how terms such as cannabis dispensary, weed dispensary and dispensary near me are commonly used.",
+        link: {
+          title: "For store information and visiting details, see our Toronto weed dispensary page.",
+          href: "/weed-dispensary-toronto",
+          text: "Green Pentagon Cannabis Toronto weed dispensary information",
+        },
+      },
+    ],
+    faqHeading: "Frequently Asked Questions",
+    faqs: [
+      {
+        question: "Why do people search “weed dispensary near me”?",
+        answer: "Because weed is common everyday language and “near me” signals that the searcher wants a nearby business.",
+      },
+      {
+        question: "Why do others use “cannabis dispensary near me”?",
+        answer: "Cannabis is the more formal term, so some people naturally use it when searching for the same kind of local business.",
+      },
+      {
+        question: "Is “dispensary near me” the same exact keyword?",
+        answer: "No. It is a distinct query, but it can express closely related local intent.",
+      },
+      {
+        question: "What should matter after a local result is found?",
+        answer: "Correct business identity, location information, current store details and a reliable page for planning a visit.",
       },
     ],
   },
