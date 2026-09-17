@@ -28,7 +28,7 @@ const hubCards: ResourceCard[] = [
   {
     title: "Queen West Visit Guide",
     href: "/resources/queen-west-visit-guide",
-    text: "Plan the stop around Parkdale, Queen St W, Lansdowne, Dufferin, Liberty Village, and Roncesvalles.",
+    text: "Plan the stop around Parkdale, Queen St W, Dufferin, Brock, and the 501 Queen streetcar.",
   },
   {
     title: "Menu Guide",
@@ -70,15 +70,15 @@ const menuCards: ResourceCard[] = [
   },
   {
     title: "Store Visit Page",
-    href: "/weed-dispensary-toronto",
-    text: "Use the visit guide for the Queen St W address and store details.",
+    href: "/visit",
+    text: "Use the how-to-reach guide for the Queen St W address, transit, and parking.",
   },
 ];
 
 const flowerCards: ResourceCard[] = [
   {
     title: "Explore Green Pentagon Cannabis Weed in Toronto",
-    href: "/weed-dispensary-toronto/",
+    href: "/visit",
     text: "Begin with the broader Green Pentagon Cannabis Weed selection.",
   },
   {
@@ -140,7 +140,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       "Green Pentagon Cannabis resource pages for Parkdale and Queen West shoppers, with visit planning, menu shortcuts, flower tier pricing, value shopping, pre-roll tips, and Native smokes prices.",
     eyebrow: "Queen West Resource Hub",
     intro:
-      "Green Pentagon Cannabis resources should feel like a Queen St W shortcut, not a copied cannabis blog. These pages are built for Parkdale, Queen West, Lansdowne, Dufferin, Liberty Village, Roncesvalles, and TTC shoppers who want the right next click before heading to 1267 Queen St W.",
+      "Green Pentagon Cannabis resources should feel like a Queen St W shortcut, not a copied cannabis blog. These pages are built for Parkdale, Queen West, Dufferin, Brock, and 501 streetcar shoppers who want the right next click before heading to 1267 Queen St W.",
     cards: hubCards,
     sections: [
       {
@@ -148,7 +148,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
         body:
           "The resource hub gathers local planning information for Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. Start with the store page, then use the resources to choose a menu category.",
         bullets: [
-          "Use /weed-dispensary-toronto for the local store page.",
+          "Use /visit for how to get here.",
           "Use /resources/menu-guide when choosing between cannabis categories.",
           "Use /resources/native-smokes when cigarette brands, Backwoods, or grabba are part of the visit.",
         ],
@@ -156,7 +156,7 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Parkdale And Queen West Visit Planning",
         body:
-          "Use this hub to plan a Green Pentagon Cannabis visit from Parkdale, Queen West, Lansdowne, Dufferin, Liberty Village, Roncesvalles, or the Queen streetcar corridor.",
+          "Use this hub to plan a Green Pentagon Cannabis visit from Parkdale, Queen West, Dufferin, Brock, or the Queen streetcar corridor.",
       },
     ],
   },
@@ -165,15 +165,15 @@ export const RESOURCE_PAGES: ResourcePage[] = [
     title: "Queen West Weed Dispensary Visit Guide",
     seoTitle: "Queen West Weed Dispensary Visit Guide | Green Pentagon Cannabis",
     description:
-      "A local visit guide for Green Pentagon Cannabis at 1267 Queen St W, with Parkdale, Lansdowne, Dufferin, Liberty Village, Roncesvalles, and TTC shopping paths.",
+      "A local visit guide for Green Pentagon Cannabis at 1267 Queen St W, with Parkdale, Dufferin, Brock, and 501 Queen streetcar paths.",
     eyebrow: "Visit Guide",
     intro:
-      "Use this page to plan a menu stop from Queen West, Parkdale, Lansdowne, Dufferin, Liberty Village, Roncesvalles, or the Queen streetcar corridor.",
+      "Use this page to plan a menu stop from Queen West, Parkdale, Dufferin, Brock, or the Queen streetcar corridor.",
     cards: [
       {
         title: "Plan Your Visit",
-        href: "/weed-dispensary-toronto",
-        text: "The store-connected page with address, hours, and visit context.",
+        href: "/visit",
+        text: "The how-to-reach page with address, hours, 501 Queen notes, and parking.",
       },
       {
         title: "Menu Guide",
@@ -200,11 +200,11 @@ export const RESOURCE_PAGES: ResourcePage[] = [
       {
         heading: "Queen Street Movement",
         body:
-          "Queen West shoppers often move by neighborhood instead of exact postal code. That is why this guide connects Parkdale, Lansdowne, Dufferin, Liberty Village, Roncesvalles, TTC, and Queen St W language to the same clean store path.",
+          "Queen West shoppers often move by streetcar stop instead of exact postal code. That is why this guide connects Parkdale, Queen West, Dufferin, Brock, the 501 Queen streetcar, and Queen St W language to the same storefront at 1267 Queen St W.",
         bullets: [
           "Parkdale and Queen West for nearby visit planning.",
-          "Lansdowne and Dufferin for direction-based planning.",
-          "Liberty Village, Roncesvalles, and TTC for nearby shopper movement.",
+          "Dufferin and Brock for direction-based planning.",
+          "501 Queen streetcar for the actual curb.",
         ],
       },
       {

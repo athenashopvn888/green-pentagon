@@ -6,7 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import JsonLd from "../../components/JsonLd";
 import { SEO_PAGES, getSeoPageBySlug } from "../../lib/seoPages";
+import { STORE_NAP, faqPageJsonLd } from "../../lib/storeNap";
 import { TIER_CONFIG } from "../../lib/products";
 import styles from "./seo.module.css";
 
@@ -54,6 +56,7 @@ export default async function SeoLandingPage({
 
   return (
     <main className={styles.main}>
+      <JsonLd data={faqPageJsonLd(page.faqs)} />
       <Navbar hideThcVape={slug === "nicotine-vapes-queen-west"} />
 
       {/* Banner Image */}
@@ -149,10 +152,21 @@ export default async function SeoLandingPage({
 
           {/* Map */}
           {page.showVisitSection !== false && <div className={styles.section}>
-            <h2 className={styles.sectionTitle}>Find Us</h2>
+            <h2 className={styles.sectionTitle}>Find Us on Queen West</h2>
+            <p className={styles.sectionBody}>
+              {STORE_NAP.addressLine} · {STORE_NAP.phoneDisplay} · {STORE_NAP.hoursLabel}. {STORE_NAP.ageLine}.
+            </p>
             <div className={styles.mapWrap}>
+              <iframe
+                title="Map of Green Pentagon Cannabis at 1267 Queen St W"
+                src={STORE_NAP.mapEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ width: "100%", height: 280, border: 0, display: "block" }}
+              />
             </div>
             <div className={styles.visitBtns}>
+              <Link href="/visit" className={styles.visitBtn}>How to get here</Link>
             </div>
           </div>}
 

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
+import { STORE_NAP } from "../lib/storeNap";
 
 export default function Footer() {
+  const nap = STORE_NAP;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -10,9 +13,8 @@ export default function Footer() {
           <div className={styles.col}>
             <div className={styles.brand}>GREEN PENTAGON CANNABIS</div>
             <p className={styles.desc}>
-              Your Local Cannabis Dispensary At 1267 Queen St W, Toronto. Visit
-              Green Pentagon Cannabis For Premium Flower, Edibles, Vapes &amp;
-              More. Open daily: 10:00 AM - 12:00 AM.
+              Walk-in cannabis shop at {nap.addressLine}, on the Queen West /
+              Parkdale corridor. {nap.ageLine}. {nap.hoursLabel}.
             </p>
             <div className={styles.buttons}></div>
           </div>
@@ -22,23 +24,23 @@ export default function Footer() {
             <h3 className={styles.colTitle}>Contact Info</h3>
             <div className={styles.infoBlock}>
               <span className={styles.infoLabel}>Address:</span>
-              <span>1267 Queen St W</span>
-              <span>Toronto, ON M6K 2J2</span>
+              <span>{nap.streetAddress}</span>
+              <span>
+                {nap.addressLocality}, {nap.addressRegion} {nap.postalCode}
+              </span>
               <span>Canada</span>
             </div>
             <div className={styles.infoBlock}>
               <span className={styles.infoLabel}>Phone:</span>
               <span>
-                <a href="tel:+14372903657" style={{ color: "inherit" }}>
-                  +1 (437) 290-3657
+                <a href={`tel:${nap.phoneIntl}`} style={{ color: "inherit" }}>
+                  {nap.phoneDisplay}
                 </a>
               </span>
             </div>
             <div className={styles.infoBlock}>
               <span className={styles.infoLabel}>Hours:</span>
-              <span className={styles.highlight}>
-                Open Daily: 10:00 AM - 12:00 AM
-              </span>
+              <span className={styles.highlight}>{nap.hoursLabel}</span>
             </div>
           </div>
 
@@ -47,6 +49,7 @@ export default function Footer() {
             <h3 className={styles.colTitle}>Quick Links</h3>
             <nav className={styles.links}>
               <Link href="/">Home</Link>
+              <Link href="/visit">Visit / How to get here</Link>
               <Link href="/exotic-weed">Exotic Weed</Link>
               <Link href="/premium-weed">Premium Weed</Link>
               <Link href="/aaa-weed">AAA+ Weed</Link>
@@ -74,11 +77,11 @@ export default function Footer() {
                 Queen West Weed Store
               </Link>
               <Link href="/weed-dispensary-toronto/">
-                Green Pentagon Cannabis Weed Dispensary in Toronto
+                Green Pentagon Cannabis store notes
               </Link>
               <Link href="/contact">Contact Us</Link>
               <a
-                href="https://www.greenpentagoncannabis.com/"
+                href={nap.mapSearchUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >

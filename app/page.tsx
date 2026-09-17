@@ -7,10 +7,27 @@ import FleetAnnouncementBanner from "./components/FleetAnnouncementBanner";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FlowerCard from "./components/FlowerCard";
+import JsonLd from "./components/JsonLd";
 import { WeedDiscoveryModule } from "./components/WeedDiscoveryModule";
 import SaleBanner from "./components/SaleBanner";
-import { allFlowers } from "./lib/products";
+import { allFlowers, type FlowerProduct } from "./lib/products";
+import { HOME_FAQS, STORE_NAP, faqPageJsonLd } from "./lib/storeNap";
 import Papa from "papaparse";
+
+function pickFeaturedStrains(flowers: FlowerProduct[]) {
+  const pool = flowers.filter((f) => f.image);
+  const picked: FlowerProduct[] = [];
+  const tierCounts: Record<string, number> = {};
+  for (const f of pool) {
+    if (picked.length >= 8) break;
+    const tc = tierCounts[f.tier] || 0;
+    if (tc >= 2) continue;
+    if (picked.some((p) => p.name === f.name)) continue;
+    picked.push(f);
+    tierCounts[f.tier] = tc + 1;
+  }
+  return picked;
+}
 
 /* Bento Mosaic Config */
 const BENTO_TIERS = [
@@ -104,25 +121,7 @@ const EXPLORE_CATEGORIES = [
   },
 ];
 
-/* Local FAQs for Jane St */
-const LOCAL_FAQS = [
-  {
-    q: "What are the hours for Green Pentagon Cannabis?",
-    a: "Green Pentagon Cannabis at 1267 Queen St W, Toronto is open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime no appointment needed.",
-  },
-  {
-    q: "What cannabis products do you carry?",
-    a: "We organize flower into Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed collections, with separate categories for edibles, pre-rolls, vapes, concentrates, accessories and cigarettes.",
-  },
-  {
-    q: "Where is Green Pentagon Cannabis located?",
-    a: "We are located at 1267 Queen St W, Toronto, ON M6K 2J2. Visit us in person or call us at +1 (437) 290-3657. Free evening street parking is available.",
-  },
-  {
-    q: "What is the cheapest weed at Green Pentagon Cannabis?",
-    a: "Use the Budget Weed, AA Weed and AAA+ Weed collections to compare the product information presented while browsing.",
-  },
-];
+const LOCAL_FAQS = HOME_FAQS;
 
 interface Review {
   name: string;
@@ -136,7 +135,7 @@ interface ReviewStats {
 }
 
 export default function HomePage() {
-  const [featuredStrains, setFeaturedStrains] = useState<any[]>([]);
+  const featuredStrains = pickFeaturedStrains(allFlowers);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [reviewsStats, setReviewsStats] = useState<ReviewStats | null>(null);
   const [reviewsLoading, setReviewsLoading] = useState(true);
@@ -205,32 +204,11 @@ export default function HomePage() {
       });
   }, []);
 
-  /* 2. Build Featured Strains */
-  useEffect(() => {
-    const pool = [...allFlowers].filter((f) => f.image);
-    // Shuffle pool securely
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-
-    const picked: typeof pool = [];
-    const tierCounts: Record<string, number> = {};
-
-    for (const f of pool) {
-      if (picked.length >= 8) break;
-      const tc = tierCounts[f.tier] || 0;
-      if (tc >= 2) continue; // max 2 per tier
-      if (picked.some((p) => p.name === f.name)) continue; // avoid exact duplicates
-      picked.push(f);
-      tierCounts[f.tier] = tc + 1;
-    }
-
-    setFeaturedStrains(picked);
-  }, []);
+  /* Featured cards start from static JSON so crawlers see product names under the grid. */
 
   return (
     <main className={styles.main}>
+      <JsonLd data={faqPageJsonLd(HOME_FAQS)} />
       <FleetAnnouncementBanner />
       {/* NAVBAR */}
       <Navbar />
@@ -241,10 +219,15 @@ export default function HomePage() {
           <div className={styles.welcomeBannerContainer}>
             <img
               src={welcomeBannerSrc}
-              alt="Welcome to Green Pentagon Cannabis Queen West Cannabis Dispensary"
+              alt="Welcome to Green Pentagon Cannabis on Queen West and Parkdale"
               className={styles.welcomeBannerImg}
               onError={() => setWelcomeBannerError(true)}
             />
+            <p className={styles.welcomeBannerNap}>
+              {STORE_NAP.addressLine} ·{" "}
+              <a href={`tel:${STORE_NAP.phoneIntl}`}>{STORE_NAP.phoneDisplay}</a>{" "}
+              · {STORE_NAP.hoursLabel} · {STORE_NAP.ageLine}
+            </p>
           </div>
         </section>
       )}
@@ -282,14 +265,19 @@ export default function HomePage() {
                 marginBottom: "8px",
               }}
             />
-            <h1 className={styles.brandTitle}>GREEN PENTAGON CANNABIS</h1>
-            <p className={styles.brandSub}>Premium Cannabis Dispensary</p>
+            <h1 className={styles.brandTitle}>
+              Green Pentagon Cannabis | Parkdale / Queen West Dispensary
+            </h1>
+            <p className={styles.brandSub}>
+              Walk-in on Queen West / Parkdale · {STORE_NAP.ageLine}
+            </p>
             <div className={styles.brandBadge}>
-              Open Daily: 10:00 AM - 12:00 AM
+              {STORE_NAP.hoursLabel}
             </div>
             <div className={styles.homeMenuActions} aria-label="Choose a Green Pentagon menu">
               <Link href="/exotic-weed" className={styles.homeMenuCta}>STORE MENU</Link>
               <Link href="/delivery" className={`${styles.homeMenuCta} ${styles.homeDeliveryCta}`}>DELIVERY MENU</Link>
+              <Link href="/visit" className={`${styles.homeMenuCta} ${styles.homeVisitCta}`}>How to get here</Link>
             </div>
           </div>
 
@@ -359,9 +347,20 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Featured Strains</h2>
             <p className={styles.sectionSubtitle}>
-              Featured menu listings from the current product source.
+              Featured menu listings from the current product source. Names
+              below are crawlable starting points, not a live stock promise.
             </p>
           </div>
+
+          <noscript>
+            <ul>
+              {featuredStrains.map((strain) => (
+                <li key={strain.sku}>
+                  {strain.name} — {strain.tier}
+                </li>
+              ))}
+            </ul>
+          </noscript>
 
           <div className={styles.featuredScroll}>
             {featuredStrains.map((strain, i) => (
@@ -378,26 +377,58 @@ export default function HomePage() {
         <div className={styles.container}>
           <div className={styles.seoPanel}>
             <h2 className={styles.seoPanelTitle}>
-              Queen West and Parkdale's Cannabis Dispensary Open Daily: 10:00 AM
-              - 12:00 AM
+              A Parkdale / Queen West walk-in — {STORE_NAP.hoursLabel}
             </h2>
             <p className={styles.seoPanelText}>
-              Welcome to <strong>Green Pentagon Cannabis</strong>, Queen West's
-              local cannabis stop at 1267 Queen St W. We carry an electrifying
-              menu with separate flower tiers and category pages for other
-              product formats.
+              Green Pentagon Cannabis is the walk-in cannabis shop at{" "}
+              <strong>{STORE_NAP.addressLine}</strong>, on the Queen streetcar
+              between Dufferin and Brock. This is a Parkdale Village counter
+              for adults 19+ already moving along Queen Street West — people
+              stepping off the 501, cutting over from Exhibition Place, or
+              walking west past the Gladstone Hotel into the mural stretch
+              that locals actually call Parkdale. It is not a city-wide
+              delivery warehouse and it does not compete for downtown-core
+              head terms.
             </p>
             <p className={styles.seoPanelText}>
-              Green Pentagon Cannabis is open daily from 10:00 AM to 12:00 AM.
-              Use the current menu to compare flower, pre-rolls, edibles, vapes,
-              concentrates, accessories, and cigarettes. Staff can clarify
-              menu details during listed store hours.
+              The nearest named intersection is Queen Street West and Dufferin
+              Street, with Brock Avenue a short walk west. From Dufferin you
+              stay on Queen a few doors past the Gladstone; from Brock you
+              walk east toward Dufferin rather than hunting a lakeshore
+              address. The 501 Queen streetcar is the workhorse. The 29
+              Dufferin bus and Dufferin Gate Loop (Exhibition Place) sit
+              south — useful transfers, not a claim that the door is inside
+              the grounds. Drivers coming off the Gardiner typically use
+              Jameson Avenue or Dufferin Street, then work north to Queen.
+              Full how-to-reach notes, Green P caveats, and a map live on the{" "}
+              <Link href="/visit">visit page</Link>.
             </p>
             <p className={styles.seoPanelText}>
-              Searching for a cannabis dispensary in Toronto or the surrounding
-              area? Green Pentagon Cannabis provides store details and category
-              navigation for adults planning a Queen West visit. Compare the
-              posted menu information before choosing a category.
+              Evening street parking on Queen West and nearby laterals (Close,
+              Cowan, Dunn) is the usual pattern. Signs and restrictions change
+              by block and by hour, so read the post, not a screenshot. When
+              the 501 is stacked at dinner or late-night weekend times, loop
+              the side streets or use Green P around Queen and Dufferin rather
+              than idling on the streetcar tracks.
+            </p>
+            <p className={styles.seoPanelText}>
+              Walk-ins do not need an appointment. Bring government-issued photo
+              ID that proves you are 19 or older. The counter accepts debit and
+              cash. Store hours are daily from 10:00 AM to 12:00 AM — midnight
+              close for this Queen West pin, not a Toronto-wide slogan. The
+              public menu is split into flower collections and format
+              categories (pre-rolls, edibles, vapes, concentrates, accessories,
+              cigarettes). Those pages are for browsing names and posted
+              details before you visit. They are not a live inventory feed. If
+              one exact item is the reason for the trip, call{" "}
+              <a href={`tel:${STORE_NAP.phoneIntl}`}>{STORE_NAP.phoneDisplay}</a>{" "}
+              during listed hours.
+            </p>
+            <p className={styles.seoPanelText}>
+              Delivery, when you use it, is a{" "}
+              <Link href="/delivery">separate URL</Link> with Parkdale / Queen
+              West / Dufferin–Brock scope. The dispatcher confirms whether an
+              address is in range. This pin owns Queen West and Parkdale.
             </p>
           </div>
         </div>
@@ -490,10 +521,12 @@ export default function HomePage() {
               <span className={styles.storeIcon}></span>
               <h3 className={styles.storeCardTitle}>Location</h3>
               <p className={styles.storeCardText}>
-                1267 Queen St W
+                {STORE_NAP.streetAddress}
                 <br />
-                Toronto, ON M6K 2J2
+                {STORE_NAP.addressLocality}, {STORE_NAP.addressRegion}{" "}
+                {STORE_NAP.postalCode}
                 <br />
+                <a href={`tel:${STORE_NAP.phoneIntl}`}>{STORE_NAP.phoneDisplay}</a>
               </p>
             </div>
             <div className={styles.storeCard}>
@@ -503,7 +536,7 @@ export default function HomePage() {
                 Open 7 Days a Week
                 <br />
                 <span className={styles.storeHighlight}>
-                  Open Daily: 10:00 AM - 12:00 AM
+                  {STORE_NAP.hoursLabel}
                 </span>
               </p>
             </div>
@@ -511,17 +544,26 @@ export default function HomePage() {
               <span className={styles.storeIcon}></span>
               <h3 className={styles.storeCardTitle}>Walk In</h3>
               <p className={styles.storeCardText}>
-                No appointment needed
+                No appointment needed · {STORE_NAP.ageLine}
                 <br />
                 <span className={styles.storeHighlight}>
                   Queen West and Parkdale
                 </span>
+                <br />
+                <Link href="/visit">How to get here</Link>
               </p>
             </div>
           </div>
 
-          {/* Map wrapper */}
-          <div className={styles.mapWrap}></div>
+          <div className={styles.mapWrap}>
+            <iframe
+              title="Map of Green Pentagon Cannabis at 1267 Queen St W"
+              src={STORE_NAP.mapEmbedUrl}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ width: "100%", height: 320, border: 0, display: "block" }}
+            />
+          </div>
         </div>
       </section>
 

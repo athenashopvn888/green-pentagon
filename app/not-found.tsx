@@ -64,7 +64,7 @@ export default function NotFound() {
             Browse Menu
           </Link>
           <Link
-            href="/contact"
+            href="/visit"
             style={{
               padding: "14px 28px",
               background: "transparent",

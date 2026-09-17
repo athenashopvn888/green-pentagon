@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import styles from "./faq.module.css";
 
 export const metadata: Metadata = {
-  title: "FAQ Green Pentagon Cannabis | Queen West Dispensary Questions",
+  title: { absolute: "FAQ | Parkdale & Queen West — Green Pentagon Cannabis" },
   description:
-    "Frequently asked questions about Green Pentagon Cannabis in Toronto. Hours, location, products, pricing, bundle offers, and everything you need to know before visiting.",
+    "Hours, parking, 501 Queen streetcar, 19+ ID, and walk-in questions for Green Pentagon Cannabis at 1267 Queen St W. Adults 19+. Open Daily: 10:00 AM - 12:00 AM.",
   alternates: {
     canonical: "https://www.greenpentagoncannabis.com/faq",
   },
@@ -18,23 +18,23 @@ const FAQ_CATEGORIES = [
     faqs: [
       {
         q: "Where is Green Pentagon Cannabis located?",
-        a: "We are located at 1267 Queen St W, Toronto, ON M6K 2J2. We're easily accessible by TTC bus routes and close to major highways like the 401.",
+        a: "Green Pentagon Cannabis is at 1267 Queen St W, Toronto, ON M6K 2J2, on the Queen West / Parkdale stretch just west of Dufferin toward Brock. It is a walk-in pin for this stretch of Queen — not a downtown core shop.",
       },
       {
         q: "What are your hours?",
-        a: "We are open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime no appointment needed.",
+        a: "We are open daily from 10:00 AM to 12:00 AM (midnight). Walk in anytime — no appointment needed. Adults 19+ with government-issued photo ID.",
       },
       {
         q: "Is there parking nearby?",
-        a: "Yes. Free street parking is available nearby on surrounding streets in the evenings. We're also easily accessible by local transit.",
+        a: "Evening street parking is often available on Queen Street West and nearby laterals such as Close, Cowan, and Dunn. Follow posted signs; restrictions change by block and hour. Green P around Queen & Dufferin is the backup. The visit page has the parking loop notes.",
       },
       {
-        q: "How far are you from west Toronto?",
-        a: "We're just 5 minutes from the highways and central transit routes. We are centrally located and easy to reach.",
+        q: "How far are you from Parkdale Village?",
+        a: "The shop sits on Queen Street West at the Parkdale Village / Dufferin seam. From western Parkdale you come east from Brock; from the Gladstone you walk a few doors west. How-to-reach detail is on /visit.",
       },
       {
         q: "How can I get to Green Pentagon Cannabis?",
-        a: "We're easily accessible by car, bus, or foot. We are easily accessible by car, local transit, or bus routes. Free parking is available on surrounding streets.",
+        a: "Use the 501 Queen streetcar along Queen Street West (Dufferin or Brock stops), the 29 Dufferin bus, or treat Dufferin Gate Loop as a transfer toward Exhibition Place. Drivers typically exit the Gardiner at Jameson or Dufferin. Full transit and parking notes are on the visit page.",
       },
     ],
   },
@@ -101,11 +101,11 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "Can I order online?",
-        a: "Currently, Green Pentagon Cannabis is an in-store shopping experience only. You can browse the current menu online before visiting.",
+        a: "Currently you can browse the walk-in menu online and, when you want an order brought to an address, use the neighbourhood delivery menu. The dispatcher confirms whether that address is in the Parkdale / Queen West range. Adults 19+.",
       },
       {
         q: "Do you offer delivery?",
-        a: "Delivery is coming soon! Visit our delivery page to sign up for email notifications when we launch our delivery service.",
+        a: "Yes. Delivery is a separate URL with Parkdale / Queen West / Dufferin–Brock scope — not a city-wide Toronto delivery product. The dispatcher confirms whether an address is in range. Walk-in directions live on /visit.",
       },
       {
         q: "What payment methods do you accept?",
@@ -169,7 +169,7 @@ export default function FAQPage() {
           <h1 className={styles.pageTitle}>Frequently Asked Questions</h1>
           <p className={styles.pageSubtitle}>
             Everything you need to know about Green Pentagon Cannabis
-            at 1267 Queen St W in Toronto.
+            at 1267 Queen St W on Queen West / Parkdale.
           </p>
 
           {FAQ_CATEGORIES.map((cat) => (
