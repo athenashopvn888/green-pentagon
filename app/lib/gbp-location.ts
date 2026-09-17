@@ -11,7 +11,7 @@ export const gbpLocation = {
   phone: "+1 (437) 290-3657",
   phoneIntl: "+14372903657",
   neighborhood: "Parkdale / Queen West",
-  nearbyAreas: ["Queen St W", "Lansdowne", "Parkdale", "Dufferin", "Liberty Village", "Roncesvalles", "TTC"],
+  nearbyAreas: ["Queen St W", "Parkdale", "Parkdale Village", "Dufferin", "Brock", "Queen and Dufferin", "TTC 501"],
   products: [
     "Flower",
     "Pre-rolls",
@@ -23,17 +23,17 @@ export const gbpLocation = {
     "Accessories"
   ],
   menuUrl: "/",
-  directionsUrl: "",
-  mapEmbedUrl: "",
+  directionsUrl: "/visit",
+  mapEmbedUrl: "https://www.google.com/maps?q=1267+Queen+St+W,+Toronto,+ON+M6K+2J2&output=embed",
   latitude: "43.6415588",
   longitude: "-79.4312674",
   hours: ["Open Daily: 10:00 AM - 12:00 AM"],
-  seoTitle: "Green Pentagon Cannabis | Weed Dispensary in Toronto",
-  metaDescription: "Green Pentagon Cannabis is a local weed dispensary in Toronto offering flower, pre-rolls, edibles, vapes, concentrates, CBD, and service for adults 19+.",
-  localLandmarks: ["Queen St W", "Lansdowne", "Parkdale"],
-  introVariant: "Green Pentagon Cannabis is a local weed dispensary at 1267 Queen St W in Toronto. Adults 19+ can browse flower tiers and category pages for pre-rolls, edibles, vapes, concentrates, cigarettes, and accessories before visiting.",
-  neighborhoodDescription: "Located in the vibrant Parkdale / Queen West district, our cannabis store fits right into this active and historic community, surrounded by local retail shops and convenient transit links.",
-  parkingNote: "Street parking is available along Queen Street West",
-  transitNote: "Accessible via the 501 Queen streetcar and local TTC bus routes.",
-  sectionTitle: "Serving Customers Near Parkdale in Toronto"
+  seoTitle: "Green Pentagon Cannabis | Parkdale / Queen West Dispensary",
+  metaDescription: "Walk-in cannabis shop at 1267 Queen St W for Parkdale and Queen West. Adults 19+. Open Daily: 10:00 AM - 12:00 AM. Call +1 (437) 290-3657.",
+  localLandmarks: ["Queen St W", "Parkdale Village", "Dufferin", "Gladstone Hotel"],
+  introVariant: "Green Pentagon Cannabis is a walk-in dispensary at 1267 Queen St W on Queen West / Parkdale. Adults 19+ can browse flower collections and category pages for pre-rolls, edibles, vapes, concentrates, cigarettes, and accessories before visiting.",
+  neighborhoodDescription: "The storefront sits on Queen Street West just west of Dufferin, where West Queen West turns into Parkdale Village, with the 501 streetcar at the curb.",
+  parkingNote: "Evening street parking on Queen Street West and laterals such as Close, Cowan, and Dunn; Green P around Queen & Dufferin when the curb is full.",
+  transitNote: "501 Queen streetcar (Dufferin and Brock stops), 29 Dufferin bus, Dufferin Gate Loop toward Exhibition Place.",
+  sectionTitle: "Serving Customers Near Parkdale and Queen West"
 };

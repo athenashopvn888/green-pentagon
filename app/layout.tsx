@@ -2,53 +2,52 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import AgeGate from "./components/AgeGate";
+import JsonLd from "./components/JsonLd";
+import {
+  STORE_NAP,
+  HOME_TITLE,
+  HOME_DESCRIPTION,
+  cannabisStoreJsonLd,
+} from "./lib/storeNap";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.greenpentagoncannabis.com"),
+  metadataBase: new URL(STORE_NAP.origin),
   title: {
-    default: "Green Pentagon Cannabis | Queen St W Dispensary",
+    default: HOME_TITLE,
     template: "%s | Green Pentagon Cannabis",
   },
-  description:
-    "Green Pentagon Cannabis is a cannabis dispensary on Queen St W with adult 19+ store info and category browsing for flower, pre-rolls, vapes, edibles, concentrates, and accessories. Open Daily: 10:00 AM - 12:00 AM.",
+  description: HOME_DESCRIPTION,
   keywords: [
-    "cannabis dispensary Toronto",
-    "weed store Toronto",
-    "exotic flower Toronto",
-    "premium cannabis",
+    "Queen West Parkdale dispensary",
+    "Parkdale cannabis",
     "Green Pentagon Cannabis",
-    "cheap weed Toronto",
-    "dispensary near me",
-    "THC flower",
-    "indica sativa hybrid",
-    "edibles Toronto",
-    "vapes",
-    "pre-rolls",
-    "native cigarettes Toronto",
-    "weed store west Toronto",
+    "weed near Queen and Dufferin",
+    "weed near Brock",
+    "Parkdale walk-in",
+    "1267 Queen St W",
+    "Queen West dispensary",
+    "adults 19+",
   ],
   openGraph: {
     type: "website",
     locale: "en_CA",
-    url: "https://www.greenpentagoncannabis.com",
+    url: STORE_NAP.origin,
     siteName: "Green Pentagon Cannabis",
-    title: "Green Pentagon Cannabis Queen West Cannabis Dispensary",
-    description:
-      "Browse flower tiers and menu categories for Green Pentagon Cannabis at 1267 Queen St W. Open Daily: 10:00 AM - 12:00 AM.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: [
       {
         url: "https://www.greenpentagoncannabis.com/wp-content/uploads/2026/04/46Oi5.jpg",
         width: 1200,
         height: 630,
-        alt: "Green Pentagon Cannabis Queen West Cannabis Dispensary",
+        alt: "Green Pentagon Cannabis Parkdale / Queen West dispensary",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Green Pentagon Cannabis Queen West's Uplifting Dispensary",
-    description:
-      "Browse current menu categories. Open Daily: 10:00 AM - 12:00 AM at 1267 Queen St W, Toronto.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: [
       "https://www.greenpentagoncannabis.com/wp-content/uploads/2026/04/46Oi5.jpg",
     ],
@@ -65,64 +64,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.greenpentagoncannabis.com",
+    canonical: STORE_NAP.origin,
   },
   verification: {
     // google: "your-google-verification-code",
-  },
-};
-
-/* JSON-LD Structured Data */
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Store",
-  additionalType: "https://schema.org/Store",
-  "@id": "https://www.greenpentagoncannabis.com",
-  name: "Green Pentagon Cannabis",
-  description:
-    "Cannabis dispensary at 1267 Queen St W in Toronto, ON. Explore Exotic Weed, Premium Weed, AAA+ Weed, AA Weed and Budget Weed flower collections plus edibles, prerolls and vapes. Open Daily: 10:00 AM - 12:00 AM.",
-  url: "https://www.greenpentagoncannabis.com",
-  telephone: "+14372903657",
-  image:
-    "https://www.greenpentagoncannabis.com/wp-content/uploads/2026/04/7Clmh.jpg",
-  priceRange: "$3 - $12/g",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "1267 Queen St W",
-    addressLocality: "Toronto",
-    addressRegion: "ON",
-    postalCode: "M6K 2J2",
-    addressCountry: "CA",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 43.6415588,
-    longitude: -79.4312674,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "10:00",
-      closes: "00:00",
-    },
-  ],
-  sameAs: [
-    "https://www.greenpentagoncannabis.com/",
-    "https://www.greenpentagoncannabis.com/",
-  ],
-  hasMap: "https://www.greenpentagoncannabis.com/",
-  areaServed: {
-    "@type": "City",
-    name: "Toronto",
   },
 };
 
@@ -131,23 +76,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nap = STORE_NAP;
+
   return (
     <html lang="en">
       <head>
         <meta name="geo.region" content="CA-ON" />
-        <meta name="geo.placename" content="Toronto" />
-        <meta name="geo.position" content="43.6415588;-79.4312674" />
-        <meta name="ICBM" content="43.6415588, -79.4312674" />
+        <meta name="geo.placename" content="Parkdale, Queen West, Toronto" />
+        <meta name="geo.position" content={`${nap.latitude};${nap.longitude}`} />
+        <meta name="ICBM" content={`${nap.latitude}, ${nap.longitude}`} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={cannabisStoreJsonLd()} />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-2Y80BBQJK4"
@@ -178,6 +122,10 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <noscript>
+          Green Pentagon Cannabis · {nap.addressLine} · {nap.phoneDisplay} ·{" "}
+          {nap.hoursLabel} · {nap.ageLine}
+        </noscript>
         <Link className="deliveryAnnouncement" href="/delivery">
           NEW DELIVERY MENU IS HERE — CLICK TO EXPLORE
         </Link>

@@ -1,31 +1,22 @@
 import Link from "next/link";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import JsonLd from "./JsonLd";
 import styles from "./GBPLandingPage.module.css";
 import { weedOwner as store } from "../lib/weedDiscovery";
-
-const storeSchema = {
-  "@context": "https://schema.org",
-  "@type": "Store",
-  "@id": `https://${store.domain}${store.ownerPath}`,
-  name: store.storeName,
-  url: `https://${store.domain}${store.ownerPath}`,
-  telephone: store.phoneIntl,
-  address: { "@type": "PostalAddress", streetAddress: store.streetAddress, addressLocality: store.city, addressRegion: "ON", postalCode: store.postalCode, addressCountry: "CA" },
-  ...(store.openingHours ? { openingHours: store.openingHours } : {}),
-};
+import { faqPageJsonLd, STORE_NAP } from "../lib/storeNap";
 
 export function GBPLandingPage() {
   return (
     <>
       <Navbar />
       <main className={styles.main}>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(storeSchema) }} />
+        <JsonLd data={faqPageJsonLd(store.faq)} />
         <section className={styles.hero}>
           <p className={styles.eyebrow}>{store.hoursLabel ? `${store.hoursLabel} · Adults 19+` : "Adults 19+"}</p>
           <h1>{store.h1}</h1>
           <p className={styles.heroAddress}>{store.streetAddress}, {store.city}, ON {store.postalCode}</p>
-          <div className={styles.actions}><Link href="#find-your-weed" className={styles.primaryAction}>Find Your Weed</Link><Link href="#visit" className={styles.secondaryAction}>Visit {store.storeName}</Link></div>
+          <div className={styles.actions}><Link href="#find-your-weed" className={styles.primaryAction}>Find Your Weed</Link><Link href="/visit" className={styles.secondaryAction}>How to get here</Link></div>
         </section>
 
         <section className={styles.section}>
@@ -55,7 +46,7 @@ export function GBPLandingPage() {
         <section className={styles.visitSection} id="visit">
           <div><p className={styles.kicker}>{store.hoursLabel || "Adults 19+"}</p><h2>{store.storeName}</h2><address>{store.streetAddress}<br />{store.city}, ON {store.postalCode}</address></div>
           <div className={styles.visitFacts}>{store.hoursLabel && <strong>{store.hoursLabel}</strong>}<a href={`tel:${store.phoneIntl}`}>Phone: {store.phoneDisplay}</a><span>Adults 19+</span></div>
-          <p>Call ahead if one particular product is the reason for your trip. This page does not make a current inventory claim.</p>
+          <p>Call {STORE_NAP.phoneDisplay} if one particular product is the reason for the trip. This page does not make a current inventory claim. For street-level directions use the <Link href="/visit">Queen West visit guide</Link>.</p>
         </section>
 
         <section className={styles.section}>

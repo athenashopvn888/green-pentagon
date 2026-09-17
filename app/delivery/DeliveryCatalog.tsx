@@ -132,8 +132,15 @@ export default function Catalog() {
       <main className="delivery-page" id="top">
         <section className="store-hero qlc-editorial-hero delivery-brand-hero">
           <Image src="/storeFavicon.webp" alt={`${store.name} logo`} width={240} height={240} priority />
-          <div className="store-hero-copy"><p>POD 3 DELIVERY</p><h1>{store.name}</h1><span>Browse the current delivery menu, then connect with the live dispatcher.</span></div>
+          <div className="store-hero-copy"><p>Green Pentagon Cannabis · Neighbourhood delivery</p><h1>Cannabis Delivery for Parkdale &amp; Queen West</h1><span>Delivery from Green Pentagon Cannabis is scoped to Parkdale, Queen West, and the Dufferin–Brock stretch of Queen — not a city-wide Toronto delivery war. Adults 19+. The dispatcher confirms whether an address is in range. Walk-in directions are on /visit.</span></div>
         </section>
+        <noscript>
+          <ul>
+            {bundledProducts.map((product) => (
+              <li key={product.publicProductId}>{product.name} — {product.tier}</li>
+            ))}
+          </ul>
+        </noscript>
 
         <section className="member-loyalty" aria-labelledby="member-loyalty-title">
           <div className="member-loyalty-heading">

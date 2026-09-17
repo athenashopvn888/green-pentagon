@@ -8,7 +8,7 @@ const home = readFileSync("app/page.tsx", "utf8");
 
 test("protected owner renders exactly one H1 and approved content", () => {
   assert.equal((landing.match(/<h1>/g) || []).length, 1);
-  assert.match(discovery, /Green Pentagon Cannabis — Weed Dispensary in Toronto/);
+  assert.match(discovery, /Green Pentagon Cannabis — Parkdale Walk-In Notes/);
   assert.match(landing, /Find Your Weed/);
   assert.match(landing, /Weed, Cannabis, Bud and Flower/);
 });

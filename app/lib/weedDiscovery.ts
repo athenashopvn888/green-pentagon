@@ -10,15 +10,15 @@ export const weedOwner = {
   postalCode: "M6K 2J2",
   phoneDisplay: "+1 (437) 290-3657",
   phoneIntl: "+14372903657",
-  hoursLabel: null,
-  openingHours: null,
-  seoTitle: "Weed Dispensary in Toronto | Green Pentagon Cannabis",
-  metaDescription: "Green Pentagon Cannabis is located at 1267 Queen St W in Toronto. Adults 19+ can explore cannabis formats, flower information and shopping guides.",
-  h1: "Green Pentagon Cannabis — Weed Dispensary in Toronto",
-  introTitle: "Weed and Cannabis on Queen Street West",
+  hoursLabel: "Open Daily · 10:00 AM–12:00 AM",
+  openingHours: "Mo-Su 10:00-00:00",
+  seoTitle: "Green Pentagon Cannabis Notes | Parkdale Walk-In",
+  metaDescription: "Green Pentagon Cannabis walk-in notes for 1267 Queen St W on Queen West / Parkdale. Adults 19+. Open daily from 10:00 AM to 12:00 AM. City-wide delivery is not the job of this page — use /visit for directions.",
+  h1: "Green Pentagon Cannabis — Parkdale Walk-In Notes",
+  introTitle: "Weed and cannabis notes for Queen Street West",
   intro: [
-  "Green Pentagon Cannabis is located at 1267 Queen St W in Toronto.",
-  "Adults 19+ can explore cannabis through flower information, pre-roll guidance, value-focused resources and broader menu education. Whether you normally say weed, cannabis, bud or flower, the goal is the same: understand your options before deciding what you want to shop for.",
+  "Green Pentagon Cannabis is the walk-in shop at 1267 Queen St W on the Queen West / Parkdale corridor and is open daily from 10:00 AM to 12:00 AM.",
+  "Adults 19+ can start with flower-collection guides or compare formats. This URL is kept for existing links; directions now live on /visit so the pin is not competing for city-wide dispensary queries.",
   "For a specific item, call +1 (437) 290-3657 before making a special trip."
 ],
   findTitle: "Find Your Weed at Green Pentagon",
@@ -52,8 +52,8 @@ export const weedOwner = {
   guides: [
   {
     "label": "Queen West Visit Guide",
-    "description": "Store-specific visit information tied to the Queen Street West location.",
-    "href": "/resources/queen-west-visit-guide"
+    "description": "Street-level how-to-reach notes for 1267 Queen St W.",
+    "href": "/visit"
   },
   {
     "label": "Menu Guide",
@@ -79,7 +79,7 @@ export const weedOwner = {
   faq: [
   {
     "question": "Where is Green Pentagon Cannabis?",
-    "answer": "Green Pentagon Cannabis is located at 1267 Queen St W, Toronto, ON M6K 2J2, Canada."
+    "answer": "Green Pentagon Cannabis is located at 1267 Queen St W, Toronto, ON M6K 2J2, on Queen West / Parkdale."
   },
   {
     "question": "What can adults 19+ explore?",
@@ -107,9 +107,10 @@ export const weedOwner = {
   }
 ] satisfies WeedFaq[],
   home: {
-    title: "Exploring Weed in Toronto?",
-    text: "Green Pentagon Cannabis at 1267 Queen St W gives adults 19+ a focused place to explore Weed and Cannabis terminology, flower information and shopping guides.",
-    primaryLabel: "Explore Green Pentagon Weed & Cannabis",
+    title: "Explore weed and cannabis at the Parkdale walk-in",
+    text: "Green Pentagon Cannabis at 1267 Queen St W gives adults 19+ a focused way to explore flower-collection information for Queen West and Parkdale. Use /visit for how to get here.",
+    primaryLabel: "How to get to Queen West",
+    primaryHref: "/visit",
     secondaryLabel: "Explore the Weed & Flower Guide",
     secondaryHref: "/resources/weed-flower-guide",
   },

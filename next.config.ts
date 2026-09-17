@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
         destination: "/resources/weed-flower-guide",
         permanent: true,
       },
-      { source: "/blog", destination: "/resources", permanent: true },
+      { source: "/location", destination: "/visit", permanent: true },
       { source: "/blog/:path*", destination: "/resources", permanent: true },
       {
         source: "/info/york-weed-dispensary",

@@ -59,8 +59,8 @@ export interface SeoPageData {
 }
 
 const visitFaqs = [
-  { q: "Where is Green Pentagon Cannabis?", a: "Green Pentagon Cannabis is at 1267 Queen St W, Toronto, ON M6K 2J2." },
-  { q: "How can I review the menu?", a: "Use the flower tier and category pages to compare the current public menu before visiting." },
+  { q: "Where is Green Pentagon Cannabis?", a: "Green Pentagon Cannabis is at 1267 Queen St W, Toronto, ON M6K 2J2, on Queen West / Parkdale near Dufferin and Brock." },
+  { q: "How can I review the menu?", a: "Use the flower collection and category pages to compare the current public menu before visiting. For street-level directions use /visit." },
 ];
 
 export const SEO_PAGES: SeoPageData[] = [
@@ -124,16 +124,24 @@ export const SEO_PAGES: SeoPageData[] = [
   },
   {
     slug: "queen-west-weed-dispensary",
-    title: "Queen West Weed Dispensary | Green Pentagon Cannabis",
-    metaDescription: "Plan a visit to Green Pentagon Cannabis on Queen Street West and browse its current flower tiers and menu categories.",
-    h1: "Queen West Weed Dispensary",
+    title: "Queen West Weed Dispensary | How to Reach Green Pentagon Cannabis",
+    metaDescription: "How to reach Green Pentagon Cannabis at 1267 Queen St W: Parkdale / Queen West walk-in, 501 Queen streetcar, Dufferin and Brock stops, Green P notes, and 19+ ID. Open Daily: 10:00 AM - 12:00 AM.",
+    h1: "Queen West Walk-In Dispensary at 1267 Queen St W",
     icon: "*",
-    heroTagline: "A Queen Street West menu and visit guide",
+    heroTagline: "How to reach Green Pentagon Cannabis on Queen West / Parkdale",
+    showTierGrid: false,
     sections: [
-      { heading: "Plan A Queen West Stop", body: "Green Pentagon Cannabis is located at 1267 Queen St W near Parkdale. Review the store's current category pages before visiting." },
-      { heading: "Browse By Menu Lane", body: "Start with flower tiers or open the dedicated pages for pre-rolls, edibles, vapes, concentrates, accessories, and cigarettes." },
+      { heading: "The door is on Queen, not a city-wide SERP", body: "Green Pentagon Cannabis is the walk-in shop at 1267 Queen St W, Toronto, ON M6K 2J2. Own this stretch — Queen West, Parkdale Village, Queen & Dufferin, Brock — rather than a generic Toronto dispensary query. Call +1 (437) 290-3657. Adults 19+." },
+      { heading: "Transit: 501 Queen, Dufferin, Brock", body: "Ride the 501 Queen streetcar along Queen Street West. Use the Dufferin stop from the east or Brock from western Parkdale. The 29 Dufferin bus and Dufferin Gate Loop (Exhibition Place) are south-side transfers, not the storefront. Check current TTC conditions. The /visit page is the full reach guide." },
+      { heading: "Parking without blocking the streetcar", body: "Evening street parking on Queen West and nearby laterals (Close, Cowan, Dunn) is the usual pattern. Read posted signs. Green P around Queen & Dufferin is the backup when the curb is full. No dedicated private lot is claimed here." },
+      { heading: "Landmarks on this stretch of Queen", body: "The Gladstone Hotel sits just east. Parkdale Village continues west toward Brock and Jameson. Drivers coming off the Gardiner typically use Jameson or Dufferin, then work north to Queen. CAMH further east on Queen is a wayfinding marker only." },
+      { heading: "Browse categories, then confirm at the counter", body: "Flower collections and format pages (pre-rolls, edibles, vapes, concentrates, accessories, cigarettes) are for planning. They are not a live inventory feed. If one exact item is the reason for the trip, call during listed hours: Open Daily: 10:00 AM - 12:00 AM." },
     ],
-    faqs: visitFaqs,
+    faqs: [
+      { q: "Where is the Queen West shop?", a: "1267 Queen St W, Toronto, ON M6K 2J2, just west of Queen and Dufferin toward Brock." },
+      { q: "Is this a walk-in or a delivery page?", a: "This page is for the walk-in pin. Delivery is a separate neighbourhood-scoped URL. Directions: /visit." },
+      { q: "What should I bring?", a: "Government-issued photo ID proving you are 19 or older. Debit and cash are the listed in-store payment methods." },
+    ],
   },
   {
     slug: "cheap-weed-queen-west",
@@ -175,8 +183,8 @@ export const SEO_PAGES: SeoPageData[] = [
     icon: "*",
     heroTagline: "Local store information for a Queen West visit",
     sections: [
-      { heading: "Queen Street West Location", body: "Green Pentagon Cannabis is at 1267 Queen St W, Toronto, ON M6K 2J2, near Parkdale and the Queen streetcar corridor." },
-      { heading: "Choose A Category First", body: "Use the menu categories to narrow the visit to flower, pre-rolls, edibles, vapes, concentrates, accessories, or cigarettes." },
+      { heading: "Queen Street West location", body: "Green Pentagon Cannabis is at 1267 Queen St W, Toronto, ON M6K 2J2, on the Queen West / Parkdale corridor near Dufferin and Brock. Adults 19+." },
+      { heading: "How to actually get here", body: "Use /visit for the 501 Queen streetcar, Dufferin and Brock stops, Green P and street parking, Gardiner exits, and 19+ ID. Category pages help you plan a format; they do not reserve a jar." },
     ],
     faqs: visitFaqs,
   },
@@ -188,8 +196,8 @@ export const SEO_PAGES: SeoPageData[] = [
     icon: "*",
     heroTagline: "Store details and current menu navigation",
     sections: [
-      { heading: "Start With Store Details", body: "Check the address and posted store hours, then use the menu to plan which category you want to compare." },
-      { heading: "Use Current Menu Pages", body: "Category and tier pages provide the public menu structure. Confirm an exact item through the current menu or with staff." },
+      { heading: "Start With Store Details", body: "Check 1267 Queen St W, Toronto, ON M6K 2J2 and posted hours (Open Daily: 10:00 AM - 12:00 AM), then use the menu to plan which category you want to compare. Adults 19+." },
+      { heading: "Use Current Menu Pages", body: "Category and collection pages provide the public menu structure. Confirm an exact item through the current menu or with staff. Street-level directions live on /visit." },
     ],
     faqs: visitFaqs,
   },

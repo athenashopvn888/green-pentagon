@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styles from "./contact.module.css";
+import { STORE_NAP } from "../lib/storeNap";
 
 export const metadata: Metadata = {
-  title: "Contact Us Green Pentagon Cannabis | 1267 Queen St W, Toronto",
+  title: "Contact Us Green Pentagon Cannabis | 1267 Queen St W, Parkdale",
   description:
-    "Visit Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. We are open daily from 10:00 AM to 12:00 AM (midnight). Walk-ins welcome.",
+    "Visit Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. We are open daily from 10:00 AM to 12:00 AM (midnight). Walk-ins welcome. Adults 19+.",
   alternates: {
     canonical: "https://www.greenpentagoncannabis.com/contact",
   },
@@ -49,14 +51,21 @@ export default function ContactPage() {
               <div className={styles.infoIcon}></div>
               <h2 className={styles.infoTitle}>Location</h2>
               <p className={styles.infoText}>
-                1267 Queen St W
+                {STORE_NAP.streetAddress}
                 <br />
-                Toronto, ON M6K 2J2
+                {STORE_NAP.addressLocality}, {STORE_NAP.addressRegion}{" "}
+                {STORE_NAP.postalCode}
                 <br />
                 <span className={styles.infoMuted}>
                   Queen West and Parkdale
                 </span>
               </p>
+              <p className={styles.infoText}>
+                <a href={`tel:${STORE_NAP.phoneIntl}`}>{STORE_NAP.phoneDisplay}</a>
+              </p>
+              <Link href="/visit" className={styles.infoBtn}>
+                How to get here
+              </Link>
             </div>
 
             {/* Hours */}
@@ -97,6 +106,7 @@ export default function ContactPage() {
                 <div className={styles.openDot} />
                 Open Daily: 10:00 AM - 12:00 AM
               </div>
+              <p className={styles.infoMuted}>{STORE_NAP.hoursLabel}</p>
             </div>
 
             {/* Walk-in */}
@@ -132,7 +142,15 @@ export default function ContactPage() {
           </div>
 
           {/* Map */}
-          <div className={styles.mapSection}></div>
+          <div className={styles.mapSection}>
+            <iframe
+              title="Map of Green Pentagon Cannabis at 1267 Queen St W"
+              src={STORE_NAP.mapEmbedUrl}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ width: "100%", height: 360, border: 0, display: "block" }}
+            />
+          </div>
         </div>
       </section>
 

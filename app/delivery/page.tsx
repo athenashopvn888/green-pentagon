@@ -3,8 +3,9 @@ import DeliveryContent from "./DeliveryContent";
 import menu from "./delivery-menu.json";
 
 export const metadata: Metadata = {
-  title: "Cannabis Delivery Menu — Green Pentagon Cannabis",
-  description: "Browse the Green Pentagon Cannabis delivery menu and start your order with the live dispatcher.",
+  title: { absolute: "Parkdale / Queen West Cannabis Delivery | Green Pentagon Cannabis" },
+  description:
+    "Neighbourhood-scoped cannabis delivery from Green Pentagon Cannabis for Parkdale, Queen West, and the Dufferin–Brock stretch of Queen. Adults 19+. Walk-in directions live on /visit.",
   alternates: { canonical: "https://www.greenpentagoncannabis.com/delivery" },
 };
 
@@ -13,7 +14,7 @@ export default function DeliveryPage() {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      name: "Green Pentagon Cannabis Delivery Menu",
+      name: "Parkdale Cannabis Delivery Menu",
       mainEntity: {
         "@type": "ItemList",
         numberOfItems: menu.products.length,
@@ -27,8 +28,13 @@ export default function DeliveryPage() {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Green Pentagon Cannabis Delivery",
+      name: "Green Pentagon Cannabis neighbourhood cannabis delivery",
       serviceType: "Cannabis delivery",
+      areaServed: [
+        { "@type": "Place", name: "Parkdale" },
+        { "@type": "Place", name: "Queen West" },
+        { "@type": "Place", name: "Parkdale Village" },
+      ],
       hoursAvailable: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
