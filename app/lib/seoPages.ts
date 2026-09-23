@@ -1,4 +1,4 @@
-const NATIVE_HERO_DISCLOSURE = "Brand preview only. Selection varies by store; check the current cigarette menu before visiting.";
+const NATIVE_HERO_DISCLOSURE = "Use these names as a browsing guide, then check the current cigarette menu or ask at the Queen West counter before making a special trip.";
 const NATIVE_HERO_PRODUCTS = [
   { name: "BB Lights", image: "/products/1001-BB-LIGHTS-CARTONS.webp" },
   { name: "BB Full", image: "/products/1003-BB-FULL-CARTON.webp" },
@@ -159,21 +159,28 @@ export const SEO_PAGES: SeoPageData[] = [
   {
     slug: "native-cigarettes-queen-west",
     title: "Native Cigarettes Queen West | Green Pentagon Cannabis",
-    metaDescription: "Browse the cigarette category at Green Pentagon Cannabis on Queen Street West and confirm current brand and package details.",
-    h1: "Native Cigarettes Near Queen West",
+    metaDescription: "Plan a Native cigarette stop at Green Pentagon Cannabis on Queen West near Parkdale. Review the cigarette guide, menu and visit details before heading over.",
+    h1: "Native Cigarettes on Queen West",
     icon: "*",
     heroTagline: "Cigarette category and visit information",
     heroPreview: {
       eyebrow: "Green Pentagon Cannabis · 1267 Queen St W, Queen West",
-      intro: "Cigarette category and visit information",
+      intro: "A Queen West guide for adults comparing cigarette names and package styles before a Parkdale walk-in.",
       products: NATIVE_HERO_PRODUCTS,
       disclosure: NATIVE_HERO_DISCLOSURE,
     },
     sections: [
-      { heading: "Browse The Cigarette Category", body: "Use the cigarette menu page to review the current public list before visiting Green Pentagon Cannabis." },
-      { heading: "Confirm Brand Details", body: "Ask staff when a particular brand, package style, or price matters for your visit." },
+      { heading: "A Queen West Cigarette Stop", body: "Green Pentagon Cannabis is at 1267 Queen St W near Parkdale. This page helps adults plan the cigarette portion of a visit without turning a brand preview into a stock promise." },
+      { heading: "Compare Names and Package Styles", body: "Use the cigarette category to review the public names and package details shown for this location. Check the current menu or ask at the counter when one exact brand or style matters." },
+      { heading: "Plan a Visit During Store Hours", body: "The storefront is open daily from 10:00 AM to midnight. Use the visit page for the address, phone, 501 Queen streetcar notes and parking guidance." },
+      { heading: "Current Details Come From the Menu", body: "Category details can change. Treat this guide as an introduction, then use the current cigarette menu for the most recent public information." },
     ],
-    faqs: visitFaqs,
+    faqs: [
+      { q: "Where is Green Pentagon Cannabis?", a: "Green Pentagon Cannabis is at 1267 Queen St W near Parkdale in Toronto." },
+      { q: "What are the storefront hours?", a: "The storefront is open daily from 10:00 AM to midnight." },
+      { q: "Does this guide guarantee every pictured brand is in stock?", a: "No. The page is a browsing guide and does not guarantee stock, price or availability." },
+      { q: "Where can I find directions and parking guidance?", a: "Use the Green Pentagon Cannabis visit page for transit and parking guidance." },
+    ],
   },
   {
     slug: "weed-store-near-queen-west",
