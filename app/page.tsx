@@ -341,6 +341,22 @@ export default function HomePage() {
 
       <WeedDiscoveryModule />
 
+      <section className={styles.seoSection} aria-labelledby="green-pentagon-guides">
+        <div className={styles.container}>
+          <div className={styles.seoPanel}>
+            <h2 id="green-pentagon-guides" className={styles.seoPanelTitle}>Explore Green Pentagon Cannabis Guides</h2>
+            <p className={styles.seoPanelText}>
+              Looking for Green Pentagon Cannabis around Queen West and Parkdale? Use our{" "}
+              <Link href="/info/queen-west-weed-dispensary">Queen West weed dispensary guide</Link>,{" "}
+              <Link href="/visit">visit information</Link>,{" "}
+              <Link href="/delivery">Weed Delivery</Link> page,{" "}
+              <Link href="/info/native-cigarettes-queen-west">Native Cigarettes</Link> guide, or{" "}
+              <Link href="/info/nicotine-vapes-queen-west">Nicotine Vape</Link> guide for the topic you want to explore.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FEATURED PRODUCTS */}
       <section className={styles.featuredSection}>
         <div className={styles.container}>
