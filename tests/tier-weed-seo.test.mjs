@@ -16,6 +16,14 @@ test("all five verified Green Pentagon tier keys have reviewed copy", () => {
   assert.match(tierPage, /TIER_META_DESCRIPTION\[tierInfo\.key\]/);
   assert.match(tierPage, /TIER_H1\[tierInfo\.key\]/);
   assert.match(tierPage, /absolute: seo\?\.seoTitle/);
+  assert.match(tierCopy, /Weed in Queen West & Parkdale/);
+});
+
+test("tier pages publish stable CollectionPage, ItemList and FAQPage schema", () => {
+  assert.match(tierPage, /"@type": "CollectionPage"/);
+  assert.match(tierPage, /"@type": "ItemList"/);
+  assert.match(tierPage, /"@type": "FAQPage"/);
+  assert.doesNotMatch(tierPage, /"@type": "Offer"/);
 });
 
 test("tier canonicals and protected broad Weed owner stay in place", () => {

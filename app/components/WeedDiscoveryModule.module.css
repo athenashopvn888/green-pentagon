@@ -3,9 +3,14 @@
 .kicker { margin: 0 0 10px; color: #fbbf24; font-size: .8rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .inner h2 { margin: 0 0 14px; color: #fff; font-size: clamp(1.8rem, 4vw, 3rem); }
 .inner > p:not(.kicker) { max-width: 780px; margin: 0; color: #d1d5db; font-size: 1.05rem; line-height: 1.7; }
+.cardGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.card { min-height: 132px; padding: 20px; border: 1px solid rgba(251, 191, 36, .2); border-radius: 16px; color: #fff; text-decoration: none; background: rgba(15, 23, 42, .72); }
+.card strong, .card span { display: block; }
+.card strong { margin-bottom: 9px; }
+.card span { color: #cbd5e1; font-size: .92rem; line-height: 1.5; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .primary, .secondary { padding: 13px 20px; border-radius: 999px; font-weight: 850; text-align: center; text-decoration: none; }
 .primary { color: #171006; background: linear-gradient(135deg, #fde68a, #f59e0b); }
 .secondary { color: #ecfdf5; border: 1px solid rgba(110, 231, 183, .45); background: rgba(16, 185, 129, .12); }
-@media (max-width: 600px) { .section { padding: 14px 14px 44px; } .inner { border-radius: 18px; } .actions { display: grid; } }
-
+@media (max-width: 800px) { .cardGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .section { padding: 14px 14px 44px; } .inner { border-radius: 18px; } .actions, .cardGrid { display: grid; grid-template-columns: 1fr; } }
