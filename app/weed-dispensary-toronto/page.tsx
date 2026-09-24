@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   title: { absolute: weedOwner.seoTitle },
   description: weedOwner.metaDescription,
   alternates: {
-    canonical: `${STORE_NAP.origin}/visit`,
+    canonical: `${STORE_NAP.origin}/weed-dispensary-toronto`,
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
 };
