@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import GamesContent from "./GamesContent";
+import { pageTitle } from "../lib/storeNap";
 
 export const metadata: Metadata = {
-  title: "Cannabis Arcade Games Green Pentagon Cannabis | Toronto",
+  title: pageTitle("Cannabis Arcade Games Green Pentagon Cannabis | Toronto"),
   description:
     "Play free online cannabis-themed games like Flappy Bud and Snake Munchies while you wait at Green Pentagon Cannabis.",
   alternates: {

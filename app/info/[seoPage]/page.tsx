@@ -8,7 +8,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import JsonLd from "../../components/JsonLd";
 import { SEO_PAGES, getSeoPageBySlug } from "../../lib/seoPages";
-import { STORE_NAP, faqPageJsonLd } from "../../lib/storeNap";
+import { STORE_NAP, faqPageJsonLd, pageTitle } from "../../lib/storeNap";
 import { TIER_CONFIG } from "../../lib/products";
 import styles from "./seo.module.css";
 
@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!page) return {};
 
   return {
-    title: page.title,
+    title: pageTitle(page.title),
     description: page.metaDescription,
     alternates: {
       canonical: `https://www.greenpentagoncannabis.com/info/${slug}`,

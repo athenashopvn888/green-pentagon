@@ -31,6 +31,15 @@ export const STORE_NAP = {
 
 export const HOME_TITLE =
   "Green Pentagon Cannabis | Parkdale / Queen West Dispensary";
+
+/**
+ * Root layout `title.template` appends " | Green Pentagon Cannabis".
+ * Titles that already name the brand must be absolute so the suffix is not added again.
+ */
+export function pageTitle(title: string): string | { absolute: string } {
+  if (/green pentagon/i.test(title)) return { absolute: title };
+  return title;
+}
 export const HOME_DESCRIPTION =
   "Walk-in cannabis dispensary at 1267 Queen St W for Parkdale and Queen West. Adults 19+. Open Daily: 10:00 AM - 12:00 AM. Call +1 (437) 290-3657.";
 

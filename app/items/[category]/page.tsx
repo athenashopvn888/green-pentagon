@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import SafeImage from "../../components/SafeImage";
 import { getItemPriceDisplay } from "../../lib/itemPricing";
+import { pageTitle } from "../../lib/storeNap";
 import {
   getItemsByCategory,
   getCategoryFromSlug,
@@ -32,9 +33,10 @@ export async function generateMetadata({
   const items = getItemsByCategory(catInfo.key);
 
   return {
-    title:
+    title: pageTitle(
       catInfo.config.seoTitle ||
-      `${catInfo.config.name} ${items.length} Products`,
+        `${catInfo.config.name} ${items.length} Products`,
+    ),
     description:
       catInfo.config.seoIntro ||
       `Shop ${items.length} ${catInfo.config.name.toLowerCase()} at Green Pentagon Cannabis.`,

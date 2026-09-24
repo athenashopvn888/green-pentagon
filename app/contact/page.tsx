@@ -3,10 +3,10 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styles from "./contact.module.css";
-import { STORE_NAP } from "../lib/storeNap";
+import { STORE_NAP, pageTitle } from "../lib/storeNap";
 
 export const metadata: Metadata = {
-  title: "Contact Us Green Pentagon Cannabis | 1267 Queen St W, Parkdale",
+  title: pageTitle("Contact Us Green Pentagon Cannabis | 1267 Queen St W, Parkdale"),
   description:
     "Visit Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2. We are open daily from 10:00 AM to 12:00 AM (midnight). Walk-ins welcome. Adults 19+.",
   alternates: {

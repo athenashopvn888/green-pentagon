@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ResourceView from "../ResourceView";
 import { getResourcePage, RESOURCE_PAGES } from "../resourceData";
+import { pageTitle } from "../../lib/storeNap";
 
 
 type ResourceRouteProps = {
@@ -24,9 +25,7 @@ export async function generateMetadata({ params }: ResourceRouteProps): Promise<
   const page = getResourcePage(routeSlug(slug));
   if (!page) return {};
   return {
-    title: ["weed-flower-guide", "cannabis-dispensary-vs-weed-dispensary"].includes(page.slug)
-      ? { absolute: page.seoTitle }
-      : page.seoTitle,
+    title: pageTitle(page.seoTitle),
     description: page.description,
     alternates: { canonical: "https://www.greenpentagoncannabis.com/resources/" + page.slug },
   };

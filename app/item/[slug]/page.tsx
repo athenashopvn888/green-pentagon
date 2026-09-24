@@ -10,6 +10,7 @@ import {
 } from "../../lib/products";
 import { getItemData } from "../../lib/itemData";
 import { getItemPriceDisplay } from "../../lib/itemPricing";
+import { pageTitle } from "../../lib/storeNap";
 import Magnifier from "../../components/Magnifier";
 import styles from "../../flower/[slug]/flower.module.css";
 
@@ -31,7 +32,9 @@ export async function generateMetadata({
   const itemData = getItemData(item.category, item.name);
 
   return {
-    title: `${item.name} | ${item.category} | Green Pentagon Cannabis Toronto`,
+    title: pageTitle(
+      `${item.name} | ${item.category} | Green Pentagon Cannabis Toronto`,
+    ),
     description: itemData.metaDescription,
     alternates: {
       canonical: `https://www.greenpentagoncannabis.com/item/${slug}`,

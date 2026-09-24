@@ -1,4 +1,4 @@
-const NATIVE_HERO_DISCLOSURE = "Use these names as a browsing guide, then check the current cigarette menu or ask at the Queen West counter before making a special trip.";
+const NATIVE_HERO_DISCLOSURE = "These carton names are a Queen West planning aid. Open the cigarette menu or ask at the Parkdale counter before you travel for one specific pack.";
 const NATIVE_HERO_PRODUCTS = [
   { name: "BB Lights", image: "/products/1001-BB-LIGHTS-CARTONS.webp" },
   { name: "BB Full", image: "/products/1003-BB-FULL-CARTON.webp" },
@@ -159,27 +159,27 @@ export const SEO_PAGES: SeoPageData[] = [
   {
     slug: "native-cigarettes-queen-west",
     title: "Native Cigarettes Queen West | Green Pentagon Cannabis",
-    metaDescription: "Plan a Native cigarette stop at Green Pentagon Cannabis on Queen West near Parkdale. Review the cigarette guide, menu and visit details before heading over.",
+    metaDescription: "Adults 19+ can plan a cigarette stop at Green Pentagon Cannabis, 1267 Queen St W in Parkdale. Open daily 10:00 AM to 12:00 AM. Call +1 (437) 290-3657.",
     h1: "Native Cigarettes on Queen West",
     icon: "*",
-    heroTagline: "Cigarette category and visit information",
+    heroTagline: "Carton names for a Parkdale walk-in on Queen Street West",
     heroPreview: {
       eyebrow: "Green Pentagon Cannabis · 1267 Queen St W, Queen West",
-      intro: "A Queen West guide for adults comparing cigarette names and package styles before a Parkdale walk-in.",
+      intro: "Parkdale shoppers comparing carton names before a walk-in at 1267 Queen St W can start here. Adults 19+.",
       products: NATIVE_HERO_PRODUCTS,
       disclosure: NATIVE_HERO_DISCLOSURE,
     },
     sections: [
-      { heading: "A Queen West Cigarette Stop", body: "Green Pentagon Cannabis is at 1267 Queen St W near Parkdale. This page helps adults plan the cigarette portion of a visit without turning a brand preview into a stock promise." },
-      { heading: "Compare Names and Package Styles", body: "Use the cigarette category to review the public names and package details shown for this location. Check the current menu or ask at the counter when one exact brand or style matters." },
-      { heading: "Plan a Visit During Store Hours", body: "The storefront is open daily from 10:00 AM to midnight. Use the visit page for the address, phone, 501 Queen streetcar notes and parking guidance." },
-      { heading: "Current Details Come From the Menu", body: "Category details can change. Treat this guide as an introduction, then use the current cigarette menu for the most recent public information." },
+      { heading: "Cigarettes at the Parkdale door", body: "The counter is inside Green Pentagon Cannabis at 1267 Queen St W, Toronto, ON M6K 2J2, on Queen Street West between Dufferin and Brock. Phone +1 (437) 290-3657." },
+      { heading: "Read the carton, then the menu", body: "The cards on this page show public names for a Queen West browse. If you need a light, full, or menthol style, open the cigarette category and confirm it before you leave for Parkdale." },
+      { heading: "Hours, streetcar, and the door", body: "Open daily from 10:00 AM to 12:00 AM. The 501 Queen streetcar serves this stretch; Dufferin and Brock are the useful stops, and the visit page covers parking along Queen West." },
+      { heading: "What the counter can confirm", body: "This Queen West page does not lock a price or promise a carton is on the shelf. Check the cigarette category or call during open hours when one brand is the whole reason for the Parkdale visit." },
     ],
     faqs: [
-      { q: "Where is Green Pentagon Cannabis?", a: "Green Pentagon Cannabis is at 1267 Queen St W near Parkdale in Toronto." },
-      { q: "What are the storefront hours?", a: "The storefront is open daily from 10:00 AM to midnight." },
-      { q: "Does this guide guarantee every pictured brand is in stock?", a: "No. The page is a browsing guide and does not guarantee stock, price or availability." },
-      { q: "Where can I find directions and parking guidance?", a: "Use the Green Pentagon Cannabis visit page for transit and parking guidance." },
+      { q: "Which corner of Parkdale is the shop on?", a: "1267 Queen St W, Toronto, ON M6K 2J2 — Queen West, just west of Dufferin toward Brock. Call +1 (437) 290-3657." },
+      { q: "When can I walk in for cigarettes?", a: "Daily from 10:00 AM until 12:00 AM (midnight). Bring government-issued photo ID; shoppers must be 19 or older." },
+      { q: "Do the carton photos mean that brand is on the shelf today?", a: "They do not. Use them to recognize a name, then confirm the posted price and whether it is listed on the cigarette menu or with staff at the Queen West counter." },
+      { q: "Where are the 501 and parking notes?", a: "The visit page lists the 501 Queen streetcar, Dufferin and Brock stops, and Green P or street parking near 1267 Queen St W." },
     ],
   },
   {

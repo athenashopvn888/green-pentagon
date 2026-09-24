@@ -14,6 +14,7 @@ import RelatedScroll from "./RelatedScroll";
 import Magnifier from "../../components/Magnifier";
 import SaleBanner from "../../components/SaleBanner";
 import { applyGpcSaleCampaign } from "../../lib/gpcSaleCampaign";
+import { pageTitle } from "../../lib/storeNap";
 import styles from "./flower.module.css";
 
 export const dynamic = "force-dynamic";
@@ -42,7 +43,9 @@ export async function generateMetadata({
   );
 
   return {
-    title: `${flower.name} | ${tierName} ${flower.type === "indica" ? "Indica" : flower.type === "sativa" ? "Sativa" : "Hybrid"} | THC ${flower.thc} | Green Pentagon Cannabis Toronto`,
+    title: pageTitle(
+      `${flower.name} | ${tierName} ${flower.type === "indica" ? "Indica" : flower.type === "sativa" ? "Sativa" : "Hybrid"} | THC ${flower.thc} | Green Pentagon Cannabis Toronto`,
+    ),
     description: strainData.metaDescription,
     alternates: {
       canonical: `https://www.greenpentagoncannabis.com/flower/${slug}`,
