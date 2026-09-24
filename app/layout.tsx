@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(STORE_NAP.origin),
   title: {
     default: HOME_TITLE,
+    // Pages whose title already names the brand must use pageTitle() from storeNap.
     template: "%s | Green Pentagon Cannabis",
   },
   description: HOME_DESCRIPTION,
