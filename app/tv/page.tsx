@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import styles from "./tv.module.css";
+import { CIGARETTE_FLASH_MESSAGE, isCigaretteFlashWindow } from "./flashMessages";
+import { getFlowerEffects } from "./flowerEffects";
 import {
   GPC_SALE_END_LABEL,
   GPC_SALE_LINES,
@@ -50,7 +52,7 @@ function fmtTHC(v: string): string {
 /* -- Price cell with strikethrough for sale -- */
 function PriceCell({ pp, color }: { pp: PricePoint|null; color?: string }) {
   if (!pp) return <span>-</span>;
-  if (pp.sale !== null && pp.sale !== pp.regular) {
+  if (pp.sale !== null && pp.sale < pp.regular) {
     return (
       <span>
         <del className={styles.oldPrice}>${pp.regular}</del>
@@ -70,18 +72,12 @@ function TypeTag({ type }: { type: string }) {
   return <span className={`${styles.tag} ${cls}`}>{label}</span>;
 }
 
-/* -- Vibe card -- */
-const VIBE_MAP: Record<string, [string,string][]> = {
-  indica: [["🌿","Indica"],["📦","Package Details"],["📋","Current Menu"]],
-  sativa: [["🌿","Sativa"],["📦","Package Details"],["📋","Current Menu"]],
-  hybrid: [["🌿","Hybrid"],["📦","Package Details"],["📋","Current Menu"]],
-};
+/* -- Effects card -- */
 function VibeCard({ type }: { type: string }) {
-  const t = type?.toLowerCase();
-  const vibes = VIBE_MAP[t] || VIBE_MAP.hybrid;
+  const vibes = getFlowerEffects(type);
   return (
     <div className={styles.vibeSection}>
-      <div className={styles.vibeHead}>MENU NOTES</div>
+      <div className={styles.vibeHead}>EFFECTS</div>
       <div className={styles.vibePills}>
         {vibes.map(([emoji, label]) => (
           <span key={label} className={styles.vibePill}>
@@ -93,16 +89,14 @@ function VibeCard({ type }: { type: string }) {
     </div>
   );
 }
-
 /* -- Helpers -- */
 function isShreds(name: string): boolean {
   return /shred/i.test(name);
 }
 function hasSalePrice(f: Flower): boolean {
-  return !!(f.price3g?.sale || f.price5g?.sale || f.price14g?.sale || f.price28g?.sale);
-}
-function hasNameSale(name: string): boolean {
-  return /\bSALE\b/i.test(name) || /ON\s*SALE/i.test(name);
+  return [f.price3g, f.price5g, f.price14g, f.price28g].some(
+    (price) => price?.sale !== null && price?.sale !== undefined && price.sale < price.regular,
+  );
 }
 function cleanName(name: string): string {
   return name
@@ -128,7 +122,7 @@ const CAP_SAT  = 3;
 const CAP_IND  = 3;
 
 /** Build the visible window for a tier using the slot reservation system */
-function buildSlotWindow(flowers: Flower[], hiIdx: number): { vis: Flower[]; hiW: number; hi: Flower | undefined } {
+function buildSlotWindow(flowers: Flower[], hiIdx: number, preferBundlePrice = false): { vis: Flower[]; hiW: number; hi: Flower | undefined } {
   if (!flowers.length) return { vis: [], hiW: 0, hi: undefined };
 
   // 1) Sort into buckets
@@ -202,8 +196,17 @@ function buildSlotWindow(flowers: Flower[], hiIdx: number): { vis: Flower[]; hiW
   // 4) Assemble in fixed order: SALE → TOP → MUST → SAT → IND
   const vis = [...saleWin, ...topWin, ...mustWin, ...satWin, ...indWin].slice(0, MAX_VIS);
 
-  // 5) Highlight within the visible window
-  const hiW = vis.length ? hiIdx % vis.length : 0;
+  // 5) Highlight within the visible window. Top-tier deal heroes must have a real 3g or 5g price.
+  const defaultHiW = vis.length ? hiIdx % vis.length : 0;
+  const eligibleHeroIndexes = preferBundlePrice
+    ? vis.reduce<number[]>((indexes, flower, index) => {
+        if (flower.price3g || flower.price5g) indexes.push(index);
+        return indexes;
+      }, [])
+    : [];
+  const hiW = eligibleHeroIndexes.length
+    ? eligibleHeroIndexes[hiIdx % eligibleHeroIndexes.length]
+    : defaultHiW;
   const hi = vis[hiW] || flowers[0];
 
   return { vis, hiW, hi };
@@ -220,7 +223,7 @@ function FlowerCard({
 }) {
   const accent = TIER_ACCENT[tier] || "#2563eb";
 
-  const { vis, hiW, hi } = buildSlotWindow(flowers, hiIdx);
+  const { vis, hiW, hi } = buildSlotWindow(flowers, hiIdx, ["EXOTIC", "PREMIUM", "AAA+"].includes(tier));
 
   const prevRef = useRef<string>("");
   const [fadeImg, setFadeImg] = useState("");
@@ -687,11 +690,19 @@ const TICKER_SLIDES = [
 function VerticalTicker() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [exitIdx, setExitIdx] = useState(-1);
+  const [showCigaretteFlash, setShowCigaretteFlash] = useState(() => isCigaretteFlashWindow());
+  const slides = showCigaretteFlash ? [...TICKER_SLIDES, CIGARETTE_FLASH_MESSAGE] : TICKER_SLIDES;
+
+  useEffect(() => {
+    const update = () => setShowCigaretteFlash(isCigaretteFlashWindow());
+    const iv = setInterval(update, 60_000);
+    return () => clearInterval(iv);
+  }, []);
 
   useEffect(() => {
     const iv = setInterval(() => {
       setExitIdx(activeIdx);
-      setActiveIdx(prev => (prev + 1) % TICKER_SLIDES.length);
+      setActiveIdx(prev => (prev + 1) % slides.length);
     }, 3000);
     return () => clearInterval(iv);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -700,7 +711,7 @@ function VerticalTicker() {
   return (
     <div className={styles.ticker}>
       <div className={styles.tickerInner}>
-        {TICKER_SLIDES.map((text, i) => (
+        {slides.map((text, i) => (
           <div key={i} className={`${styles.tickerSlide} ${i === activeIdx ? styles.tickerActive : ""} ${i === exitIdx ? styles.tickerExit : ""}`}>
             {text}
           </div>
@@ -754,7 +765,7 @@ export default function TVMenuPage() {
       const iData: Item[] = iRes.ok ? await iRes.json() : [];
 
       for (const f of fData) {
-        if (!f.isSale && (hasSalePrice(f) || hasNameSale(f.name))) f.isSale = true;
+        f.isSale = hasSalePrice(f);
         f.name = cleanName(f.name);
       }
 
