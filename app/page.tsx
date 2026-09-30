@@ -209,9 +209,9 @@ export default function HomePage() {
   return (
     <main className={styles.main}>
       <JsonLd data={faqPageJsonLd(HOME_FAQS)} />
-      <FleetAnnouncementBanner />
       {/* NAVBAR */}
       <Navbar />
+      <FleetAnnouncementBanner />
 
       {/* WELCOME BANNER */}
       {hasWelcomeBanner && !welcomeBannerError && (
