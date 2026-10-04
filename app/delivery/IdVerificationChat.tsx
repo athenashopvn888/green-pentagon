@@ -13,7 +13,7 @@ type Review = { id: string; status: string; receivedAt: number; expiresAt: numbe
 type CustomerIntent = "NEW_CUSTOMER" | "RETURNING_CUSTOMER";
 type Conversation = { id: string; messages: Message[]; idReviews?: Review[]; customerIntent?: CustomerIntent; customerNumberMasked?: string; phoneVersion?: number; intakeCycleId?: string | null; intakeCycleDate?: string | null; intakeCycleSequence?: number };
 type UploadState = "idle" | "preparing" | "uploading" | "sent" | "error";
-type Availability = { state: "AVAILABLE" | "PAUSED"; message: string | null; resumeAt: number | null; updatedAt: number };
+type Availability = { state: "AVAILABLE" | "PAUSED"; message: string | null; mapUrl?: string | null; resumeAt: number | null; updatedAt: number };
 
 async function payload(response: Response) {
   const data = await response.json().catch(() => ({ message: "Web Chat is temporarily unavailable." }));
@@ -331,6 +331,7 @@ export default function IdVerificationChat() {
         <div className={`sod-availability-banner ${paused ? "paused" : "unavailable"}`} role="status" hidden={!statusMessage}>
           <strong>{paused ? "New delivery chats are paused" : "Delivery status unavailable"}</strong>
           <span>{statusMessage}{resumeLabel}{token ? " Your existing chat remains open." : ""}</span>
+          {paused && availability?.mapUrl && <a href={availability.mapUrl} target="_blank" rel="noopener noreferrer">Map to store</a>}
         </div>
         {!token ? (!availability || availability.state !== "AVAILABLE" ? <div className="sod-chat-start sod-chat-paused">
           <p>{statusMessage || "Checking delivery availability…"}</p>
