@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import menu from "./delivery-menu.json";
 import ProductDetailsDrawer from "./ProductDetailsDrawer";
+import { deliveryTierRanges, tierRangeText } from "../lib/tierPriceRanges";
 
 type Option = { key: string; label: string; price: number };
 type Offer = { kind: "prime_time" | "multi_ounce"; title?: string; quantity?: number; price?: number; weight?: string; bonus?: string; perUnitPrice?: number; totalPrice?: number; label: string };
@@ -73,6 +74,7 @@ function ProductPricing({ product }: { product: Product }) {
     : product.offers?.filter((offer) => offer.kind === "multi_ounce") || [];
   return (
     <div className="product-pricing">
+      <small className="price-scope-label">Delivery price</small>
       {compact.length > 0 && <div className="compact-price-section"><div className="compact-price-grid">{compact.map((option) => <div key={option.key} className="compact-price"><span>{option.label}</span><strong>{formatCurrency(option.price)}</strong></div>)}</div></div>}
       {(regular28 || member || bundles.length > 0) && <div className="decision-prices">
         {loyaltyPrice !== null && <div className="decision-tile member-28"><span>MEMBER LOYALTY 28g</span><strong>{formatCurrency(loyaltyPrice)}</strong><small>Member price</small><p>{member?.bonus ? `${member.bonus} applies on a later order when eligible.` : "Coupon or add-on eligibility is confirmed separately."}</p></div>}
@@ -113,6 +115,7 @@ export default function Catalog() {
     const needle = search.trim().toLowerCase();
     return !needle || `${product.name} ${product.category} ${product.strain}`.toLowerCase().includes(needle);
   }).sort(compareProducts), [activeTier, search, products]);
+  const deliveryRanges = deliveryTierRanges(products);
 
   return (
     <div className="qlc-original-shell">
@@ -130,6 +133,13 @@ export default function Catalog() {
       <section className="qlc-terms-ribbon" aria-labelledby="delivery-terms"><div><p>{store.shortName} DELIVERY DETAILS</p><h2 id="delivery-terms"><span>$60 PRODUCT MINIMUM</span><span>$10 DELIVERY FEE</span><span>DELIVERY HOURS 10:00 a.m.–10:00 p.m.</span></h2></div><a href="#how-to-order">Read the ordering steps</a></section>
 
       <main className="delivery-page" id="top">
+        <p className="price-rule-notice"><strong>DELIVERY PRICES ONLY.</strong> Delivery orders are charged these prices, not in-store prices. <Link href="/faq#delivery-price-rule">See the FAQ</Link></p>
+        <section className="delivery-tier-ranges" aria-label="Delivery price ranges by flower tier">
+          {deliveryRanges.map(({ tier: tierName, range }) => {
+            const line = tierRangeText(range);
+            return line ? <p key={tierName}><strong>{tierName}</strong><small className="price-scope-label">Delivery price</small>{line}</p> : null;
+          })}
+        </section>
         <section className="store-hero qlc-editorial-hero delivery-brand-hero">
           <Image src="/storeFavicon.webp" alt={`${store.name} logo`} width={240} height={240} priority />
           <div className="store-hero-copy"><p>Green Pentagon Cannabis · Neighbourhood delivery</p><h1>Cannabis Delivery for Parkdale &amp; Queen West</h1><span>Delivery from Green Pentagon Cannabis is scoped to Parkdale, Queen West, and the Dufferin–Brock stretch of Queen — not a city-wide Toronto delivery war. Adults 19+. The dispatcher confirms whether an address is in range. Walk-in directions are on /visit.</span></div>
